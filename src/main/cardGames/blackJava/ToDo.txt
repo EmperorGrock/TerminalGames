@@ -1,0 +1,10 @@
+To Do:
+	- FIX SCORING
+		- Currently if both player and dealer bust, player loses. Should be a push.
+		- If both player and dealer have same score, should be a push. Currently player loses.
+		- If player has blackjack and dealer doesn't, player should win 1.5x bet. Currently just wins normal amount.
+		- If dealer has blackjack and player doesn't, player should lose bet.
+	- Convert players[] to an ArrayList so that players can be removed when they run out of cash.
+	- Aces can be 1 or 11, currently they are always 1.
+	- clear terminal after each round? , and turn, so that players can't see each other's cards.
+	- 
