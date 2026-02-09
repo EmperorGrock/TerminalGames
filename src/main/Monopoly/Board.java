@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class Board { // This class contains methods to access attibutes of spaces on the board.
 	public static Space[] boardArray = {
 		new CornerSpace(1), 							new Property("Mediterranean Ave",1,60,30,33),	new CardSpace(1),

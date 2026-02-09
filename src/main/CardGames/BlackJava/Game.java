@@ -1,6 +1,6 @@
-package BlackJava;
+package main.cardGames.blackJava;
 
-import CardPack.*;
+import main.cardGames.cardPack.*;
 /*
 	To Do:
 		- Why wont it run???

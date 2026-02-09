@@ -1,3 +1,5 @@
+package main.monopoly;
+
 import java.util.HashSet;
 
 public class Player {

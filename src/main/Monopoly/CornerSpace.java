@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class CornerSpace extends Space{
 	protected static int cornerNum;
 	public CornerSpace(int which){	//1 is GO, 2 is jail, 3 is Free Parking, 4 is Go to Jail

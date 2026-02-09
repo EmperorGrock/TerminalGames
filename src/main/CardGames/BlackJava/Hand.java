@@ -1,7 +1,7 @@
-package BlackJava;
+package main.cardGames.blackJava;
 
 import java.util.ArrayList;
-import CardPack.*;
+import main.cardGames.cardPack.*;
 
 public class Hand {
 	private ArrayList<Card> hand = new ArrayList<Card>();

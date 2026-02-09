@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class TaxSpace extends Space {
 	protected int taxType;
 	protected int cost;

@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class Utility extends Property {
 	public Utility(String nme) {
 		super(nme, 9, 150, 75, 83);

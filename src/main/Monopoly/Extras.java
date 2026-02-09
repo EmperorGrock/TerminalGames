@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class Extras {
 	public static boolean yesOrNoResponse() {
 		System.out.println("(y/n): ");

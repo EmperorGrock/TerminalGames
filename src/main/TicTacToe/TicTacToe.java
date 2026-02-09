@@ -1,3 +1,5 @@
+package main.ticTacToe;
+
 import java.util.Scanner;
 public class TicTacToe{
 	private static int player = 1;

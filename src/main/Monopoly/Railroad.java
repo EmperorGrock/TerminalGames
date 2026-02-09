@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class Railroad extends Property {
 
 	public Railroad(String nme) {

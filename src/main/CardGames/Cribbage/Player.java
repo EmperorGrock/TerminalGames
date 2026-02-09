@@ -1,4 +1,6 @@
-import CardPack.*;
+package main.cardGames.cribbage;
+
+import main.cardGames.cardPack.*;
 import java.util.*;
 
 public class Player {

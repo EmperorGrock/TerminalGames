@@ -1,3 +1,5 @@
+package main.monopoly;
+
 public class Space {
 	protected int spaceType;
 	protected String name;
