@@ -1,4 +1,4 @@
-To Do:
+BlackJava: 
 	- FIX SCORING
 		- Currently if both player and dealer bust, player loses. Should be a push.
 		- If both player and dealer have same score, should be a push. Currently player loses.
