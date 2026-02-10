@@ -1,24 +1,12 @@
 package main.cardGames.blackJava;
 
 import main.cardGames.cardPack.*;
-/*
-	To Do:
-		- Why wont it run???
-		- FIX SCORING
-			- Currently if both player and dealer bust, player loses. Should be a push.
-			- If both player and dealer have same score, should be a push. Currently player loses.
-			- If player has blackjack and dealer doesn't, player should win 1.5x bet. Currently just wins normal amount.
-			- If dealer has blackjack and player doesn't, player should lose bet.
-		- Convert players[] to an ArrayList so that players can be removed when they run out of cash.
-		- Aces can be 1 or 11, currently they are always 1.
-		- clear terminal after each round? , and turn, so that players can't see each other's cards.
-		- Add time module so dealer turn doesnt spit out so much all at once.
-		- 
+import java.util.ArrayList;
 
-*/
+
 public class Game {
 	private Deck gameDeck;
-	private BJPlayer[] players;
+	private ArrayList<BJPlayer> players = new ArrayList<BJPlayer>();
 	private Hand dealerHand;
 
 	public Game(){
@@ -62,10 +50,9 @@ public class Game {
 				System.out.println("Invalid format.");
 			}
 		}
-		this.players = new BJPlayer[numPlayers];
 		this.gameDeck = new Deck();
 		for(int i = 0; i < numPlayers; i++){
-			players[i] = new BJPlayer(gameDeck);
+			players.add(new BJPlayer(gameDeck));
 		}
 		this.dealerHand = new Hand(gameDeck, true);
 	}
@@ -75,17 +62,19 @@ public class Game {
 		for(BJPlayer p : players){
 			p.restartHand();
 		}
-		for(int i = 0; i < players.length; i++){
+		for(int i = 0; i < players.size(); i++){
 			System.out.println("Player " + (i+1) + "'s turn: ");
-			players[i].askSplit();
-			players[i].placeBets();
-			players[i].runTurn();
+			players.get(i).placeBets();
+			players.get(i).askSplit();
+			players.get(i).runTurn();
 		}
 		dealerTurn();
-		for(int i = 0; i < players.length; i++){
-			players[i].endTurn(dealerHand.getScore());
-			if(players[i].isDead()){
-				//players.remove(i);
+		for(int i = 0; i < players.size(); i++){
+			players.get(i).endTurn(dealerHand.getScore());
+			if(players.get(i).isDead()){
+				players.remove(i);
+				System.out.println("Player " + (i+1) + " is out of cash and is removed from the game. ");
+				i--;
 			}
 		}
 		
@@ -95,7 +84,7 @@ public class Game {
 		Game m = new Game();
 		while(true){
 			m.round();
-			if(m.players.length == 0){
+			if(m.players.size() == 0){
 				System.out.println("All players are out of cash. Game over.");
 				break;
 			}

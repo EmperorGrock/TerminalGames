@@ -42,7 +42,6 @@ public class Hand {
 	}
 
 	public void placeBet(int cash){
-		printStatus();
 		System.out.println("You have " + cash + " dollars.");
 		int betAmt = 0;
 		while(betAmt == 0){
@@ -135,6 +134,7 @@ public class Hand {
 	}
 
 	public int playHand(){
+		printStatus();
 		while(score <= 21 && askAction()){
 			drawCard();
 			resetScore();
