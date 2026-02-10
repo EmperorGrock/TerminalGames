@@ -15,7 +15,6 @@ public class TicTacToe{
 		boolean hasWon = false;
 		int inputNum;
 		System.out.println("To type coordinates, type two number coordinates in a row, as in: 02");
-		input.nextLine();
 		while(!hasWon){
 			printScreen();
 			System.out.println("It is player " + player + "'s turn!");
