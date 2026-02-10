@@ -17,7 +17,8 @@ public class Game {
 		try{
 			Thread.sleep(ms);
 		}catch(InterruptedException e){
-			System.out.println("An error occurred while sleeping. ");
+			e.printStackTrace();
+			System.out.println("An error occurred while pausing for dealer. ");
 		}
 	}
 
