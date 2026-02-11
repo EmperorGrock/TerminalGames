@@ -1,6 +1,7 @@
 package main.ticTacToe;
 
 import java.util.Scanner;
+import main.extraMethods.TwoDHelper;
 public class TicTacToe{
 	private static int player = 1;
 
