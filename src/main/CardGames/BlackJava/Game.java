@@ -2,6 +2,7 @@ package main.cardGames.blackJava;
 
 import main.cardGames.cardPack.*;
 import java.util.ArrayList;
+import main.extraMethods.Input;
 
 
 public class Game {
@@ -40,17 +41,7 @@ public class Game {
 	}
 
 	public void setup(){
-		int numPlayers = 0;
-		while(true){
-			try{
-				numPlayers = Integer.parseInt(IO.readln("Enter the number of players (1-5): "));
-				if(numPlayers > 5 || numPlayers < 1){
-					System.out.println("Must be 1-5 players.");
-				}else break;
-			}catch(NumberFormatException e){
-				System.out.println("Invalid format.");
-			}
-		}
+		int numPlayers = Input.getInt("Enter the number of players (1-5)", 1, 5);
 		this.gameDeck = new Deck();
 		for(int i = 0; i < numPlayers; i++){
 			players.add(new BJPlayer(gameDeck));
@@ -89,7 +80,7 @@ public class Game {
 				System.out.println("All players are out of cash. Game over.");
 				break;
 			}
-			if(IO.readln("Keep playing? (n) to quit. ").equals("n")){
+			if(!Input.getYesNo("Would you like to play another round?")){
 				System.out.println("Thanks for playing!");
 				break;
 			}

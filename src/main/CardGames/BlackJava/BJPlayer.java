@@ -1,6 +1,7 @@
 package main.cardGames.blackJava;
 
 import main.cardGames.cardPack.*;
+import main.extraMethods.Input;
 
 public class BJPlayer {
 	private int cash = 1000;
@@ -60,15 +61,8 @@ public class BJPlayer {
 
 	public void askSplit(){
 		if(hand.canSplit()){
-			System.out.println("Would you like to split? (y/n): ");
-			String response = IO.readln();
-			System.out.println();
-			while(!(response.equals("y") || response.equals("n"))){
-				System.out.println("Please input y or n. ");
-				response = IO.readln();
-				System.out.println();
-			}
-			if(response.equals("y")){
+			boolean response = Input.getYesNo("Would you like to split?");
+			if(response){
 				otherHand = new Hand(hand);
 			}
 		}

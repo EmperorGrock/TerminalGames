@@ -2,6 +2,7 @@ package main.cardGames.blackJava;
 
 import java.util.ArrayList;
 import main.cardGames.cardPack.*;
+import main.extraMethods.Input;
 
 public class Hand {
 	private ArrayList<Card> hand = new ArrayList<Card>();
@@ -43,20 +44,7 @@ public class Hand {
 
 	public void placeBet(int cash){
 		System.out.println("You have " + cash + " dollars.");
-		int betAmt = 0;
-		while(betAmt == 0){
-			try{
-				System.out.print("How much would you like to bet? ");
-				betAmt = Integer.parseInt(IO.readln());
-				System.out.println();
-				if(betAmt > cash)
-					System.out.println("You don't have that much. ");
-				if(betAmt <= 0)
-					System.out.println("Please input a positive value. ");
-			}catch(NumberFormatException e){
-				System.out.println("Invalid type.");
-			}
-		}
+		int betAmt = Input.getInt("How much would you like to bet?", 1, cash);
 		this.bet = betAmt;
 	} 
 
@@ -118,18 +106,8 @@ public class Hand {
 	}
 
 	public boolean askAction(){
-		int response = 0;
-		while(response != 1 && response != 2)
-		try{
-			System.out.print("Hit (1) or stand (2)? ");
-			response = Integer.parseInt(IO.readln());
-			if(response != 1 && response != 2){
-				System.out.println("1 or 2");
-			}
-		}catch(NumberFormatException e){
-			System.out.println("Please input a valid response.");
-		}
-		if(response == 1) return true;
+		boolean hit = Input.getYesNo("Hit?");
+		if(hit) return true;
 		else return false;
 	}
 

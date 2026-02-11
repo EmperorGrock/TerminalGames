@@ -1,6 +1,6 @@
 package main.extraMethods;
 
-public class input{
+public class Input{
 	public static int getInt(String message){
 		System.out.print(message + ": ");
 		int input = 0;
