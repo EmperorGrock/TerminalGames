@@ -1,3 +1,4 @@
+//base attributes and methods for all chess pieces
 public class piece{
 	protected int xLocation;
 	protected int yLocation;
@@ -13,5 +14,6 @@ public class piece{
 
 	public void kill(){
 		alive=false;
+		//calls method to replace the location of the piecw with blank
 	}
 }
