@@ -14,6 +14,6 @@ public class piece{
 
 	public void kill(){
 		alive=false;
-		//calls method to replace the location of the piecw with blank
+		//calls method to replace the location of the piece with blank
 	}
 }
