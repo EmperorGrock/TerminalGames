@@ -118,6 +118,7 @@ public class Hand {
 			resetScore();
 			printStatus();
 		}
+		if(score > 21) System.out.println("BUSTED!");
 		return score;
 	}
 }
