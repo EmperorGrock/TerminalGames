@@ -18,11 +18,10 @@ public class TwoDHelper {
 
 	public String formatLine(int row){
 		String result = " ";
-		for(int i = 0; i < ; i++){
-			result += lines[row][i];
+		for(int i = 0; i < yMax; i++){
+			result += map[row][i];
 			result += "|";
 		}
-		result+=lines[row][2];
 		return result;
 	}
 }
