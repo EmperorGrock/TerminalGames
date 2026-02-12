@@ -28,7 +28,7 @@ public class TwoDHelper {
 	}
 
 	public String formatLine(int row){
-		String result = " ";
+		String result = "";
 		for(int i = 0; i < xMax-1; i++){
 			result += map[row][i];
 			result += "|";
@@ -38,39 +38,44 @@ public class TwoDHelper {
 	}
 
 	public String getBorder(){
-		String result = " ";
-		for(int i = 0; i < xMax; i++)
+		String result = "  ";
+		for(int i = 0; i < xMax-1; i++)
 			result += "-+";
 		result += "-";
 		return result;
 	}
 
-	public void editCoord(String newChar, int X, int Y){
+	public void editCoord(String newChar, int X, int Y){ //newChar 
+		if(newChar.length() != 1){
+			throw new IllegalArgumentException("newChar must be one character");
+		}
+		X -= 1;
+		Y -= 1;
 		map[Y][X] = newChar;
 	}
 
 	public void printMap(){
-		System.out.println("  ");
-		for(int i = 1; i <= xMax + 1; i++){
+		System.out.print(" ");
+		for(int i = 1; i < xMax + 1; i++){
 			System.out.print(" " + i);
 		}
 		System.out.println();
 		for(int j = 0; j < yMax; j++){
 			System.out.print((j+1) + " ");
 			System.out.print(formatLine(j));
-			if(j<2) System.out.println("\n"+getBorder());
+			if(j<yMax-1) System.out.println("\n"+getBorder());
 			else System.out.println();
 		}
 		System.out.println();
 	}
 
 	void main(String[] args){
-		TwoDHelper test = new TwoDHelper(4,3);
+		TwoDHelper test = new TwoDHelper(5,4);
 		//System.out.println(test.formatLine(1));
 		test.printMap();
 		
-		test.editCoord("x", 3, 1);
-		System.out.println(getBorder());
+		test.editCoord("r", 3, 1);
+		//System.out.println(getBorder());
 		test.printMap();
 		//System.out.println(test.formatLine(1));
 	}

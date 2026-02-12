@@ -38,20 +38,7 @@ public class TicTacToe{
 		processCoordinates(x,y);
 	}
 
-
-
-	public static void printScreen(){
-		System.out.println("   0 1 2");
-		for(int j = 0; j < 3; j++){
-			System.out.print(j + " ");
-			System.out.print(formatLine(j));
-			if(j<2) System.out.println("\n"+emptyLine);
-			else System.out.println();
-		}
-		System.out.println();
-	}
-
-	public static void processCoordinates(int first, int second){
+	public static void processCoordinates(int first, int second) throws IllegalArgumentException{
 		if(lines[second][first].equals(" ")){
 			if(player == 1){
 				lines[second][first] = "x";
