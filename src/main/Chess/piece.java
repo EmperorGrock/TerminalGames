@@ -1,3 +1,5 @@
+package main.Chess;
+
 //base attributes and methods for all chess pieces
 public class piece{
 	protected int xLocation;

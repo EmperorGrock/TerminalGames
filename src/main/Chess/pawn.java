@@ -1,3 +1,5 @@
+package main.Chess;
+
 import java.util.*;
 public class pawn extends piece{
 	//creates a pawn at given location. Make sure it is not illegal
