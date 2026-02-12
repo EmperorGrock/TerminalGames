@@ -1,6 +1,7 @@
 package main.Chess;
 
 //base attributes and methods for all chess pieces
+//import extraMethods.Input;
 public class piece{
 	protected int xLocation;
 	protected int yLocation;
