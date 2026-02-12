@@ -1,3 +1,5 @@
+package main.Chess;
+
 public class board {
 	final piece[][] location;
 

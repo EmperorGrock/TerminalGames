@@ -1,3 +1,5 @@
+package main.Chess;
+
 //base attributes and methods for all chess pieces
 //import extraMethods.Input;
 public class piece{

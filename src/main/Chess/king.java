@@ -1,3 +1,5 @@
+package main.Chess;
+
 public class king extends piece {
 	private boolean castling;
 	private boolean check;
