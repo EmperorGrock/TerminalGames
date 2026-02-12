@@ -38,15 +38,7 @@ public class TicTacToe{
 		processCoordinates(x,y);
 	}
 
-	public static String formatLine(int row){
-		String result = " ";
-		for(int i = 0; i < 2; i++){
-			result += lines[row][i];
-			result += "|";
-		}
-		result+=lines[row][2];
-		return result;
-	}
+
 
 	public static void printScreen(){
 		System.out.println("   0 1 2");
