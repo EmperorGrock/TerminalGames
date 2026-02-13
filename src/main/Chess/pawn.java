@@ -1,6 +1,7 @@
 package main.Chess;
 
 import java.util.*;
+import main.extraMethods.*;
 public class pawn extends piece{
 	//creates a pawn at given location. Make sure it is not illegal
 	private boolean enPassentPossible;
@@ -18,11 +19,20 @@ public class pawn extends piece{
 	}
 
 	//The normal move
-	public void move(pawn p){
-		if (p.isWhite){
+	public void move(){
+		if (this.isWhite){
 			yLocation+=1;
 		} else {
 			yLocation-=1;
+		}
+	}
+
+	//Double move
+	public void doubleMove(){
+		if (this.isWhite){
+			yLocation+=2;
+		} else {
+			yLocation-=2;
 		}
 	}
 

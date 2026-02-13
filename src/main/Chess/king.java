@@ -1,5 +1,8 @@
 package main.Chess;
 
+import java.util.*;
+import main.extraMethods.*;
+
 public class king extends piece {
 	private boolean castling;
 	private boolean check;
