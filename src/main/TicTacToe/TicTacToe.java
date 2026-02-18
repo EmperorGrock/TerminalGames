@@ -1,30 +1,24 @@
 package main.ticTacToe;
 
-import java.util.Scanner;
 import main.extraMethods.TwoDHelper;
+import main.extraMethods.Input;
 public class TicTacToe{
 	private static int player = 1;
 
-	public static String[][] lines = 
-		{{" "," "," "},
-		 {" "," "," "},
-		 {" "," "," "}};
-	public static String emptyLine = "  --+-+--";
+	public static TwoDHelper board = new TwoDHelper(3,3);
 
 	public static void executeNormalTicTacToe(){
-		Scanner input = new Scanner(System.in);
 		boolean hasWon = false;
 		int inputNum;
-		System.out.println("To type coordinates, type two number coordinates in a row, as in: 02");
+		System.out.println("To type coordinates, type two number coordinates in a row, as in: 12");
 		while(!hasWon){
-			printScreen();
+			board.printMap();
 			System.out.println("It is player " + player + "'s turn!");
-			inputNum = input.nextInt();
+			inputNum = Input.getInt("Enter Coords");
 			placeMarker(inputNum);
 			if(checkForWin()){
 				hasWon = true;
-				input.close();
-				printScreen();
+				board.printMap();
 				System.out.println("Player " + player + " has won!");
 			}
 			if(player == 1) player = 2;
@@ -39,11 +33,11 @@ public class TicTacToe{
 	}
 
 	public static void processCoordinates(int first, int second) throws IllegalArgumentException{
-		if(lines[second][first].equals(" ")){
+		if(board.getLocation(first, second).equals(" ")){
 			if(player == 1){
-				lines[second][first] = "x";
+				board.editCoord("x", first, second);
 			}else if(player == 2){
-				lines[second][first] = "o";
+				board.editCoord("o", first, second);
 			}
 		}else throw new IllegalArgumentException("That space is occupied");
 	}
@@ -51,21 +45,23 @@ public class TicTacToe{
 	public static boolean checkForWin(){
 		boolean result = false;
 		//Check for Vertical
-		for(int i = 0; i < 3; i++){
-			if(((lines[i][0].equals(lines[i][1]))&&lines[i][0].equals(lines[i][2])) && !(lines[i][0].equals(" "))){
-				result = true;
+		
+		for(int i = 1; i <= board.getYMax(); i++){
+			if(board.getLocation*)
+			for(int j = 1; j <= board.getXMax(); j++){
+				
 			}
 		}
-		//check for Horizontal
-		for(int i = 0; i < 3; i++){
-			if((lines[0][i].equals(lines[1][i])&&lines[0][i].equals(lines[2][i])) && !(lines[0][i].equals(" "))){
+		//check for Horizontaf
+		for(int i = 1; i <= 3; i++){
+			if((board.getLocation(i,1).equals(board.getLocation(i,2))&&board.getLocation(i,1).equals(board.getLocation(i,3))) && !(board.getLocation(i,1).equals(" "))){
 				result = true;
 			}
 		}
 		//Check for Diagonals
-		if((lines[0][0].equals(lines[1][1])&&lines[0][0].equals(lines[2][2]))&&!(lines[0][0].equals(" "))){
+		if((board.getLocation(1,1).equals(board.getLocation(2,2))&&board.getLocation(1,1).equals(board.getLocation(3,3)))&&!(board.getLocation(1,1).equals(" "))){
 			result = true;
-		}else if((lines[0][2].equals(lines[1][1])&&lines[0][2].equals(lines[2][0]))&&!(lines[0][2].equals(" "))){
+		}else if((board.getLocation(1,3).equals(board.getLocation(2,2))&&board.getLocation(1,3).equals(board.getLocation(3,1)))&&!(board.getLocation(1,3).equals(" "))){
 			result = true;
 		}
 
