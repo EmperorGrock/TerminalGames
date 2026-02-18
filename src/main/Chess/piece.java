@@ -6,7 +6,7 @@ public class piece{
 	protected int xLocation;
 	protected int yLocation;
 	protected boolean alive;
-	protected boolean isWhite; 
+	protected boolean isWhite;
 
 	public piece(int x, int y, boolean start){
 		xLocation=x;
@@ -17,6 +17,6 @@ public class piece{
 
 	public void kill(){
 		alive=false;
-		//calls method to replace the location of the piece with blank
+		board.clear(xLocation,yLocation);
 	}
 }
