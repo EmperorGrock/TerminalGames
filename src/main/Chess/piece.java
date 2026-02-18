@@ -17,6 +17,14 @@ public class piece{
 
 	public void kill(){
 		alive=false;
-		board.clear(xLocation,yLocation);
+		board.clear(getXLoc(),getYLoc());
+	}
+
+	public int getXLoc(){
+		return xLocation;
+	}
+
+	public int getYLoc(){
+		return yLocation;
 	}
 }

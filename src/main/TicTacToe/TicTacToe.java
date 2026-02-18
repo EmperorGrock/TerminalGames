@@ -1,4 +1,4 @@
-package main.ticTacToe;
+package main.TicTacToe;
 
 import java.util.Scanner;
 import main.extraMethods.TwoDHelper;
