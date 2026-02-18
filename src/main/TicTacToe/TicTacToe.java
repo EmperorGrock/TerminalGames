@@ -1,4 +1,4 @@
-package main.ticTacToe;
+package main.TicTacToe;
 
 import main.extraMethods.TwoDHelper;
 import main.extraMethods.Input;

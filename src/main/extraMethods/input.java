@@ -1,6 +1,6 @@
 package main.extraMethods;
 
-public class Input{
+public class input{
 
 	//Print the message, and keep asking for input until an integer is entered
 	public static int getInt(String message){

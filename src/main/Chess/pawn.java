@@ -1,10 +1,12 @@
 package main.Chess;
 
 import java.util.*;
+import main.extraMethods.*;
 public class pawn extends piece{
 	//creates a pawn at given location. Make sure it is not illegal
 	private boolean enPassentPossible;
 	private boolean doubleStep;
+	private int moveCount;
 
 	public pawn(int x, int y, boolean start){
 		super(x,y,start);
@@ -18,11 +20,28 @@ public class pawn extends piece{
 	}
 
 	//The normal move
-	public void move(pawn p){
-		if (p.isWhite){
+	public void move(){
+		if (this.isWhite){
 			yLocation+=1;
+			moveCount+=1;
+			this.doubleStep=false;
 		} else {
 			yLocation-=1;
+			moveCount+=1;
+			this.doubleStep=false;
+		}
+	}
+
+	//Double move
+	public void doubleMove(){
+		if (this.isWhite){
+			yLocation+=2;
+			moveCount+=1;
+			this.doubleStep=false;
+		} else {
+			yLocation-=2;
+			moveCount+=1;
+			this.doubleStep=false;
 		}
 	}
 
@@ -44,8 +63,6 @@ public class pawn extends piece{
 			}
 		}
 		victim.kill(); //The victim pawn is killed
-		victim.enPassentPossible=false;
-		victim.doubleStep=false;
 	}
 
 	public void capture(piece victim, boolean direction){
@@ -155,6 +172,10 @@ public class pawn extends piece{
 
 	public int getYLoc(){
 		return yLocation;
+	}
+
+	public int getMoveCount(){
+		return moveCount;
 	}
 
 }
