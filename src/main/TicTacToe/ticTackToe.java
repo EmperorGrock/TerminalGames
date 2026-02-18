@@ -1,8 +1,8 @@
-package main.ticTacToe;
+package main.TicTacToe;
 
 import main.extraMethods.TwoDHelper;
 import main.extraMethods.Input;
-public class TicTacToe{
+public class ticTackToe{
 	private static int player = 1;
 
 	public static TwoDHelper board = new TwoDHelper(3,3);
