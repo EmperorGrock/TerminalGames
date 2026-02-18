@@ -69,6 +69,18 @@ public class TwoDHelper {
 		System.out.println();
 	}
 
+	public int getYMax(){
+		return yMax;
+	}
+
+	public int getXMax(){
+		return xMax;
+	}
+
+	public String getLocation(int X, int Y){
+		return map[Y-1][X-1];
+	}
+
 	void main(String[] args){
 		TwoDHelper test = new TwoDHelper(5,4);
 		//System.out.println(test.formatLine(1));
