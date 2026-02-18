@@ -1,4 +1,4 @@
-package main.TicTacToe;
+package main.ticTacToe;
 
 import main.extraMethods.TwoDHelper;
 import main.extraMethods.Input;
@@ -47,7 +47,7 @@ public class TicTacToe{
 		//Check for Vertical
 		
 		for(int i = 1; i <= board.getYMax(); i++){
-			if(board.getLocation*)
+			//if(board.getLocation*)
 			for(int j = 1; j <= board.getXMax(); j++){
 				
 			}
