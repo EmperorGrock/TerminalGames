@@ -1,4 +1,5 @@
 package main.Chess;
+import main.extraMethods.*;
 
 //base attributes and methods for all chess pieces
 //import extraMethods.Input;

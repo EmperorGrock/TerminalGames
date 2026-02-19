@@ -1,5 +1,9 @@
 package main.Chess;
 
+import java.util.InputMismatchException;
+
+import main.extraMethods.input;
+
 public class board {
 	final static piece[][] location= new piece[8][8]; //chess is 8x8 fixed. Does not need a method to initialize
 
@@ -12,6 +16,11 @@ public class board {
 	}
 
 	public static setPiece(){
-		//This needs to be done
+		String answer;
+		try {
+			answer=System.console().readLine().toLowerCase();
+		} catch (InputMismatchException e){
+			System.out.println("That is not an option");
+		}
 	}
 }
