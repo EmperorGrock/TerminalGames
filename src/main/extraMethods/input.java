@@ -65,8 +65,7 @@ public class Input{
 				System.out.println("Please enter a valid value");
 			}
 		}
-		} 		
-	}
+	} 		
 
 	public static void main(String[] args){
 		
