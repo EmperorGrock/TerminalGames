@@ -47,26 +47,39 @@ public class Input{
 		}
 	}
 	//Prints list of choices then keeps asking until user inputs desired choice. Returns user choice
-	public static int advancedAsk(String[] choices){
+	//Input null for message if you want the default message	
+	public static int advancedAsk(String message,String[] choices){
 		int input=0;
-		System.out.println("Please choose from the following");
+		if (message.equals(null)){
+			System.out.println("Please choose from the following");
+		} else {
+			System.out.println(message);
+		}
 		for (int i=0;i<choices.length;i++){
-			System.out.println(i+": "+choices[i]);
+			System.out.println((i+1)+": "+choices[i]);
 		}
 		while (true){
 			try{
+
 				input=Integer.parseInt(System.console().readLine());
 				if (input<1 || input>choices.length){
-					System.out.println("Please enter a valid value");
+					if (message.equals(null)){
+						System.out.println("Please enter a valid value");
+					} else {
+						System.out.println(message);
+					}
 					continue;
 				}
 				return input;
 			} catch (NumberFormatException e){
-				System.out.println("Please enter a valid value");
+				if (message.equals(null)){
+					System.out.println("Please enter a valid value");
+				} else {
+					System.out.println(message);
+				}
 			}
 		}
-		} 		
-	}
+	}		
 
 	public static void main(String[] args){
 		
