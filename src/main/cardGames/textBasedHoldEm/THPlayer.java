@@ -13,5 +13,8 @@ public class THPlayer {
 		hand[1] = d.pickCard();
 	}
 
-	
+	/*public int bet(int amtInPot){
+		System.out.println();
+		Input.getInt(amtInPot + " to you." , 0, cash);
+	}*/
 }
