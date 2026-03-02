@@ -1,4 +1,4 @@
-package main.extraMethods;
+package main.extramethods;
 
 public class TwoDHelper {
 	private String[][] map;

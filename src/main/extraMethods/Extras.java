@@ -1,4 +1,4 @@
-package main.extraMethods;
+package main.extramethods;
 
 public class Extras {
 	public static void sleep(int seconds){

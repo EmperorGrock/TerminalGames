@@ -1,7 +1,9 @@
-package main.Chess;
+package main.chess;
 
 import java.util.InputMismatchException;
-import main.extraMethods.*;
+
+import main.extramethods.*;
+
 import java.util.ArrayList;
 
 public class board {

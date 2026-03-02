@@ -1,7 +1,8 @@
-package main.cardGames.textBasedHoldEm;
+package main.cardgames.textbasedholdem;
 
-import main.cardGames.cardPack.*;
-import main.extraMethods.Input;
+import main.cardgames.cardPack.*;
+import main.extramethods.Input;
+
 import java.util.ArrayList;
 
 //Flop (first 3), turn 4th, river 5th

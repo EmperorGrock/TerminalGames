@@ -1,7 +1,8 @@
-package main.Chess;
+package main.chess;
 
 import java.util.*;
-import main.extraMethods.*;
+
+import main.extramethods.*;
 public class pawn extends piece{
 	//creates a pawn at given location. Make sure it is not illegal
 	private boolean enPassentPossible;

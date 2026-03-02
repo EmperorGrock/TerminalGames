@@ -1,7 +1,7 @@
-package main.ticTacToe;
+package main.tictactoe;
 
-import main.extraMethods.TwoDHelper;
-import main.extraMethods.Input;
+import main.extramethods.Input;
+import main.extramethods.TwoDHelper;
 public class TicTacToe{
 	private static int player = 1;
 

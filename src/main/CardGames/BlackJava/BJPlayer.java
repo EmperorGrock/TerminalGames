@@ -1,7 +1,8 @@
-package main.cardGames.blackJava;
+package main.cardgames.blackjava;
 
-import main.cardGames.cardPack.*;
-import main.extraMethods.Input;
+import main.cardgames.cardPack.*;
+import main.extramethods.Input;
+import main.extramethods.Terminal;
 
 public class BJPlayer {
 	private int cash = 1000;

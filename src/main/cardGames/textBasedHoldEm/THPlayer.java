@@ -1,7 +1,7 @@
-package main.cardGames.textBasedHoldEm;
+package main.cardgames.textbasedholdem;
 
-import main.cardGames.cardPack.*;
-import main.extraMethods.Input;
+import main.cardgames.cardPack.*;
+import main.extramethods.Input;
 
 public class THPlayer {
 	private int cash = 1000;
