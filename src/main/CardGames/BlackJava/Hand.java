@@ -2,7 +2,7 @@ package main.cardgames.blackjava;
 
 import java.util.ArrayList;
 
-import main.cardgames.cardPack.*;
+import main.cardgames.cardpack.*;
 import main.extramethods.Input;
 
 public class Hand {

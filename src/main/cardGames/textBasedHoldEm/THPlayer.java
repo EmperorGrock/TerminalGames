@@ -1,6 +1,6 @@
 package main.cardgames.textbasedholdem;
 
-import main.cardgames.cardPack.*;
+import main.cardgames.cardpack.*;
 import main.extramethods.Input;
 
 public class THPlayer {

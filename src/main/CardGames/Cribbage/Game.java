@@ -1,7 +1,8 @@
 package main.cardgames.cribbage;
 
 import java.util.ArrayList;
-import main.cardgames.cardPack.*;
+
+import main.cardgames.cardpack.*;
 
 public class Game {
 	public Player one = new Player(IO.readln("Input the dealer's name: "), true);

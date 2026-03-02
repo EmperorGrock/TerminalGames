@@ -1,6 +1,6 @@
 package main.cardgames.blackjava;
 
-import main.cardgames.cardPack.*;
+import main.cardgames.cardpack.*;
 import main.extramethods.Input;
 
 import java.util.ArrayList;
