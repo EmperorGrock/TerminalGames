@@ -2,6 +2,7 @@ package main.cardgames.blackjava;
 
 import main.cardgames.cardpack.*;
 import main.extramethods.Input;
+import main.extramethods.Terminal;
 
 import java.util.ArrayList;
 
@@ -15,20 +16,11 @@ public class Game {
 		setup();
 	}
 
-	private void sleep(int ms){
-		try{
-			Thread.sleep(ms);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-			System.out.println("An error occurred while pausing for dealer. ");
-		}
-	}
-
 	public void dealerTurn(){
 		System.out.println("Dealer's Turn: ");
 		dealerHand.printStatus();
 		while(dealerHand.getScore() < 17){
-			sleep(1500);
+			Terminal.sleep(1.5);
 			System.out.println("Dealer Hits. ");
 			dealerHand.drawCard();
 			dealerHand.printStatus();

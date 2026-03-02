@@ -1,6 +1,17 @@
 package main.extramethods;
 
 public class Terminal{
+	/**
+	 * Method to wait for a bit before continuing program
+	 */
+	public static void sleep(double seconds){
+		try{
+			Thread.sleep((int)(seconds*1000));
+		}catch(InterruptedException e){
+			System.out.println("Interrupted Exception.");
+		}
+	}
+
 	public static void clearTerminal(){
 		//Clear screen
 		System.out.print("\033[2J");
@@ -54,11 +65,11 @@ public class Terminal{
 		
 	}*/
 
-	void main(){
+	/*void main(){
 		System.out.print("yayp");
 		//cursorHorizontal(3);
 		setTextColor(0);
 		textForm(7);
 		System.out.print("wow");
-	}
+	}*/
 }
