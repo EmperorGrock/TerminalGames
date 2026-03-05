@@ -68,7 +68,7 @@ public class Game {
 		
 	}
 
-	public static void main(String[] args){
+	public void runGame(){
 		Game m = new Game();
 		while(true){
 			m.round();
