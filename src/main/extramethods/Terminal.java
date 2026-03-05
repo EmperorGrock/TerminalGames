@@ -44,7 +44,7 @@ public class Terminal{
 	 * @param color  Sets the color 0 grey, 1 red, 2 green, 3 yellow, 4 blue, 5 magenta, 6 cyan, 7 white
 	 * @throws IllegalArgumentException if the color is outside the range
 	*/
-	public static void setTextColor(int color){
+	public static void textColor(int color){
 		if(color < 0 || color > 7)
 			throw new IllegalArgumentException("Only supports 0-7");
 		int newInt = 30 + color; 

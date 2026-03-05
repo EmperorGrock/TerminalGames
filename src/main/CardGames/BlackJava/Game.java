@@ -17,7 +17,10 @@ public class Game {
 	}
 
 	public void dealerTurn(){
+		Terminal.textColor(1);
+		Terminal.textForm(1);
 		System.out.println("Dealer's Turn: ");
+		Terminal.clearFormat();
 		dealerHand.printStatus();
 		while(dealerHand.getScore() < 17){
 			Terminal.sleep(1.5);
