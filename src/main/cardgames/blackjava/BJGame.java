@@ -7,12 +7,12 @@ import main.extramethods.Terminal;
 import java.util.ArrayList;
 
 
-public class Game {
+public class BJGame {
 	private Deck gameDeck;
 	private ArrayList<BJPlayer> players = new ArrayList<BJPlayer>();
 	private Hand dealerHand;
 
-	public Game(){
+	public BJGame(){
 		setup();
 	}
 
@@ -69,10 +69,9 @@ public class Game {
 	}
 
 	public void runGame(){
-		Game m = new Game();
 		while(true){
-			m.round();
-			if(m.players.size() == 0){
+			round();
+			if(players.size() == 0){
 				System.out.println("All players are out of cash. Game over.");
 				break;
 			}
@@ -81,5 +80,10 @@ public class Game {
 				break;
 			}
 		}
+	}
+
+	public static void main(){
+		BJGame blackjava = new BJGame();
+		blackjava.runGame();
 	}
 }
