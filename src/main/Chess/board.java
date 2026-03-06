@@ -6,18 +6,18 @@ import main.extramethods.*;
 
 import java.util.ArrayList;
 
-public class board {
-	final static piece[][] location= new piece[8][8]; //chess is 8x8 fixed. Does not need a method to initialize
+public class Board {
+	final static Piece[][] location= new Piece[8][8]; //chess is 8x8 fixed. Does not need a method to initialize
 	//This board is orientated so that the white pieces are at the bottom and the black are at the top.
 
 	//This is a place to record which piece moved where in order. May not be used.
-	ArrayList<piece> replay=new ArrayList<>();
+	ArrayList<Piece> replay=new ArrayList<>();
 
 	public static void clear(int x, int y){
 		location[x][y]=null;
 	}
 
-	public static void setPiece(piece subject, int x, int y){
+	public static void setPiece(Piece subject, int x, int y){
 		clear(subject.xLocation,subject.yLocation);
 		location[x][y]=subject;
 	}
@@ -25,25 +25,25 @@ public class board {
 	public static void initialize(){
 		//Needs better names for pieces maybe
 
-		//white pawns
-		pawn p1w=new pawn(0,1,true);
-		pawn p2w=new pawn(1,1,true);
-		pawn p3w=new pawn(2,1,true);
-		pawn p4w=new pawn(3,1,true);
-		pawn p5w=new pawn(4,1,true);
-		pawn p6w=new pawn(5,1,true);
-		pawn p7w=new pawn(6,1,true);
-		pawn p8w=new pawn(7,1,true);
+		//white Pawns
+		Pawn p1w=new Pawn(0,1,true);
+		Pawn p2w=new Pawn(1,1,true);
+		Pawn p3w=new Pawn(2,1,true);
+		Pawn p4w=new Pawn(3,1,true);
+		Pawn p5w=new Pawn(4,1,true);
+		Pawn p6w=new Pawn(5,1,true);
+		Pawn p7w=new Pawn(6,1,true);
+		Pawn p8w=new Pawn(7,1,true);
 
-		//black pawns
-		pawn p1b=new pawn(0,6,true);
-		pawn p2b=new pawn(1,6,true);
-		pawn p3b=new pawn(2,6,true);
-		pawn p4b=new pawn(3,6,true);
-		pawn p5b=new pawn(4,6,true);
-		pawn p6b=new pawn(5,6,true);
-		pawn p7b=new pawn(6,6,true);
-		pawn p8b=new pawn(7,6,true);
+		//black Pawns
+		Pawn p1b=new Pawn(0,6,true);
+		Pawn p2b=new Pawn(1,6,true);
+		Pawn p3b=new Pawn(2,6,true);
+		Pawn p4b=new Pawn(3,6,true);
+		Pawn p5b=new Pawn(4,6,true);
+		Pawn p6b=new Pawn(5,6,true);
+		Pawn p7b=new Pawn(6,6,true);
+		Pawn p8b=new Pawn(7,6,true);
 
 		//white rook
 
@@ -81,7 +81,7 @@ public class board {
 		//location[0][0]=;
 
 
-		//pawns
+		//Pawns
 		location[0][1]=p1w;
 		location[1][1]=p2w;
 		location[2][1]=p3w;
