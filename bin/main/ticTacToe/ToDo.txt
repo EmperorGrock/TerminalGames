@@ -1,2 +1,3 @@
 - Create a package with 2d array processing methods for reuse in chess
 - dont end the game if someone plays an already played space
+- 4x4??
