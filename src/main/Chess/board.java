@@ -7,11 +7,16 @@ import main.extramethods.*;
 import java.util.ArrayList;
 
 public class Board {
+	//Creates a chess board
 	final static Piece[][] location= new Piece[8][8]; //chess is 8x8 fixed. Does not need a method to initialize
 	//This board is orientated so that the white pieces are at the bottom and the black are at the top.
 
+	//Array to use for user selction
+	final static String[] letters= {"a","b","c","d","e","f","g","h"};
+
+	//Array
 	/* 
-	x  0  1  2  3  4  5  6  7  8
+	x  0  1  2  3  4  5  6  7
 	0  0
 	1     1  
 	2        2  
@@ -20,7 +25,19 @@ public class Board {
 	5                 5  
 	6                    6  
 	7                       7
-	8                          8
+	*/
+
+	//Chessboard
+	/*
+	x  a  b  c  d  e  f  g  h
+	8
+	7
+	6
+	5
+	4
+	3
+	2
+	1
 	*/
 
 	//Order of pieces:
@@ -32,6 +49,14 @@ public class Board {
 
 	public static void clear(int x, int y){
 		location[y][x]=null;
+	}
+
+	public static void clearBoard(){
+		for (int i=0;i<location.length;i++){
+			for (int j=0;j<location[0].length;j++){
+				location[i][j]=null;
+			}
+		}
 	}
 
 	public static void setPiece(Piece subject, int x, int y){
@@ -82,4 +107,17 @@ public class Board {
 		//black king
 
 	}
+
+	//Converts y coordinates of chess piece to array, used to convert user selection to array equivalent
+	public static int yToBoard(int y){
+		return y%8;
+	}
+	
+
+
+	//Main method that runs
+	public static void Main(String args[]){
+		
+	}
+
 }
