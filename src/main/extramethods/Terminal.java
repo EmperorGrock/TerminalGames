@@ -1,8 +1,14 @@
 package main.extramethods;
 
+/**
+ * A class with static methods for terminal manipulation.
+ * Built for the TerminalGames app.
+ * @author EmperorGrock
+ */
 public class Terminal{
 	/**
-	 * Method to wait for a bit before continuing program
+	 * Simplified version of Thread.sleep that takes seconds instead of milliseconds
+	 * @param seconds The number of seconds to sleep
 	 */
 	public static void sleep(double seconds){
 		try{

@@ -10,7 +10,11 @@ package main.extramethods;
  */
 public class Input{
 
-	//Print the message, and keep asking for input until an integer is entered
+	/**
+	 * Print the message, and keep asking for input until an integer is entered
+	 * @param message The message to print before asking for input
+	 * @return The integer that the user entered
+	 */
 	public static int getInt(String message){
 		System.out.print(message + ": ");
 		int input = 0;
@@ -25,7 +29,13 @@ public class Input{
 		return input;
 	}
 
-	//Print the message and keep asking for an int until it is within the range
+	/**
+	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
+	 * @param min The minimum acceptable value (inclusive)
+	 * @param max The maximum acceptable value (inclusive)
+	 * @param message The message to print before asking for input
+	 * @return The integer that the user entered
+	 */
 	public static int getInt(String message, int min, int max){
 		int input = 0;
 		while(true){
@@ -39,7 +49,11 @@ public class Input{
 		return input;
 	}
 
-	//Print message, then keep asking until input is y or n, y returns true, n returns false
+	/**
+	 * Print the message, and keep asking for input until a valid 'y' or 'n' is entered
+	 * @param message The message to print before asking for input
+	 * @return true if the user entered 'y', false if the user entered 'n'
+	 */
 	public static boolean getYesNo(String message){
 		System.out.print(message + " (y/n): ");
 		String input = "";
@@ -54,8 +68,15 @@ public class Input{
 			}
 		}
 	}
+
 	//Prints list of choices then keeps asking until user inputs desired choice. Returns user choice
 	//Input null for message if you want the default message	
+	/**
+	 * Print the message and a list of choices, and keep asking for input until a valid choice is entered
+	 * @param message The message to print before the list of choices (if null, a default message will be printed)
+	 * @param choices An array of strings representing the choices to present to the user
+	 * @return The index of the choice that the user selected (1-based index)
+	 */
 	public static int advancedAsk(String message,String[] choices){
 		int input=0;
 		if (message.equals(null)){
@@ -88,8 +109,4 @@ public class Input{
 			}
 		}
 	}		
-
-	public static void main(String[] args){
-		
-	}
 }
