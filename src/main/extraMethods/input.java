@@ -1,5 +1,13 @@
 package main.extramethods;
 
+
+/**
+ * A class with multiple static methods for various input types and styles. 
+ * Built for the TerminalGames app.
+ * 
+ * @author Catmaoneko 
+ * @author EmperorGrock
+ */
 public class Input{
 
 	//Print the message, and keep asking for input until an integer is entered
