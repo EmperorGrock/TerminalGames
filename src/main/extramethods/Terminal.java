@@ -6,6 +6,7 @@ package main.extramethods;
  * @author EmperorGrock
  */
 public class Terminal{
+
 	/**
 	 * Simplified version of Thread.sleep that takes seconds instead of milliseconds
 	 * @param seconds The number of seconds to sleep
@@ -18,6 +19,9 @@ public class Terminal{
 		}
 	}
 
+	/**
+	 * Clears the terminal screen, clears the scrollback, and moves the cursor to the top-left corner
+	 */
 	public static void clearTerminal(){
 		//Clear screen
 		System.out.print("\033[2J");
@@ -29,26 +33,29 @@ public class Terminal{
 		System.out.flush();
 	}
 
+	/**
+	 * clears all text formatting, including color and text formating such as bold or underline
+	 */
 	public static void clearFormat(){
 		System.out.print("\033[0m");
 	}
 
 	/**
-	 * Formats text such as bold, underline, italic
-	 * @param which  1 Bold, 2 Dim, 3 Italic, 4 Underline, 7 Inverse
-	 * @throws IllegalArgumentException  When the input isn't one of the specified ints
+	 * Formats text such with bold, underline, italic
+	 * @param which  1 Bold, 2 Dim, 3 Italic, 4 Underline
+	 * @throws IllegalArgumentException When input is outside the supported range, 1-4
 	 */
 	public static void textForm(int which){
-		// 
-		if((which < 1 || which > 4 ) && which != 7)
-			throw new IllegalArgumentException("Only supports 1-4 and 7");
+		if(which < 1 || which > 4)
+			throw new IllegalArgumentException("Only supports 1-4");
 		System.out.print("\033[" + which + "m");
 	}
 
 	/**
-	 * Sets the text color to one of 7 colors
-	 * @param color  Sets the color 0 grey, 1 red, 2 green, 3 yellow, 4 blue, 5 magenta, 6 cyan, 7 white
-	 * @throws IllegalArgumentException if the color is outside the range
+	 * Sets the text color to one of 7 colors, 
+	 * 0 grey, 1 red, 2 green, 3 yellow, 4 blue, 5 magenta, 6 cyan, 7 white
+	 * @param color Sets the color 
+	 * @throws IllegalArgumentException if the color is outside the range 0-7
 	*/
 	public static void textColor(int color){
 		if(color < 0 || color > 7)
