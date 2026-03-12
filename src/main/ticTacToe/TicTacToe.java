@@ -2,6 +2,14 @@ package main.tictactoe;
 
 import main.extramethods.Input;
 import main.extramethods.TwoDHelper;
+
+/**
+ * A simple implementation of the classic Tic-Tac-Toe game, using the TwoDHelper class to manage the game board and the Input class to handle user input.
+ * Built for the TerminalGames app. 
+ * @todo - FIX ERROR HANDLING
+ * @author EmperorGrock
+ * @author invisiblekoi
+ */
 public class TicTacToe{
 	private static int player = 1;
 

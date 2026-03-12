@@ -1,5 +1,8 @@
 package main.extramethods;
 
+/**
+ * 
+ */
 public class GameRunner {
 	private static String name;
 	
