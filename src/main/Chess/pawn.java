@@ -1,14 +1,15 @@
-package main.Chess;
+package main.chess;
 
 import java.util.*;
-import main.extraMethods.*;
-public class pawn extends piece{
+
+import main.extramethods.*;
+public class Pawn extends Piece{
 	//creates a pawn at given location. Make sure it is not illegal
 	private boolean enPassentPossible;
 	private boolean doubleStep;
 	private int moveCount;
 
-	public pawn(int x, int y, boolean start){
+	public Pawn(int x, int y, boolean start){
 		super(x,y,start);
 		enPassentPossible=true;
 		doubleStep=true;
@@ -46,7 +47,7 @@ public class pawn extends piece{
 	}
 
 	//true is for right and false is left. Dont ask me why. Thats how it is.
-	public void capture(piece victim, boolean direction){
+	public void capture(Piece victim, boolean direction){
 		if (this.isWhite){
 			yLocation+=1; //Moves up the board
 			if (direction){ //Then moves either left or right
@@ -63,7 +64,7 @@ public class pawn extends piece{
 			}
 		}
 		victim.kill(); //The victim pawn is killed and its space is cleared on the board
-		board.setPiece(this, this.xLocation,this.yLocation);//Moves the chess piece to the location desired
+		Board.setPiece(this, this.xLocation,this.yLocation);//Moves the chess piece to the location desired
 	}
 
 	public void promotion(){

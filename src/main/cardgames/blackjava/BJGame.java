@@ -1,33 +1,29 @@
-package main.cardGames.blackJava;
+package main.cardgames.blackjava;
 
-import main.cardGames.cardPack.*;
+import main.cardgames.cardpack.*;
+import main.extramethods.Input;
+import main.extramethods.Terminal;
+
 import java.util.ArrayList;
-import main.extraMethods.Input;
 
 
-public class Game {
+public class BJGame {
 	private Deck gameDeck;
 	private ArrayList<BJPlayer> players = new ArrayList<BJPlayer>();
 	private Hand dealerHand;
 
-	public Game(){
+	public BJGame(){
 		setup();
 	}
 
-	private void sleep(int ms){
-		try{
-			Thread.sleep(ms);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-			System.out.println("An error occurred while pausing for dealer. ");
-		}
-	}
-
 	public void dealerTurn(){
+		Terminal.textColor(1);
+		Terminal.textForm(1);
 		System.out.println("Dealer's Turn: ");
+		Terminal.clearFormat();
 		dealerHand.printStatus();
 		while(dealerHand.getScore() < 17){
-			sleep(1500);
+			Terminal.sleep(1.5);
 			System.out.println("Dealer Hits. ");
 			dealerHand.drawCard();
 			dealerHand.printStatus();
@@ -72,11 +68,10 @@ public class Game {
 		
 	}
 
-	public static void main(String[] args){
-		Game m = new Game();
+	public void runGame(){
 		while(true){
-			m.round();
-			if(m.players.size() == 0){
+			round();
+			if(players.size() == 0){
 				System.out.println("All players are out of cash. Game over.");
 				break;
 			}
@@ -85,5 +80,10 @@ public class Game {
 				break;
 			}
 		}
+	}
+
+	public static void main(){
+		BJGame blackjava = new BJGame();
+		blackjava.runGame();
 	}
 }

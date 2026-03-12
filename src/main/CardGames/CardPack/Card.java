@@ -1,4 +1,4 @@
-package main.cardGames.cardPack;
+package main.cardgames.cardpack;
 
 import java.util.ArrayList;
 

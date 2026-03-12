@@ -1,8 +1,9 @@
-package main.cardGames.blackJava;
+package main.cardgames.blackjava;
 
 import java.util.ArrayList;
-import main.cardGames.cardPack.*;
-import main.extraMethods.Input;
+
+import main.cardgames.cardpack.*;
+import main.extramethods.Input;
 
 public class Hand {
 	private ArrayList<Card> hand = new ArrayList<Card>();

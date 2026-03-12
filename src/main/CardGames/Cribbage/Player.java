@@ -1,7 +1,8 @@
-package main.cardGames.cribbage;
+package main.cardgames.cribbage;
 
-import main.cardGames.cardPack.*;
 import java.util.*;
+
+import main.cardgames.cardpack.*;
 
 public class Player {
 	public int score = 0;

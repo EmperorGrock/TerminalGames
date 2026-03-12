@@ -1,8 +1,8 @@
-package main.TicTacToe;
+package main.tictactoe;
 
-import main.extraMethods.TwoDHelper;
-import main.extraMethods.Input;
-public class ticTackToe{
+import main.extramethods.Input;
+import main.extramethods.TwoDHelper;
+public class TicTacToe{
 	private static int player = 1;
 
 	public static TwoDHelper board = new TwoDHelper(3,3);
@@ -14,15 +14,24 @@ public class ticTackToe{
 		while(!hasWon){
 			board.printMap();
 			System.out.println("It is player " + player + "'s turn!");
-			inputNum = Input.getInt("Enter Coords");
-			placeMarker(inputNum);
-			if(checkForWin()){
-				hasWon = true;
-				board.printMap();
-				System.out.println("Player " + player + " has won!");
+			boolean badResponse = true;
+			while(badResponse){
+				try{
+					inputNum = Input.getInt("Enter Coords",1,3);
+					placeMarker(inputNum);
+					badResponse = false;
+				}catch(IllegalArgumentException e){
+					System.out.println("That space is occupied");
+				}
 			}
-			if(player == 1) player = 2;
-			else if(player == 2) player = 1;
+		
+		if(checkForWin()){
+			hasWon = true;
+			board.printMap();
+			System.out.println("Player " + player + " has won!");
+		}
+		if(player == 1) player = 2;
+		else if(player == 2) player = 1;
 		}
 	}
 
@@ -52,7 +61,7 @@ public class ticTackToe{
 				
 			}
 		}
-		//check for Horizontaf
+		//check for Horizontal 
 		for(int i = 1; i <= 3; i++){
 			if((board.getLocation(i,1).equals(board.getLocation(i,2))&&board.getLocation(i,1).equals(board.getLocation(i,3))) && !(board.getLocation(i,1).equals(" "))){
 				result = true;

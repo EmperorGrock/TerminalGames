@@ -1,15 +1,15 @@
-package main.Chess;
-import main.extraMethods.*;
+package main.chess;
+import main.extramethods.*;
 
 //base attributes and methods for all chess pieces
 //import extraMethods.Input;
-public class piece{
+public class Piece{
 	protected int xLocation;
 	protected int yLocation;
 	protected boolean alive;
 	protected boolean isWhite;
 
-	public piece(int x, int y, boolean start){
+	public Piece(int x, int y, boolean start){
 		xLocation=x;
 		yLocation=y;
 		alive=true;
@@ -18,7 +18,7 @@ public class piece{
 
 	public void kill(){
 		alive=false;
-		board.clear(getXLoc(),getYLoc());
+		Board.clear(getXLoc(),getYLoc());
 	}
 
 	public int getXLoc(){
