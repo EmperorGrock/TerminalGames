@@ -15,6 +15,14 @@ public class King extends Piece {
 		check=false;
 		checkmate=false;
 	}
+	
+	public void move(int x, int y){
+		xLocation=x;
+		yLocation=y;
+	}
 
+	public void capture(){
+		
+	}
 	
 }

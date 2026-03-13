@@ -9,6 +9,7 @@ public class Pawn extends Piece{
 	private boolean doubleStep;
 	private int moveCount;
 
+	//Location is in array location
 	public Pawn(int x, int y, boolean start){
 		super(x,y,start);
 		enPassentPossible=true;
@@ -23,11 +24,11 @@ public class Pawn extends Piece{
 	//The normal move
 	public void move(){
 		if (this.isWhite){
-			yLocation+=1;
+			yLocation-=1;
 			moveCount+=1;
 			this.doubleStep=false;
 		} else {
-			yLocation-=1;
+			yLocation+=1;
 			moveCount+=1;
 			this.doubleStep=false;
 		}
@@ -36,11 +37,11 @@ public class Pawn extends Piece{
 	//Double move
 	public void doubleMove(){
 		if (this.isWhite){
-			yLocation+=2;
+			yLocation-=2;
 			moveCount+=1;
 			this.doubleStep=false;
 		} else {
-			yLocation-=2;
+			yLocation+=2;
 			moveCount+=1;
 			this.doubleStep=false;
 		}
@@ -49,14 +50,14 @@ public class Pawn extends Piece{
 	//true is for right and false is left. Dont ask me why. Thats how it is.
 	public void capture(Piece victim, boolean direction){
 		if (this.isWhite){
-			yLocation+=1; //Moves up the board
+			yLocation-=1; //Moves up the board
 			if (direction){ //Then moves either left or right
 				xLocation+=1;
 			} else {
 				xLocation-=1;
 			}
 		} else {
-			yLocation-=1; //Comes down the board
+			yLocation+=1; //Comes down the board
 			if (direction){
 				xLocation-=1; //Moves oppsite of what white would due to flipped orientation
 			} else {
