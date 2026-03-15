@@ -43,6 +43,25 @@ public class Input{
 		return input;
 	}
 
+	public static int getInt(String message, int min, int max){
+		System.out.print(message + ": ");
+		int input;
+		while(true){
+			try{
+				input = Integer.parseInt(System.console().readLine());
+				if(input < min || input > max){
+					System.out.println("Input must be between " + min + " and " + max + ".");
+				}else{
+					break;
+				}
+			}catch(NumberFormatException e){
+				System.out.println("Invalid input. Please enter an integer.");
+				continue;
+			}
+		}
+		return input;
+	}
+
 	/**
 	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
 	 * @param message The message to print before asking for input
