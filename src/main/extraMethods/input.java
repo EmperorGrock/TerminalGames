@@ -5,7 +5,7 @@ package main.extramethods;
  * A class with multiple static methods for various input types and styles. 
  * Built for the TerminalGames app.
  * 
- * @author Catmaoneko 
+ * @author Catmāoneko猫
  * @author EmperorGrock
  * @author invisiblekoi
  */

@@ -61,15 +61,7 @@ public class BJPlayer {
 	 * Places the player's bet for the current hand(s). If the player has split their hand, they can only bet half of their cash on each hand.
 	 */
 	public void placeBets(){
-		if(otherHand != null){
-			System.out.println("Because you splitted, only half cash is available for each hand. ");
-			hand.placeBet(cash/2);
-			otherHand = new Hand(hand);
-			otherHand.setBet(hand.getBet());
-		}else{
-			hand.placeBet(cash);
-
-		}
+		hand.placeBet(cash);
 	}
 
 	/**
@@ -94,10 +86,13 @@ public class BJPlayer {
 	 * Asks the player if they want to split their hand, if possible, and if they do, creates a new hand for the second part of the split.
 	 */
 	public void askSplit(){
+		hand.printStatus();
 		if(hand.canSplit()){
 			boolean response = Input.getYesNo("Would you like to split?");
 			if(response){
 				otherHand = new Hand(hand);
+				otherHand.setBet(hand.getBet()/2);
+				hand.setBet(hand.getBet()/2);
 			}
 		}
 	}
