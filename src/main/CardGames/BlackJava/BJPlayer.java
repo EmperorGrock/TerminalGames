@@ -86,8 +86,8 @@ public class BJPlayer {
 	 * Asks the player if they want to split their hand, if possible, and if they do, creates a new hand for the second part of the split.
 	 */
 	public void askSplit(){
-		hand.printStatus();
 		if(hand.canSplit()){
+			hand.printStatus();
 			boolean response = Input.getYesNo("Would you like to split?");
 			if(response){
 				otherHand = new Hand(hand);
