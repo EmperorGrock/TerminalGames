@@ -10,19 +10,6 @@ package main.extramethods;
  * @author invisiblekoi
  */
 public class Input{
-
-	public static int checkInt(String possibleInt){
-		int input = 0;
-		while(true){
-			try{
-				input = Integer.parseInt(possibleInt);
-				break;
-			}catch(NumberFormatException e){
-				System.out.println("Invalid input. Please enter an integer.");
-			}
-		}
-		return input;
-	}
 	/**
 	 * Print the message, and keep asking for input until an integer is entered
 	 * @param message The message to print before asking for input
@@ -88,11 +75,15 @@ public class Input{
 				continue;
 			}
 			for(int i = 0; i < dimensions; i++){
-				input[i] = checkInt(splString[i]);
-				if(input[i] < min || input[i] > max){
-					System.out.println("Input must be between " + min + " and " + max + ".");
-				} else {
-					allowed = true;
+				try{
+					input[i] = Integer.parseInt(splString[i]);
+					if(input[i] < min || input[i] > max){
+						System.out.println("Input must be between " + min + " and " + max + ".");
+					} else {
+						allowed = true;
+					}
+				}catch(NumberFormatException e){
+					System.out.println("Invalid input. Please enter integers separated by commas.");
 				}
 			}
 		} while(!allowed);
