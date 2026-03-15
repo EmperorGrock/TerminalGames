@@ -161,12 +161,12 @@ public class Hand {
 		for(int i = 0; i < nums.length; i++){
 			nums[i] = list.get(i).getNum();
 			total += nums[i];
+			if(nums[i] > 10) nums[i] = 10;
 			if (list.get(i).getNum() == 0 && total < 11){
 				nums[i] += 10;
 				total += 10;
 			}
 			nums[i]++;
-			if(nums[i] > 10) nums[i] = 10;
 		}
 		return nums;
 	}

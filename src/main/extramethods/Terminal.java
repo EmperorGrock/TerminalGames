@@ -65,6 +65,29 @@ public class Terminal{
 		System.out.print(code);
 	}
 
+	/**
+	 * Sets color and format in one method call. Uses calls to textForm and textColor.
+	 * @param color Sets the text color, 0 grey, 1 red, 2 green, 3 yellow, 4 blue, 5 magenta, 6 cyan, 7 white
+	 * @param form Sets the text format, 1 Bold, 2 Dim, 3 Italic, 4 Underline
+	 * @throws IllegalArgumentException if the color is outside the range 0-7 or the form is outside the range 1-4
+	 */
+	public static void textEdit(int color, int form){
+		textColor(color);
+		textForm(form);
+	}
+
+	public static void printWithFormat(String text, int color, int form){
+		textEdit(color, form);
+		System.out.print(text);
+		clearFormat();
+	}
+
+	public static void printlnWithFormat(String text, int color, int form){
+		textEdit(color, form);
+		System.out.println(text);
+		clearFormat();
+	}
+
 	/*public static void cursorHorizontal(int lines){
 		String code = "";
 		if(lines < 0)
