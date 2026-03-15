@@ -11,11 +11,11 @@ package main.extramethods;
  */
 public class Input{
 
-	public static int checkInt(String message){
+	public static int checkInt(String possibleInt){
 		int input = 0;
 		while(true){
 			try{
-				input = Integer.parseInt(message);
+				input = Integer.parseInt(possibleInt);
 				break;
 			}catch(NumberFormatException e){
 				System.out.println("Invalid input. Please enter an integer.");
@@ -43,6 +43,13 @@ public class Input{
 		return input;
 	}
 
+	/**
+	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
+	 * @param message The message to print before asking for input
+	 * @param min The minimum acceptable value (inclusive)
+	 * @param max The maximum acceptable value (inclusive)
+	 * @return The integer that the user entered
+	 */
 	public static int getInt(String message, int min, int max){
 		System.out.print(message + ": ");
 		int input;
@@ -63,11 +70,12 @@ public class Input{
 	}
 
 	/**
-	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
+	 * Print the message, and keep asking for input until a list of integers is entered that is within the provided range (inclusive)
 	 * @param message The message to print before asking for input
 	 * @param min The minimum acceptable value (inclusive)
 	 * @param max The maximum acceptable value (inclusive)
-	 * @return The integer that the user entered
+	 * @param dimensions The number of integers to expect in the list
+	 * @return The array of integers that the user entered
 	 */
 	public static int[] getInt(String message, int min, int max, int dimensions){
 		boolean allowed = false;
