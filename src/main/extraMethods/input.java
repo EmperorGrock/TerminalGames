@@ -7,6 +7,7 @@ package main.extramethods;
  * 
  * @author Catmaoneko 
  * @author EmperorGrock
+ * @author invisiblekoi
  */
 public class Input{
 
