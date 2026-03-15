@@ -17,22 +17,14 @@ public class TicTacToe{
 
 	public static void executeNormalTicTacToe(){
 		boolean hasWon = false;
-		int inputNum;
 		System.out.println("To type coordinates, type two number coordinates in a row, as in: 12");
 		while(!hasWon){
 			board.printMap();
 			System.out.println("It is player " + player + "'s turn!");
 			boolean badResponse = true;
-			while(badResponse){
-				try{
-					inputNum = Input.getInt("Enter Coords",1,3);
-					placeMarker(inputNum);
-					badResponse = false;
-				}catch(IllegalArgumentException e){
-					System.out.println("That space is occupied");
-				}
-			}
-		
+			int x = Input.getInt("X Coordinate: ", 1, 3);
+			int y = Input.getInt("Y Coordinate: ", 1, 3);
+			processCoordinates(x, y);
 		if(checkForWin()){
 			hasWon = true;
 			board.printMap();
