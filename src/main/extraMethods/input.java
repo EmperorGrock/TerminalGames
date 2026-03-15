@@ -91,8 +91,6 @@ public class Input{
 		}
 	}
 
-	//Prints list of choices then keeps asking until user inputs desired choice. Returns user choice
-	//Input null for message if you want the default message	
 	/**
 	 * Print the message and a list of choices, and keep asking for input until a valid choice is entered
 	 * @param message The message to print before the list of choices (if null, a default message will be printed)
