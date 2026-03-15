@@ -17,7 +17,7 @@ public class TicTacToe{
 
 	public static void executeNormalTicTacToe(){
 		boolean hasWon = false;
-		int inputNum;
+		int inputNum[] = new int[2];
 		System.out.println("To type coordinates, type two number coordinates in a row, as in: 12");
 		while(!hasWon){
 			board.printMap();
@@ -25,7 +25,7 @@ public class TicTacToe{
 			boolean badResponse = true;
 			while(badResponse){
 				try{
-					inputNum = Input.getInt("Enter Coords",1,3);
+					inputNum = Input.getInt("Enter Coords",1,3,2);
 					placeMarker(inputNum);
 					badResponse = false;
 				}catch(IllegalArgumentException e){
@@ -43,9 +43,9 @@ public class TicTacToe{
 		}
 	}
 
-	public static void placeMarker(int input){
-		int y = input % 10;
-		int x = input / 10;
+	public static void placeMarker(int[] input){
+		int y = input[0];
+		int x = input[1];
 		processCoordinates(x,y);
 	}
 

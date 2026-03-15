@@ -10,17 +10,11 @@ package main.extramethods;
  */
 public class Input{
 
-	/**
-	 * Print the message, and keep asking for input until an integer is entered
-	 * @param message The message to print before asking for input
-	 * @return The integer that the user entered
-	 */
-	public static int getInt(String message){
-		System.out.print(message + ": ");
+	public static int checkInt(String message){
 		int input = 0;
 		while(true){
 			try{
-				input = Integer.parseInt(System.console().readLine());
+				input = Integer.parseInt(message);
 				break;
 			}catch(NumberFormatException e){
 				System.out.println("Invalid input. Please enter an integer.");
@@ -28,24 +22,52 @@ public class Input{
 		}
 		return input;
 	}
-
 	/**
-	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
-	 * @param min The minimum acceptable value (inclusive)
-	 * @param max The maximum acceptable value (inclusive)
+	 * Print the message, and keep asking for input until an integer is entered
 	 * @param message The message to print before asking for input
 	 * @return The integer that the user entered
 	 */
-	public static int getInt(String message, int min, int max){
-		int input = 0;
+	public static int getInt(String message){
+		System.out.print(message + ": ");
+		int input;
 		while(true){
-			input = getInt(message);
-			if(input >= min && input <= max){
+			try{
+				input = Integer.parseInt(System.console().readLine());
 				break;
-			}else{
-				System.out.println("Input must be between " + min + " and " + max + ".");
+			}catch(NumberFormatException e){
+				System.out.println("Invalid input. Please enter an integer.");
+				continue;
 			}
 		}
+		return input;
+	}
+
+	/**
+	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
+	 * @param message The message to print before asking for input
+	 * @param min The minimum acceptable value (inclusive)
+	 * @param max The maximum acceptable value (inclusive)
+	 * @return The integer that the user entered
+	 */
+	public static int[] getInt(String message, int min, int max, int dimensions){
+		boolean allowed = false;
+		int[] input = new int[dimensions];
+		do{
+			System.out.print(message + ": ");
+			String[] splString = System.console().readLine().split(",");
+			if (splString.length != dimensions){
+				System.out.println("Invalid Syntax.");
+				continue;
+			}
+			for(int i = 0; i < dimensions; i++){
+				input[i] = checkInt(splString[i]);
+				if(input[i] < min || input[i] > max){
+					System.out.println("Input must be between " + min + " and " + max + ".");
+				} else {
+					allowed = true;
+				}
+			}
+		} while(!allowed);
 		return input;
 	}
 
