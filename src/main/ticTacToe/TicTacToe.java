@@ -35,9 +35,9 @@ public class TicTacToe{
 		}
 	}
 
-	public static void placeMarker(int input){
-		int y = input % 10;
-		int x = input / 10;
+	public static void placeMarker(int[] input){
+		int y = input[0];
+		int x = input[1];
 		processCoordinates(x,y);
 	}
 
