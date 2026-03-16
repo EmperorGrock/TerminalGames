@@ -143,7 +143,7 @@ public class TicTacToe{
 	}
 
 	void main(){
-		int tictac = Input.getInt("Which size tictactoe do you want?", 3, 5);
+		int tictac = Input.getInt("Which size tictactoe do you want? (3-5)", 3, 5);
 		TicTacToe test = new TicTacToe();
 		test.executeTicTacToe(tictac);
 	}

@@ -9,10 +9,6 @@ public class Qubic {
 	private int player;
 
 	public void executeQubic(){
-		System.out.println("Qubic is not completed yet. (checkForWin())");
-	}
-
-	public void testExecuteQubic(){
 		player = 1;
 		cube = new ThreeDHelper(4,4,4);
 		boolean hasWon = false;
@@ -113,6 +109,6 @@ public class Qubic {
 
 	void main(){
 		Qubic test = new Qubic();
-		test.testExecuteQubic();
+		test.executeQubic();
 	}
 }

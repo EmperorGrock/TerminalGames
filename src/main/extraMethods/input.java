@@ -128,11 +128,10 @@ public class Input{
 		}
 		while (true){
 			try{
-
 				input=Integer.parseInt(System.console().readLine());
 				if (input<1 || input>choices.length){
 					if (message.equals(null)){
-						System.out.println("Please enter a valid value");
+						System.out.println("Please enter an integer: ");
 					} else {
 						System.out.println(message);
 					}
