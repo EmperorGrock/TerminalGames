@@ -9,7 +9,7 @@ public class Qubic {
 	private int player;
 
 	public void executeQubic(){
-		System.out.println("Qubic has not been written yet.");
+		System.out.println("Qubic is not completed yet. (checkForWin())");
 	}
 
 	public void testExecuteQubic(){
@@ -65,13 +65,27 @@ public class Qubic {
 
 	private boolean checkXY(){
 		for(int z = 1; z <= 4; z++){
-			
+			if(TicTacToe.checkForWin(cube.getLayer(1,z)))
+				return true;
 		}
+		return false;
 	}
 
-	//private boolean checkXZ(){}
+	private boolean checkXZ(){
+		for(int y = 1; y <= 4; y++){
+			if(TicTacToe.checkForWin(cube.getLayer(2,y)))
+				return true;
+		}
+		return false;
+	}
 
-	//private boolean checkYZ(){}
+	private boolean checkYZ(){
+		for(int x = 1; x <= 4; x++){
+			if(TicTacToe.checkForWin(cube.getLayer(3,x)))
+				return true;
+		}
+		return false;
+	}
 
 	private boolean checkSuperDiagonals(){
 		if((!cube.getLocation(1,1,1).equals(" "))&&cube.getLocation(1,1,1).equals(cube.getLocation(2,2,2))
@@ -94,7 +108,7 @@ public class Qubic {
 	}
 
 	private boolean checkForWin(){
-		return (/*checkXY() || checkXZ() || checkYZ() || */checkSuperDiagonals());
+		return (checkXY() || checkXZ() || checkYZ() || checkSuperDiagonals());
 	}
 
 	void main(){

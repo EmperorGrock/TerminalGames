@@ -1,4 +1,4 @@
-package main.TicTacToe;
+package main.tictactoe;
 
 import main.extramethods.Input;
 import main.extramethods.TwoDHelper;
@@ -29,7 +29,7 @@ public class TicTacToe{
 				System.out.println("That space is occupied. Try again.");
 				continue;
 			}
-			if(checkForWin()){
+			if(checkForWin(board)){
 				hasWon = true;
 				board.printWideMap();
 				System.out.println("Player " + player + " has won!");
@@ -68,20 +68,20 @@ public class TicTacToe{
 			
 	}
 
-	private boolean checkDiagonal(){
+	private static boolean checkDiagonal(TwoDHelper array){
 		//Get the top corners
-		String topLeft = board.getLocation(1,1);
-		String topRight = board.getLocation(board.getXMax(), 1);
+		String topLeft = array.getLocation(1,1);
+		String topRight = array.getLocation(array.getXMax(), 1);
 
 		//If the top left corner has been played, check the diagonal until one doesnt match, then break. 
 		//If it goes all teh way through, return true
 		if(!topLeft.equals(" ")){
 			int coord = 2;
-			while(coord <= board.getXMax()){
-				if(!topLeft.equals(board.getLocation(coord, coord))){
+			while(coord <= array.getXMax()){
+				if(!topLeft.equals(array.getLocation(coord, coord))){
 					break;
 				}
-				if(coord == board.getXMax())
+				if(coord == array.getXMax())
 					return true;
 				coord++;
 			}
@@ -90,11 +90,11 @@ public class TicTacToe{
 		//Same as the other, but adapted for the top right corner, so the x coordinate is calculated differently
 		if(!topRight.equals(" ")){
 			int coord = 2;
-			while(coord <= board.getXMax()){
-				if(!topRight.equals(board.getLocation(board.getXMax()+1-coord, coord))){
+			while(coord <= array.getXMax()){
+				if(!topRight.equals(array.getLocation(array.getXMax()+1-coord, coord))){
 					break;
 				}
-				if(coord == board.getXMax())
+				if(coord == array.getXMax())
 					return true;
 				coord++;
 			}
@@ -102,15 +102,15 @@ public class TicTacToe{
 		return false;
 	}
 
-	private boolean checkHorizontal(){
-		for(int y = 1; y <= board.getYMax(); y++){
-			String spaceOne = board.getLocation(1,y);
+	private static boolean checkHorizontal(TwoDHelper array){
+		for(int y = 1; y <= array.getYMax(); y++){
+			String spaceOne = array.getLocation(1,y);
 			if(!spaceOne.equals(" ")){
-				for(int x = 2; x <= board.getXMax(); x++){
-					if(!spaceOne.equals(board.getLocation(x,y))){
+				for(int x = 2; x <= array.getXMax(); x++){
+					if(!spaceOne.equals(array.getLocation(x,y))){
 						break;
 					}
-					if(x == board.getXMax())
+					if(x == array.getXMax())
 						return true;
 				}
 
@@ -119,15 +119,15 @@ public class TicTacToe{
 		return false;
 	}
 
-	private boolean checkVertical(){
-		for(int x = 1; x <= board.getXMax(); x++){
-			String spaceOne = board.getLocation(x,1);
+	private static boolean checkVertical(TwoDHelper array){
+		for(int x = 1; x <= array.getXMax(); x++){
+			String spaceOne = array.getLocation(x,1);
 			if(!spaceOne.equals(" ")){
-				for(int y = 2; y <= board.getYMax(); y++){
-					if(!spaceOne.equals(board.getLocation(x,y))){
+				for(int y = 2; y <= array.getYMax(); y++){
+					if(!spaceOne.equals(array.getLocation(x,y))){
 						break;
 					}
-					if(y == board.getYMax())
+					if(y == array.getYMax())
 						return true;
 				}
 
@@ -136,8 +136,8 @@ public class TicTacToe{
 		return false;
 	}
 
-	private boolean checkForWin(){
-		if(checkDiagonal()||checkHorizontal()||checkVertical())
+	public static boolean checkForWin(TwoDHelper array){
+		if(checkDiagonal(array)||checkHorizontal(array)||checkVertical(array))
 			return true;
 		return false;
 	}

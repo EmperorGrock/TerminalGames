@@ -151,18 +151,30 @@ public class ThreeDHelper {
 	 * For location, put the the coordinate of the slice you want.
 	 * For example, for the slice of XZ at location Y = 2, put (2, 2)
 	 * BE CAREFUL: This method has no precondition checks.
-	 * 
-	 * 
+	 * @param whichDimensions the dimensions to slice along (1 for XY, 2 for XZ, 3 for YZ)
+	 * @param location the coordinate of the slice to retrieve
+	 * @return a TwoDHelper representing the requested slice of the ThreeDHelper
+	 * @throws IllegalArgumentException if whichDimensions is not 1, 2, or 3
 	 */
 	public TwoDHelper getLayer(int whichDimensions, int location) throws IllegalArgumentException{
+		TwoDHelper slice;
 		switch(whichDimensions){
 			case(1):
-				return map[location];
+				return map[location-1];
 			case(2):
-				
+				slice = new TwoDHelper(map[0].getXMax(), zMax);
+				for(int x = 1; x <= map[0].getXMax(); x++)
+					for(int z = 1; z <= zMax; z++)
+						slice.editCoord(getLocation(x,location,z),x,z);
+				return slice;
 			case(3):
+				slice = new TwoDHelper(map[0].getYMax(), zMax);
+				for(int y = 1; y <= map[0].getYMax(); y++)
+					for(int z = 1; z <= zMax; z++)
+						slice.editCoord(getLocation(location,y,z),y,z);
+				return slice;
 			default: 
-				throw new IllegalArgumentException("You inputed out of the range.");
+				throw new IllegalArgumentException("You inputed out of the options.");
 		}
 	}
 }
