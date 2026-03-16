@@ -173,25 +173,11 @@ public class TwoDHelper {
 
 	/**
 	 * Returns the character at the specified coordinates in the grid.
-	 * @param X The x-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
-	 * @param Y The y-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
+	 * @param x The x-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
+	 * @param y The y-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
 	 * @return The character at the specified coordinates
 	 */
-	public String getLocation(int X, int Y){
-		return map[Y-1][X-1];
-	}
-
-	/**
-	 * Testing method, do not use in production. Demonstrates the functionality of the TwoDHelper class by creating a grid, editing a coordinate, and printing the grid before and after the edit.
-	 */
-	void main(String[] args){
-		TwoDHelper test = new TwoDHelper(5,4);
-		//System.out.println(test.formatLine(1));
-		test.printMap();
-		
-		test.editCoord("r", 3, 1);
-		//System.out.println(getBorder());
-		test.printMap();
-		//System.out.println(test.formatLine(1));
+	public String getLocation(int x, int y){
+		return map[y-1][x-1];
 	}
 }

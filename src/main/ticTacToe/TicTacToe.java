@@ -2,6 +2,7 @@ package main.tictactoe;
 
 import main.extramethods.Input;
 import main.extramethods.TwoDHelper;
+import main.extramethods.Terminal;
 
 /**
  * A simple implementation of the classic Tic-Tac-Toe game, using the TwoDHelper class to manage the game board and the Input class to handle user input.
@@ -12,9 +13,6 @@ import main.extramethods.TwoDHelper;
 public class TicTacToe{
 	private int player;
 	private TwoDHelper board;
-	private static final String RED = "\u001b[31m";
-	private static final String BLUE = "\u001b[34m";
-	private static final String CLEAR = "\u001b[0m";
 
 	public TicTacToe(){}
 
@@ -48,9 +46,9 @@ public class TicTacToe{
 	private void processCoordinates(int first, int second) throws IllegalArgumentException{
 		if(board.getLocation(first, second).equals(" ")){
 			if(player == 1){
-				board.editCoord(RED + "x" + CLEAR, first, second);
+				board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, first, second);
 			}else if(player == 2){
-				board.editCoord(BLUE + "o" + CLEAR, first, second);
+				board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, first, second);
 			}
 		}else throw new IllegalArgumentException();
 	}
