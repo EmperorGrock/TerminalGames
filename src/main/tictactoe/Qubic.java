@@ -15,21 +15,30 @@ public class Qubic {
 		Terminal.printlnWithFormat("PAY ATTENTION: ..., X is horizontal, Y is vertical", 5,4);
 		while(!hasWon){
 			cube.printWideMap();
-			System.out.println("It is player " + player + "'s turn!");
+			if(player == 1)
+				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
+			else
+				Terminal.printlnWithFormat("It is player 2's turn!", 2, 4);
+			Terminal.textEdit(2,2);
 			int z = Input.getInt("Layer number", 1, 4);
 			int x = Input.getInt("X Coordinate", 1, 4);
 			int y = Input.getInt("Y Coordinate", 1, 4);
-			
+			Terminal.clearFormat();
 			if(!processCoordinates(x, y, z)){
-				System.out.println("That space is occupied. Try again.");
+				Terminal.printlnWithFormat("That space is occupied. Try again.", 5, 4);
 				continue;
 			}
 			if(checkForWin()){
 				hasWon = true;
 				cube.printWideMap();
-				System.out.println("Player " + player + " has won!");
+				if(player == 1)
+					Terminal.printlnWithFormat("Player 1 has won!", 1, 4);
+				else
+					Terminal.printlnWithFormat("Player 2 has won!", 2, 4);
 			}else if(checkForTie()){
+				Terminal.textEdit(5,3);
 				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+				Terminal.clearFormat();
 			}
 			if(player == 1) player++;
 			else player--;

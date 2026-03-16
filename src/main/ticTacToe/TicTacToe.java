@@ -23,17 +23,24 @@ public class TicTacToe{
 		while(!hasWon){
 			board.printWideMap();
 			if(player == 1)
-				Terminal.printlnWithFormat("It is player " + player + "'s turn!", );
+				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
+			else
+				Terminal.printlnWithFormat("It is player 2's turn!", 4, 4);
+			Terminal.textEdit(2,1);
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
+			Terminal.clearFormat();
 			if(!processCoordinates(x, y)){
-				System.out.println("That space is occupied. Try again.");
+				Terminal.printlnWithFormat("That space is occupied. Try again.", 5, 3);
 				continue;
 			}
 			if(checkForWin(board)){
 				hasWon = true;
 				board.printWideMap();
-				System.out.println("Player " + player + " has won!");
+				if(player == 1)
+					Terminal.printlnWithFormat("Player 1 has won!", 1, 4);
+				else
+					Terminal.printlnWithFormat("Player 2 has won!", 4, 4);
 			}else if(checkForTie()){
 				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
 			}
