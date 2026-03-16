@@ -21,8 +21,8 @@ public class TicTacToe{
 		while(!hasWon){
 			board.printWideMap();
 			System.out.println("It is player " + player + "'s turn!");
-			int x = Input.getInt("X Coordinate: ", 1, 3);
-			int y = Input.getInt("Y Coordinate: ", 1, 3);
+			int x = Input.getInt("X Coordinate", 1, 3);
+			int y = Input.getInt("Y Coordinate", 1, 3);
 			try{
 				processCoordinates(x, y);
 			} catch(IllegalArgumentException e){
@@ -40,12 +40,6 @@ public class TicTacToe{
 		if(player == 1) player = 2;
 		else if(player == 2) player = 1;
 		}
-	}
-
-	public static void placeMarker(int[] input){
-		int y = input[0];
-		int x = input[1];
-		processCoordinates(x,y);
 	}
 
 	public static void processCoordinates(int first, int second) throws IllegalArgumentException{
@@ -74,15 +68,15 @@ public class TicTacToe{
 
 	public static boolean checkForWin(){
 		boolean result = false;
-		//Check for Vertical
-		
-		for(int i = 1; i <= board.getYMax(); i++){
-			//if(board.getLocation*)
-			for(int j = 1; j <= board.getXMax(); j++){
-				
+
+		//Check for Horizontal
+		for(int i = 1; i <= 3; i++){
+			if((board.getLocation(1,i).equals(board.getLocation(2,i))&&board.getLocation(1,i).equals(board.getLocation(3,i))) && !(board.getLocation(1,i).equals(" "))){
+				result = true;
 			}
 		}
-		//check for Horizontal 
+
+		//check for Vertical
 		for(int i = 1; i <= 3; i++){
 			if((board.getLocation(i,1).equals(board.getLocation(i,2))&&board.getLocation(i,1).equals(board.getLocation(i,3))) && !(board.getLocation(i,1).equals(" "))){
 				result = true;

@@ -1,4 +1,2 @@
 - Create a package with 2d array processing methods for reuse in chess
-- dont end the game if someone plays an already played space
 - 4x4??
-- if inputting... let's say "1, " it will infinitely repeat and say invalid input.
