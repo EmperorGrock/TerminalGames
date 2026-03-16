@@ -187,6 +187,10 @@ public class TicTacToe{
 		return false;
 	}
 
+	public TwoDHelper getBoard(){
+		return board;
+	}
+
 	/**
 	 * Main method for testing the Tic-Tac-Toe game.
 	 */
