@@ -16,7 +16,7 @@ public class Qubic {
 		while(!hasWon){
 			cube.printWideMap();
 			System.out.println("It is player " + player + "'s turn!");
-			int z = Input.getInt("Board number", 1, 4);
+			int z = Input.getInt("Layer number", 1, 4);
 			int x = Input.getInt("X Coordinate", 1, 4);
 			int y = Input.getInt("Y Coordinate", 1, 4);
 			
