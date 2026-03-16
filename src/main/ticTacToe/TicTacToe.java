@@ -99,17 +99,16 @@ public class TicTacToe{
 		return false;
 	}
 
-	/**
-	 * @todo FIX THIS METHOD
-	 */
 	private boolean checkHorizontal(){
-		for(int i = 1; i <= board.getYMax(); i++){
-			String spaceOne = board.getLocation(1,i);
+		for(int y = 1; y <= board.getYMax(); y++){
+			String spaceOne = board.getLocation(1,y);
 			if(!spaceOne.equals(" ")){
-				for(int j = 2; j <= board.getXMax(); j++){
-					if(!spaceOne.equals(board.getLocation(j,i))){
+				for(int x = 2; x <= board.getXMax(); x++){
+					if(!spaceOne.equals(board.getLocation(x,y))){
 						break;
 					}
+					if(x == board.getXMax())
+						return true;
 				}
 
 			}
@@ -118,9 +117,17 @@ public class TicTacToe{
 	}
 
 	private boolean checkVertical(){
-		for(int i = 1; i <= board.getXMax(); i++){
-			if((board.getLocation(i,1).equals(board.getLocation(i,2))&&board.getLocation(i,1).equals(board.getLocation(i,3))) && !(board.getLocation(i,1).equals(" "))){
-				return true;
+		for(int x = 1; x <= board.getXMax(); x++){
+			String spaceOne = board.getLocation(x,1);
+			if(!spaceOne.equals(" ")){
+				for(int y = 2; y <= board.getYMax(); y++){
+					if(!spaceOne.equals(board.getLocation(x,y))){
+						break;
+					}
+					if(y == board.getYMax())
+						return true;
+				}
+
 			}
 		}
 		return false;
