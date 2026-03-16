@@ -1,4 +1,4 @@
-package main.connectfour;
+package main.tictactoe;
 import main.extramethods.TwoDHelper;
 import main.extramethods.Input;
 import main.extramethods.Terminal;
@@ -9,8 +9,7 @@ public class ConnectFour{
 
 	public ConnectFour(){}
 
-	public void connectFour()
-	{
+	public void connectFour(){
 		player = 1;
 		board = new TwoDHelper(7,6);
 		boolean hasWon = false;

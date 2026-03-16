@@ -1,2 +1,1 @@
-- Add color for x and o: Use ANSI codes, in a final variable for ease of access
 - Implement an AI to play against? (Plays by the invincible ruleset?)
