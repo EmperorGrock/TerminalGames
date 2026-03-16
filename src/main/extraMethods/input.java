@@ -147,4 +147,12 @@ public class Input{
 			}
 		}
 	}		
+
+	public static int[] multiAsk(String[] questions, String[][] choices){
+		int[] input=new int[questions.length];
+		for (int i=0;i<questions.length;i++){
+			input[i]=advancedAsk(questions[i],choices[i]);
+		}
+		return input;
+	}
 }
