@@ -46,7 +46,7 @@ public class ConnectFour{
 					if(player == 1){
 						board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, column, --row);
 					}else if(player == 2){
-						board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, column, --row);
+						board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, column, row);
 					}
 					break;
 				}
