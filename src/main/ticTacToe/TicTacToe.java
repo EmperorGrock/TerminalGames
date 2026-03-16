@@ -51,8 +51,8 @@ public class TicTacToe{
 	
 	private boolean checkForTie(){
 		boolean allFull = true;
-		for(int i = 1; i < board.getXMax() + 1; i++)
-			for(int j = 1; j < board.getYMax() + 1; j++)
+		for(int i = 1; i <= board.getXMax(); i++)
+			for(int j = 1; j <= board.getYMax(); j++)
 				if(board.getLocation(i, j).equals(" "))
 					allFull = false;
 		if(allFull){
@@ -63,32 +63,65 @@ public class TicTacToe{
 			
 	}
 
-
-	private boolean checkForWin(){
-		boolean result = false;
-
-		//Check for Horizontal
-		for(int i = 1; i <= board.getYMax(); i++){
-			if((board.getLocation(1,i).equals(board.getLocation(2,i))&&board.getLocation(1,i).equals(board.getLocation(3,i))) && !(board.getLocation(1,i).equals(" "))){
-				result = true;
+	private boolean checkDiagonal(){
+		String topLeft = board.getLocation(1,1);
+		String topRight = board.getLocation(board.getXMax(), 1);
+		if(!topLeft.equals(" ")){
+			int coord = 2;
+			while(coord <= board.getXMax()){
+				if(!topLeft.equals(board.getLocation(coord, coord))){
+					break;
+				}
+				if(coord == board.getXMax())
+					return true;
+				coord++;
 			}
 		}
+		if(!topRight.equals(" ")){
+			int coord = 2;
+			while(coord <= board.getXMax()){
+				if(!topLeft.equals(board.getLocation(board.getXMax()+1-coord, coord))){
+					break;
+				}
+				if(coord == board.getXMax())
+					return true;
+				coord++;
+			}
+		}
+		return false;
+	}
 
-		//check for Vertical
+	/**
+	 * @todo FIX THIS METHOD
+	 */
+	private boolean checkHorizontal(){
+		for(int i = 1; i <= board.getYMax(); i++){
+			String spaceOne = board.getLocation(1,i);
+			if(!spaceOne.equals(" ")){
+				for(int j = 2; j <= board.getXMax(); j++){
+					if(!spaceOne.equals(board.getLocation(j,i))){
+						break;
+					}
+				}
+
+			}
+		}
+		return false;
+	}
+
+	private boolean checkVertical(){
 		for(int i = 1; i <= board.getXMax(); i++){
 			if((board.getLocation(i,1).equals(board.getLocation(i,2))&&board.getLocation(i,1).equals(board.getLocation(i,3))) && !(board.getLocation(i,1).equals(" "))){
-				result = true;
+				return true;
 			}
 		}
+		return false;
+	}
 
-		//Check for Diagonals
-		if((board.getLocation(1,1).equals(board.getLocation(2,2))&&board.getLocation(1,1).equals(board.getLocation(3,3)))&&!(board.getLocation(1,1).equals(" "))){
-			result = true;
-		}else if((board.getLocation(1,3).equals(board.getLocation(2,2))&&board.getLocation(1,3).equals(board.getLocation(3,1)))&&!(board.getLocation(1,3).equals(" "))){
-			result = true;
-		}
-
-		return result;
+	private boolean checkForWin(){
+		if(checkDiagonal()||checkHorizontal()||checkVertical())
+			return true;
+		return false;
 	}
 
 	public static void main(String[] args){
