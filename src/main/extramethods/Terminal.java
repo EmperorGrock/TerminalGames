@@ -6,6 +6,9 @@ package main.extramethods;
  * @author EmperorGrock
  */
 public class Terminal{
+	public static final String RED = "\u001b[31m";
+	public static final String BLUE = "\u001b[34m";
+	public static final String CLEAR = "\u001b[0m";
 
 	/**
 	 * Simplified version of Thread.sleep that takes seconds instead of milliseconds

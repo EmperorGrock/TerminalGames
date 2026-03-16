@@ -1,4 +1,4 @@
-- Create a package with 2d array processing methods for reuse in chess
-- dont end the game if someone plays an already played space
-- 4x4??
-- if inputting... let's say "1, " it will infinitely repeat and say invalid input.
+- 4x4
+- fix checkForWin in TicTacToe to work for different board sizes, instead of just 3x3
+- Add color for x and o: Use ANSI codes, in a final variable for ease of access
+- Implement an AI to play against? (Plays by the invincible ruleset?)

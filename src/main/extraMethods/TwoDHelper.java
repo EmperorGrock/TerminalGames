@@ -96,21 +96,22 @@ public class TwoDHelper {
 	}
 
 	/**
-	 * Edits the character at the specified coordinates in the grid.
+	 * Edits the character at the specified coordinates in the grid. newChar MUST be a single character string
+	 * No precondition checks that x and y are within bounds, or that newChar is one character, so be careful when using this method.
 	 * @param newChar The new character to place in the grid, must be a single character string
 	 * @param X The x-coordinate of the position to edit (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
 	 * @param Y The y-coordinate of the position to edit (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
-	 * @throws IllegalArgumentException if newChar is not a single character string
 	 */
-	public void editCoord(String newChar, int X, int Y){ //newChar 
-		if(newChar.length() != 1){
-			throw new IllegalArgumentException("newChar must be one character");
-		}
+	public void editCoord(String newChar, int X, int Y){ 
 		X -= 1;
 		Y -= 1;
 		map[Y][X] = newChar;
 	}
 
+	/**
+	 * Simple method to clear the grid by setting all coordinates back to a single space character. 
+	 * Can be used for restarting a game or clearing the board.
+	 */
 	public void clearMap(){
 		for(int i = 1; i <= map.length; i++)
 			for(int j = 1; j <= map.length; j++)
@@ -152,8 +153,8 @@ public class TwoDHelper {
 	}
 
 	/**
-	 * Returns the maximum y-coordinate of the grid.
-	 * @return The maximum y-coordinate of the grid
+	 * Returns the maximum y-coordinate of the grid. 
+	 * @return The maximum y-coordinate of the grid.
 	 */
 	public int getYMax(){
 		return yMax;
@@ -169,25 +170,11 @@ public class TwoDHelper {
 
 	/**
 	 * Returns the character at the specified coordinates in the grid.
-	 * @param X The x-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
-	 * @param Y The y-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
+	 * @param x The x-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
+	 * @param y The y-coordinate of the position to retrieve (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
 	 * @return The character at the specified coordinates
 	 */
-	public String getLocation(int X, int Y){
-		return map[Y-1][X-1];
-	}
-
-	/**
-	 * Testing method, do not use in production. Demonstrates the functionality of the TwoDHelper class by creating a grid, editing a coordinate, and printing the grid before and after the edit.
-	 */
-	void main(String[] args){
-		TwoDHelper test = new TwoDHelper(5,4);
-		//System.out.println(test.formatLine(1));
-		test.printMap();
-		
-		test.editCoord("r", 3, 1);
-		//System.out.println(getBorder());
-		test.printMap();
-		//System.out.println(test.formatLine(1));
+	public String getLocation(int x, int y){
+		return map[y-1][x-1];
 	}
 }
