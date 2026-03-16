@@ -16,8 +16,39 @@ public class UltimateTacToe {
 		player = 1;
 		superMap = new TicTacToe[3][3];
 		cleanSuperMap();
-
+		boolean hasWon = false;
+		boolean freeMove = true;
+		Terminal.printlnWithFormat("NOTE: miniboards are numbered 1-9, left to right, top down. ", 5, 3);
+		while(!hasWon){
+			printToes();
+			if(player == 1)
+				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
+			else
+				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
+			Terminal.textEdit(2,1);
+			int x = Input.getInt("X Coordinate", 1, 3);
+			int y = Input.getInt("Y Coordinate", 1, 3);
+			Terminal.clearFormat();
+			if(!processCoordinates(x, y)){
+				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
+				continue;
+			}
+			if(checkForWin(board)){
+				hasWon = true;
+				printToes();
+				if(player == 1)
+					Terminal.printlnWithFormat("Player 1 won!", 1, 4);
+				else
+					Terminal.printlnWithFormat("Player 2 won!", 4, 4);
+			}else if(checkForTie()){
+				hasWon = !Input.getYesNo("It's a tie! Play again?");
+			}
+			if(player == 1) player++;
+			else player--;
+		}
 	}
+
+	private void processCoordinates()
 
 	private void cleanSuperMap(){
 		for(int x = 0; x < 3; x++)
