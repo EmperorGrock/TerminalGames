@@ -191,6 +191,10 @@ public class TicTacToe{
 		return board;
 	}
 
+	public void setBoard(int size){
+		board = new TwoDHelper(size, size);
+	}
+
 	/**
 	 * Main method for testing the Tic-Tac-Toe game.
 	 */
