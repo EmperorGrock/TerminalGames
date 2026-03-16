@@ -144,4 +144,25 @@ public class ThreeDHelper {
 	public int getXMax(){
 		return map[0].getXMax();
 	}
+
+	/**
+	 * Method to retrieve a slice of the ThreeDHelper as a TwoDHelper. 
+	 * For whichDimensions, put 1, 2, or 3 corresponding to XY, XZ, or YZ.
+	 * For location, put the the coordinate of the slice you want.
+	 * For example, for the slice of XZ at location Y = 2, put (2, 2)
+	 * BE CAREFUL: This method has no precondition checks.
+	 * 
+	 * 
+	 */
+	public TwoDHelper getLayer(int whichDimensions, int location) throws IllegalArgumentException{
+		switch(whichDimensions){
+			case(1):
+				return map[location];
+			case(2):
+				
+			case(3):
+			default: 
+				throw new IllegalArgumentException("You inputed out of the range.");
+		}
+	}
 }

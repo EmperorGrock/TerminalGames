@@ -62,8 +62,39 @@ public class Qubic {
 		return true;
 	}
 
-	private boolean checkForWin(){
+
+	private boolean checkXY(){
+		for(int z = 1; z <= 4; z++){
+			
+		}
+	}
+
+	//private boolean checkXZ(){}
+
+	//private boolean checkYZ(){}
+
+	private boolean checkSuperDiagonals(){
+		if((!cube.getLocation(1,1,1).equals(" "))&&cube.getLocation(1,1,1).equals(cube.getLocation(2,2,2))
+			&&cube.getLocation(1,1,1).equals(cube.getLocation(3,3,3))
+			&&cube.getLocation(1,1,1).equals(cube.getLocation(4,4,4)))
+				return true;
+		if((!cube.getLocation(1,4,1).equals(" "))&&cube.getLocation(1,4,1).equals(cube.getLocation(2,3,2))
+			&&cube.getLocation(1,4,1).equals(cube.getLocation(3,2,3))
+			&&cube.getLocation(1,4,1).equals(cube.getLocation(4,1,4)))
+				return true;
+		if((!cube.getLocation(4,1,1).equals(" "))&&cube.getLocation(4,1,1).equals(cube.getLocation(3,2,2))
+			&&cube.getLocation(4,1,1).equals(cube.getLocation(2,3,3))
+			&&cube.getLocation(4,1,1).equals(cube.getLocation(1,4,4)))
+				return true;
+		if((!cube.getLocation(4,4,1).equals(" "))&&cube.getLocation(4,4,1).equals(cube.getLocation(3,3,2))
+			&&cube.getLocation(4,4,1).equals(cube.getLocation(2,2,3))
+			&&cube.getLocation(4,4,1).equals(cube.getLocation(1,1,4)))
+				return true;
 		return false;
+	}
+
+	private boolean checkForWin(){
+		return (/*checkXY() || checkXZ() || checkYZ() || */checkSuperDiagonals());
 	}
 
 	void main(){
