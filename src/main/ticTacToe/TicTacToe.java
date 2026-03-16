@@ -19,7 +19,7 @@ public class TicTacToe{
 		boolean hasWon = false;
 		System.out.println("To type coordinates, type two number coordinates in a row, as in: 12");
 		while(!hasWon){
-			board.printMap();
+			board.printWideMap();
 			System.out.println("It is player " + player + "'s turn!");
 			int x = Input.getInt("X Coordinate: ", 1, 3);
 			int y = Input.getInt("Y Coordinate: ", 1, 3);
@@ -31,7 +31,7 @@ public class TicTacToe{
 			}
 		if(checkForWin()){
 			hasWon = true;
-			board.printMap();
+			board.printWideMap();
 			System.out.println("Player " + player + " has won!");
 		}else if(checkForTie()){
 			hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
