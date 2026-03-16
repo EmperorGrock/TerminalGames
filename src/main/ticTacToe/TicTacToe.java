@@ -25,32 +25,33 @@ public class TicTacToe{
 			System.out.println("It is player " + player + "'s turn!");
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
-			try{
-				processCoordinates(x, y);
-			} catch(IllegalArgumentException e){
+			if(!processCoordinates(x, y)){
 				System.out.println("That space is occupied. Try again.");
 				continue;
 			}
-		if(checkForWin()){
-			hasWon = true;
-			board.printWideMap();
-			System.out.println("Player " + player + " has won!");
-		}else if(checkForTie()){
-			hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
-		}
-		if(player == 1) player = 2;
-		else if(player == 2) player = 1;
+			if(checkForWin()){
+				hasWon = true;
+				board.printWideMap();
+				System.out.println("Player " + player + " has won!");
+			}else if(checkForTie()){
+				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+			}
+			if(player == 1) player++;
+			else player--;
 		}
 	}
 
-	private void processCoordinates(int first, int second) throws IllegalArgumentException{
+	private boolean processCoordinates(int first, int second){
 		if(board.getLocation(first, second).equals(" ")){
 			if(player == 1){
 				board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, first, second);
+				return true;
 			}else if(player == 2){
 				board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, first, second);
+				return true;
 			}
-		}else throw new IllegalArgumentException();
+		}
+		return false;
 	}
 	
 	private boolean checkForTie(){

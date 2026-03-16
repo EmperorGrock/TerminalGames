@@ -1,9 +1,16 @@
 package main.extramethods;
 
+/**
+ * A helper class for managing 3D grids using TwoDHelper instances.
+ * @author EmperorGrock
+ */
 public class ThreeDHelper {
 	private int zMax;
 	private TwoDHelper[] map;
 
+	/**
+	 * Constructs a ThreeDHelper with default dimensions (4x4x4).
+	 */
 	public ThreeDHelper(){
 		this.zMax = 4;
 		map = new TwoDHelper[4];
@@ -13,6 +20,12 @@ public class ThreeDHelper {
 		clearMap();
 	}
 
+	/**
+	 * Constructs a ThreeDHelper with specified dimensions.
+	 * @param xMax the maximum x dimension
+	 * @param yMax the maximum y dimension
+	 * @param zMax the maximum z dimension
+	 */
 	public ThreeDHelper(int xMax, int yMax, int zMax){
 		this.zMax = zMax;
 		map = new TwoDHelper[zMax];
@@ -22,6 +35,9 @@ public class ThreeDHelper {
 		clearMap();
 	}
 
+	/**
+	 * Prints the 3D map to the console.
+	 */
 	public void printMap(){
 		for(int z = 0; z < zMax; z++){
 			System.out.print(" ");
@@ -47,6 +63,9 @@ public class ThreeDHelper {
 		}
 	}
 
+	/**
+	 * Prints the 3D map in wide format to the console.
+	 */
 	public void printWideMap(){
 		for(int z = 0; z < zMax; z++){
 			for(int i = 1; i <= map[z].getXMax(); i++){
@@ -71,29 +90,58 @@ public class ThreeDHelper {
 		}
 	}
 
+	/**
+	 * Clears all maps in the 3D grid.
+	 */
 	public void clearMap(){
 		for(int z = 0; z < zMax; z++)
 			map[z].clearMap();
 	}
 
+	/**
+	 * Gets the value at the specified location in the 3D grid.
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 * @param z the z coordinate
+	 * @return the value at the location
+	 */
 	public String getLocation(int x, int y, int z){
 		return map[z-1].getLocation(x, y);
 	}
+
+	/**
+	 * Sets the value at the specified location in the 3D grid. newChar MUST be one character.
+	 * No precondition checks that x, y, z are within bounds, or that newChar is one character, so be careful when using this method.
+	 * @param newChar the new character to set at the location
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 * @param z the z coordinate
+	 */
+	public void editCoord(String newChar, int x, int y, int z){
+		map[z-1].editCoord(newChar, x, y);
+	}
 	
+	/**
+	 * Gets the maximum x dimension.
+	 * @return the maximum x dimension
+	 */
 	public int getZMax(){
 		return zMax;
 	}
 
+	/**
+	 * Gets the maximum y dimension.
+	 * @return the maximum y dimension
+	 */
 	public int getYMax(){
 		return map[0].getYMax();
 	}
 
+	/**
+	 * Gets the maximum x dimension.
+	 * @return the maximum x dimension
+	 */
 	public int getXMax(){
 		return map[0].getXMax();
-	}
-
-	void main(){
-		ThreeDHelper test = new ThreeDHelper();
-		test.printWideMap();
 	}
 }

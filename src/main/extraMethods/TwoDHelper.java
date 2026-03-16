@@ -97,15 +97,12 @@ public class TwoDHelper {
 
 	/**
 	 * Edits the character at the specified coordinates in the grid. newChar MUST be a single character string
+	 * No precondition checks that x and y are within bounds, or that newChar is one character, so be careful when using this method.
 	 * @param newChar The new character to place in the grid, must be a single character string
 	 * @param X The x-coordinate of the position to edit (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
 	 * @param Y The y-coordinate of the position to edit (starts at 1 for user-friendliness, will be converted to 0-indexed in the method)
-	 *
 	 */
-	public void editCoord(String newChar, int X, int Y){ //newChar 
-		/*if(newChar.length() != 1){
-			throw new IllegalArgumentException("newChar must be one character");
-		}*/
+	public void editCoord(String newChar, int X, int Y){ 
 		X -= 1;
 		Y -= 1;
 		map[Y][X] = newChar;
