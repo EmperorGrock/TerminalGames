@@ -12,6 +12,9 @@ import main.extramethods.TwoDHelper;
 public class TicTacToe{
 	private int player;
 	private TwoDHelper board;
+	private final String RED = "\u001b[31m";
+	private final String BLUE = "\u001b[34m";
+	private final String CLEAR = "\u001b[0m";
 
 	public TicTacToe(){}
 
@@ -45,9 +48,9 @@ public class TicTacToe{
 	private void processCoordinates(int first, int second) throws IllegalArgumentException{
 		if(board.getLocation(first, second).equals(" ")){
 			if(player == 1){
-				board.editCoord("x", first, second);
+				board.editCoord(RED + "x" + CLEAR, first, second);
 			}else if(player == 2){
-				board.editCoord("o", first, second);
+				board.editCoord(BLUE + "o" + CLEAR, first, second);
 			}
 		}else throw new IllegalArgumentException();
 	}
@@ -141,7 +144,7 @@ public class TicTacToe{
 	}
 
 	void main(){
-		int tictac = 4;
+		int tictac = 5;
 		TicTacToe test = new TicTacToe();
 		test.executeTicTacToe(tictac);
 	}
