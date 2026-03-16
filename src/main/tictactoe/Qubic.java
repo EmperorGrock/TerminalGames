@@ -40,14 +40,6 @@ public class Qubic {
 		}
 	}
 
-	private boolean checkForTie(){
-		return false;
-	}
-
-	private boolean checkForWin(){
-		return false;
-	}
-
 	private boolean processCoordinates(int x, int y, int z){
 		if(cube.getLocation(x, y, z).equals(" ")){
 			if(player == 1){
@@ -58,6 +50,19 @@ public class Qubic {
 				return true;
 			}
 		}
+		return false;
+	}
+
+	private boolean checkForTie(){
+		for(int x = 1; x <= cube.getXMax(); x++)
+			for(int y = 1; y <= cube.getYMax(); y++)
+				for(int z = 1; z <= cube.getZMax(); z++)
+					if(cube.getLocation(x,y,z).equals(" "))
+						return false;
+		return true;
+	}
+
+	private boolean checkForWin(){
 		return false;
 	}
 
