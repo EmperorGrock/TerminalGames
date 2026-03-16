@@ -22,7 +22,8 @@ public class TicTacToe{
 		boolean hasWon = false;
 		while(!hasWon){
 			board.printWideMap();
-			System.out.println("It is player " + player + "'s turn!");
+			if(player == 1)
+				Terminal.printlnWithFormat("It is player " + player + "'s turn!", );
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
 			if(!processCoordinates(x, y)){
