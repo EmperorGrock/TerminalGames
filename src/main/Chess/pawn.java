@@ -14,6 +14,11 @@ public class Pawn extends Piece{
 		super(x,y,start);
 		enPassentPossible=true;
 		doubleStep=true;
+		if (start){
+			look="♙";
+		} else {
+			look="♟";
+		}
 	}
 
 	//kills the pawn when captured

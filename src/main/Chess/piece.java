@@ -8,6 +8,7 @@ public class Piece{
 	protected int yLocation;
 	protected boolean alive;
 	protected boolean isWhite;
+	protected String look;
 
 	public Piece(int x, int y, boolean start){
 		xLocation=x;
