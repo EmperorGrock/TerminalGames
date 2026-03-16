@@ -1,2 +1,3 @@
-- Create a package with 2d array processing methods for reuse in chess
-- 4x4??
+- 4x4
+- fix checkForWin in TicTacToe to work for different board sizes, instead of just 3x3
+- Add color for x and o: Use ANSI codes, in a final variable for ease of access

@@ -111,6 +111,10 @@ public class TwoDHelper {
 		map[Y][X] = newChar;
 	}
 
+	/**
+	 * Simple method to clear the grid by setting all coordinates back to a single space character. 
+	 * Can be used for restarting a game or clearing the board.
+	 */
 	public void clearMap(){
 		for(int i = 1; i <= map.length; i++)
 			for(int j = 1; j <= map.length; j++)
@@ -152,8 +156,8 @@ public class TwoDHelper {
 	}
 
 	/**
-	 * Returns the maximum y-coordinate of the grid.
-	 * @return The maximum y-coordinate of the grid
+	 * Returns the maximum y-coordinate of the grid. 
+	 * @return The maximum y-coordinate of the grid.
 	 */
 	public int getYMax(){
 		return yMax;
