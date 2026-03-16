@@ -13,6 +13,8 @@ public class TicTacToe{
 	private int player = 1;
 	private TwoDHelper board;
 
+	public TicTacToe(){}
+
 	public void executeTicTacToe(int size){
 		board = new TwoDHelper(size, size);
 		boolean hasWon = false;
@@ -64,8 +66,12 @@ public class TicTacToe{
 	}
 
 	private boolean checkDiagonal(){
+		//Get the top corners
 		String topLeft = board.getLocation(1,1);
 		String topRight = board.getLocation(board.getXMax(), 1);
+
+		//If the top left corner has been played, check the diagonal until one doesnt match, then break. 
+		//If it goes all teh way through, return true
 		if(!topLeft.equals(" ")){
 			int coord = 2;
 			while(coord <= board.getXMax()){
@@ -77,10 +83,12 @@ public class TicTacToe{
 				coord++;
 			}
 		}
+
+		//Same as the other, but adapted for the top right corner, so the x coordinate is calculated differently
 		if(!topRight.equals(" ")){
 			int coord = 2;
 			while(coord <= board.getXMax()){
-				if(!topLeft.equals(board.getLocation(board.getXMax()+1-coord, coord))){
+				if(!topRight.equals(board.getLocation(board.getXMax()+1-coord, coord))){
 					break;
 				}
 				if(coord == board.getXMax())
@@ -124,7 +132,9 @@ public class TicTacToe{
 		return false;
 	}
 
-	public static void main(String[] args){
-		//executeNormalTicTacToe();
+	void main(){
+		int tictac = 3;
+		TicTacToe test = new TicTacToe();
+		test.executeTicTacToe(tictac);
 	}
 }
