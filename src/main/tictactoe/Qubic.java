@@ -25,8 +25,8 @@ public class Qubic {
 			if(player == 1)
 				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
 			else
-				Terminal.printlnWithFormat("Player 2's turn!", 2, 4);
-			Terminal.textEdit(2,2);
+				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
+			Terminal.textEdit(2,1);
 			int z = Input.getInt("Layer number", 1, 4);
 			int x = Input.getInt("X Coordinate", 1, 4);
 			int y = Input.getInt("Y Coordinate", 1, 4);
@@ -41,7 +41,7 @@ public class Qubic {
 				if(player == 1)
 					Terminal.printlnWithFormat("Player 1 has won!", 1, 4);
 				else
-					Terminal.printlnWithFormat("Player 2 has won!", 2, 4);
+					Terminal.printlnWithFormat("Player 2 has won!", 4, 4);
 			}else if(checkForTie()){
 				Terminal.textEdit(5,3);
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
