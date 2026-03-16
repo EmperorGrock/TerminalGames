@@ -95,8 +95,6 @@ public class TwoDHelper {
 		return result;
 	}
 
-	
-
 	/**
 	 * Edits the character at the specified coordinates in the grid.
 	 * @param newChar The new character to place in the grid, must be a single character string
@@ -111,6 +109,12 @@ public class TwoDHelper {
 		X -= 1;
 		Y -= 1;
 		map[Y][X] = newChar;
+	}
+
+	public void clearMap(){
+		for(int i = 1; i <= map.length; i++)
+			for(int j = 1; j <= map.length; j++)
+				editCoord(" ", i, j);
 	}
 
 	/**

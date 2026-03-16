@@ -21,14 +21,21 @@ public class TicTacToe{
 		while(!hasWon){
 			board.printMap();
 			System.out.println("It is player " + player + "'s turn!");
-			boolean badResponse = true;
 			int x = Input.getInt("X Coordinate: ", 1, 3);
 			int y = Input.getInt("Y Coordinate: ", 1, 3);
-			processCoordinates(x, y);
+			try{
+				processCoordinates(x, y);
+			} catch(IllegalArgumentException e){
+				System.out.println("That space is occupied. Try again.");
+				continue;
+			}
 		if(checkForWin()){
 			hasWon = true;
 			board.printMap();
 			System.out.println("Player " + player + " has won!");
+		}else if(checkForTie()){
+			hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+			player = 1;
 		}
 		if(player == 1) player = 2;
 		else if(player == 2) player = 1;
@@ -48,7 +55,21 @@ public class TicTacToe{
 			}else if(player == 2){
 				board.editCoord("o", first, second);
 			}
-		}else throw new IllegalArgumentException("That space is occupied");
+		}else throw new IllegalArgumentException();
+	}
+	
+	public static boolean checkForTie(){
+		boolean allFull = true;
+		for(int i = 1; i < 4; i++)
+			for(int j = 1; j < 4; j++)
+				if(board.getLocation(i, j).equals(" "))
+					allFull = false;
+		if(allFull){
+			board.clearMap();
+			return true;
+		}
+		return false;
+			
 	}
 
 	public static boolean checkForWin(){
