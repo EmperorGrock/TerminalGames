@@ -1,4 +1,1 @@
-- 4x4
-- fix checkForWin in TicTacToe to work for different board sizes, instead of just 3x3
-- Add color for x and o: Use ANSI codes, in a final variable for ease of access
 - Implement an AI to play against? (Plays by the invincible ruleset?)

@@ -1,4 +1,4 @@
-package main.connectfour;
+package main.tictactoe;
 import main.extramethods.TwoDHelper;
 import main.extramethods.Input;
 import main.extramethods.Terminal;
@@ -9,8 +9,7 @@ public class ConnectFour{
 
 	public ConnectFour(){}
 
-	public void connectFour()
-	{
+	public void connectFour(){
 		player = 1;
 		board = new TwoDHelper(7,6);
 		boolean hasWon = false;
@@ -23,9 +22,11 @@ public class ConnectFour{
 				System.out.println("That column is full! Try again.");
 				continue;
 			}
+			hasWon = checkWin();
 			if(player == 1) player++;
 			else player--;
 		}
+		board.printWideMap();
 	}
 
 	private boolean processCoordinate(int column){
@@ -46,7 +47,7 @@ public class ConnectFour{
 					if(player == 1){
 						board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, column, --row);
 					}else if(player == 2){
-						board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, column, row);
+						board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, column, --row);
 					}
 					break;
 				}
@@ -55,7 +56,35 @@ public class ConnectFour{
 			return false;
 		return true;
 	}
-	public void main(String[] args){
+
+	private boolean checkWin(){
+		for(int x = 1; x < 8; x++){
+			for(int y = 1; y < 7; y++){
+				if(!board.getLocation(x, y).equals(" ")){
+					if(x < 5){
+						if (y > 3){
+							if(checkToTopRight(x, y))
+								return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	private boolean checkToTopRight(int x, int y){
+		boolean connection = true;
+		String origin = board.getLocation(x, y);
+		for(int increment = 1; increment < 4; increment++){
+			if(!origin.equals(board.getLocation(x+increment,y-increment))){
+				connection = false;
+				break;
+			}
+		}
+		return connection;
+	}
+	void main(String[] args){
 		connectFour();
 	}
 }

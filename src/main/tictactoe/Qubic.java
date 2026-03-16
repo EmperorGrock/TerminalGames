@@ -4,42 +4,61 @@ import main.extramethods.Input;
 import main.extramethods.Terminal;
 import main.extramethods.ThreeDHelper;
 
+/**
+ * Represents a 3D Tic-Tac-Toe game called Qubic.
+ * @author EmperorGrock
+ */
 public class Qubic {
 	private ThreeDHelper cube;
 	private int player;
 
+	/**
+	 * Executes the main game loop for Qubic.
+	 */
 	public void executeQubic(){
-		System.out.println("Qubic has not been written yet.");
-	}
-
-	public void testExecuteQubic(){
 		player = 1;
 		cube = new ThreeDHelper(4,4,4);
 		boolean hasWon = false;
 		Terminal.printlnWithFormat("PAY ATTENTION: ..., X is horizontal, Y is vertical", 5,4);
 		while(!hasWon){
 			cube.printWideMap();
-			System.out.println("It is player " + player + "'s turn!");
-			int z = Input.getInt("Board number", 1, 4);
+			if(player == 1)
+				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
+			else
+				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
+			Terminal.textEdit(2,1);
+			int z = Input.getInt("Layer number", 1, 4);
 			int x = Input.getInt("X Coordinate", 1, 4);
 			int y = Input.getInt("Y Coordinate", 1, 4);
-			
+			Terminal.clearFormat();
 			if(!processCoordinates(x, y, z)){
-				System.out.println("That space is occupied. Try again.");
+				Terminal.printlnWithFormat("Occupied! Try again.", 5, 4);
 				continue;
 			}
 			if(checkForWin()){
 				hasWon = true;
 				cube.printWideMap();
-				System.out.println("Player " + player + " has won!");
+				if(player == 1)
+					Terminal.printlnWithFormat("Player 1 has won!", 1, 4);
+				else
+					Terminal.printlnWithFormat("Player 2 has won!", 4, 4);
 			}else if(checkForTie()){
-				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+				Terminal.textEdit(5,3);
+				hasWon = !Input.getYesNo("It's a tie! Play again?");
+				Terminal.clearFormat();
 			}
 			if(player == 1) player++;
 			else player--;
 		}
 	}
 
+	/**
+	 * Processes the coordinates for a player's move.
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 * @param z the z coordinate
+	 * @return true if the move was successful, false otherwise
+	 */
 	private boolean processCoordinates(int x, int y, int z){
 		if(cube.getLocation(x, y, z).equals(" ")){
 			if(player == 1){
@@ -53,26 +72,61 @@ public class Qubic {
 		return false;
 	}
 
+	/**
+	 * Checks if the game is a tie.
+	 * @return true if it's a tie, false otherwise
+	 */
 	private boolean checkForTie(){
 		for(int x = 1; x <= cube.getXMax(); x++)
 			for(int y = 1; y <= cube.getYMax(); y++)
 				for(int z = 1; z <= cube.getZMax(); z++)
 					if(cube.getLocation(x,y,z).equals(" "))
 						return false;
+		cube.clearMap();
 		return true;
 	}
 
 
+	/**
+	 * Checks for wins in XY planes.
+	 * @return true if there's a win, false otherwise
+	 */
 	private boolean checkXY(){
 		for(int z = 1; z <= 4; z++){
-			
+			if(TicTacToe.checkForWin(cube.getLayer(1,z)))
+				return true;
 		}
+		return false;
 	}
 
-	//private boolean checkXZ(){}
+	/**
+	 * Checks for wins in XZ planes.
+	 * @return true if there's a win, false otherwise
+	 */
+	private boolean checkXZ(){
+		for(int y = 1; y <= 4; y++){
+			if(TicTacToe.checkForWin(cube.getLayer(2,y)))
+				return true;
+		}
+		return false;
+	}
 
-	//private boolean checkYZ(){}
+	/**
+	 * Checks for wins in YZ planes.
+	 * @return true if there's a win, false otherwise
+	 */
+	private boolean checkYZ(){
+		for(int x = 1; x <= 4; x++){
+			if(TicTacToe.checkForWin(cube.getLayer(3,x)))
+				return true;
+		}
+		return false;
+	}
 
+	/**
+	 * Checks for wins in space diagonals.
+	 * @return true if there's a win, false otherwise
+	 */
 	private boolean checkSuperDiagonals(){
 		if((!cube.getLocation(1,1,1).equals(" "))&&cube.getLocation(1,1,1).equals(cube.getLocation(2,2,2))
 			&&cube.getLocation(1,1,1).equals(cube.getLocation(3,3,3))
@@ -93,12 +147,19 @@ public class Qubic {
 		return false;
 	}
 
+	/**
+	 * Checks if there's a win in the game.
+	 * @return true if there's a win, false otherwise
+	 */
 	private boolean checkForWin(){
-		return (/*checkXY() || checkXZ() || checkYZ() || */checkSuperDiagonals());
+		return (checkXY() || checkXZ() || checkYZ() || checkSuperDiagonals());
 	}
 
+	/**
+	 * Main method for testing the Qubic game.
+	 */
 	void main(){
 		Qubic test = new Qubic();
-		test.testExecuteQubic();
+		test.executeQubic();
 	}
 }
