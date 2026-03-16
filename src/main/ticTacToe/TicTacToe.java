@@ -10,12 +10,13 @@ import main.extramethods.TwoDHelper;
  * @author invisiblekoi
  */
 public class TicTacToe{
-	private int player = 1;
+	private int player;
 	private TwoDHelper board;
 
 	public TicTacToe(){}
 
 	public void executeTicTacToe(int size){
+		player = 1;
 		board = new TwoDHelper(size, size);
 		boolean hasWon = false;
 		while(!hasWon){
