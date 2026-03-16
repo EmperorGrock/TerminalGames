@@ -12,9 +12,9 @@ import main.extramethods.TwoDHelper;
 public class TicTacToe{
 	private int player;
 	private TwoDHelper board;
-	private final String RED = "\u001b[31m";
-	private final String BLUE = "\u001b[34m";
-	private final String CLEAR = "\u001b[0m";
+	private static final String RED = "\u001b[31m";
+	private static final String BLUE = "\u001b[34m";
+	private static final String CLEAR = "\u001b[0m";
 
 	public TicTacToe(){}
 
