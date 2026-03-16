@@ -141,7 +141,7 @@ public class TicTacToe{
 	}
 
 	void main(){
-		int tictac = 3;
+		int tictac = 4;
 		TicTacToe test = new TicTacToe();
 		test.executeTicTacToe(tictac);
 	}
