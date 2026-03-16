@@ -32,10 +32,7 @@ public class BJGame {
 	 * Handles the dealer's turn by revealing the dealer's hand, and then drawing cards until the dealer's score is at least 17.
 	 */
 	public void dealerTurn(){
-		Terminal.textColor(1);
-		Terminal.textForm(1);
-		System.out.println("Dealer's Turn: ");
-		Terminal.clearFormat();
+		Terminal.printlnWithFormat("Dealer's Turn: ", 1, 1);
 		dealerHand.printStatus();
 		while(dealerHand.getScore() < 17){
 			Terminal.sleep(1.5);

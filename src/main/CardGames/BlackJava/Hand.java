@@ -157,10 +157,15 @@ public class Hand {
 	 */
 	public static int[] formIntArray(ArrayList<Card> list){
 		int[] nums = new int[list.size()];
+		int total = 0;
 		for(int i = 0; i < nums.length; i++){
 			nums[i] = list.get(i).getNum();
 			nums[i]++;
 			if(nums[i] > 10) nums[i] = 10;
+			if (list.get(i).getNum() == 0 && total < 11){
+				nums[i] += 10;
+			}
+			total += nums[i];
 		}
 		return nums;
 	}

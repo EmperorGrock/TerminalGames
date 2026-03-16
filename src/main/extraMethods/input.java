@@ -5,11 +5,11 @@ package main.extramethods;
  * A class with multiple static methods for various input types and styles. 
  * Built for the TerminalGames app.
  * 
- * @author Catmaoneko 
+ * @author Catmāoneko猫
  * @author EmperorGrock
+ * @author invisiblekoi
  */
 public class Input{
-
 	/**
 	 * Print the message, and keep asking for input until an integer is entered
 	 * @param message The message to print before asking for input
@@ -17,13 +17,14 @@ public class Input{
 	 */
 	public static int getInt(String message){
 		System.out.print(message + ": ");
-		int input = 0;
+		int input;
 		while(true){
 			try{
 				input = Integer.parseInt(System.console().readLine());
 				break;
 			}catch(NumberFormatException e){
 				System.out.println("Invalid input. Please enter an integer.");
+				continue;
 			}
 		}
 		return input;
@@ -31,21 +32,61 @@ public class Input{
 
 	/**
 	 * Print the message, and keep asking for input until an integer is entered that is within the provided range (inclusive)
+	 * @param message The message to print before asking for input
 	 * @param min The minimum acceptable value (inclusive)
 	 * @param max The maximum acceptable value (inclusive)
-	 * @param message The message to print before asking for input
 	 * @return The integer that the user entered
 	 */
 	public static int getInt(String message, int min, int max){
-		int input = 0;
+		System.out.print(message + ": ");
+		int input;
 		while(true){
-			input = getInt(message);
-			if(input >= min && input <= max){
-				break;
-			}else{
-				System.out.println("Input must be between " + min + " and " + max + ".");
+			try{
+				input = Integer.parseInt(System.console().readLine());
+				if(input < min || input > max){
+					System.out.println("Input must be between " + min + " and " + max + ".");
+				}else{
+					break;
+				}
+			}catch(NumberFormatException e){
+				System.out.println("Invalid input. Please enter an integer.");
+				continue;
 			}
 		}
+		return input;
+	}
+
+	/**
+	 * Print the message, and keep asking for input with format "int,int" until a list of integers is entered that is within the provided range (inclusive)
+	 * @param message The message to print before asking for input.
+	 * @param min The minimum acceptable value (inclusive)
+	 * @param max The maximum acceptable value (inclusive)
+	 * @param dimensions The number of integers to expect in the list
+	 * @return The array of integers that the user entered
+	 */
+	public static int[] getCoords(String message, int min, int max, int dimensions){
+		boolean allowed = false;
+		int[] input = new int[dimensions];
+		do{
+			System.out.print(message + ": ");
+			String[] splString = System.console().readLine().split(",");
+			if (splString.length != dimensions){
+				System.out.println("Invalid Syntax.");
+				continue;
+			}
+			for(int i = 0; i < dimensions; i++){
+				try{
+					input[i] = Integer.parseInt(splString[i]);
+					if(input[i] < min || input[i] > max){
+						System.out.println("Input must be between " + min + " and " + max + ".");
+					} else {
+						allowed = true;
+					}
+				}catch(NumberFormatException e){
+					System.out.println("Invalid input. Please enter integers separated by commas.");
+				}
+			}
+		} while(!allowed);
 		return input;
 	}
 
@@ -69,8 +110,6 @@ public class Input{
 		}
 	}
 
-	//Prints list of choices then keeps asking until user inputs desired choice. Returns user choice
-	//Input null for message if you want the default message	
 	/**
 	 * Print the message and a list of choices, and keep asking for input until a valid choice is entered
 	 * @param message The message to print before the list of choices (if null, a default message will be printed)

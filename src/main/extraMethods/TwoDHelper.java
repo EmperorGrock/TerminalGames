@@ -57,6 +57,20 @@ public class TwoDHelper {
 		result += map[row][xMax-1];
 		return result;
 	}
+	/**
+	 * Formats a single line of the grid for printing, by concatenating the strings in the specified row with vertical bars in between. Has additional space between the string and the vertical bars.
+	 * @param row The index of the row to format (0-indexed)
+	 * @return A string representing the formatted line of the grid
+	 */
+	public String formatWideLine(int row){
+		String result = "";
+		for(int i = 0; i < xMax-1; i++){
+			result += " " + map[row][i] + " ";
+			result += "|";
+		}
+		result += " " + map[row][xMax-1] + " ";
+		return result;
+	}
 
 	/**
 	 * Generates a string representing the horizontal border between rows in the grid, consisting of dashes and plus signs.
@@ -67,6 +81,17 @@ public class TwoDHelper {
 		for(int i = 0; i < xMax-1; i++)
 			result += "-+";
 		result += "-";
+		return result;
+	}
+	/**
+	 * Generates a string representing the horizontal border between rows in the grid, consisting of dashes and plus signs.
+	 * @return A string representing the horizontal border between rows in the grid
+	 */
+	public String getWideBorder(){
+		String result = "  ";
+		for(int i = 0; i < xMax-1; i++)
+			result += "---+";
+		result += "---";
 		return result;
 	}
 
@@ -86,6 +111,12 @@ public class TwoDHelper {
 		map[Y][X] = newChar;
 	}
 
+	public void clearMap(){
+		for(int i = 1; i <= map.length; i++)
+			for(int j = 1; j <= map.length; j++)
+				editCoord(" ", i, j);
+	}
+
 	/**
 	 * Prints the grid in a formatted way, with row and column indices.
 	 */
@@ -99,6 +130,22 @@ public class TwoDHelper {
 			System.out.print((j+1) + " ");
 			System.out.print(formatLine(j));
 			if(j<yMax-1) System.out.println("\n"+getBorder());
+			else System.out.println();
+		}
+		System.out.println();
+	}
+	/**
+	 * Prints the grid in a formatted way with extra width, with row and column indices.
+	 */
+	public void printWideMap(){
+		for(int i = 1; i < xMax + 1; i++){
+			System.out.print("   " + i);
+		}
+		System.out.println();
+		for(int j = 0; j < yMax; j++){
+			System.out.print((j+1) + " ");
+			System.out.print(formatWideLine(j));
+			if(j<yMax-1) System.out.println("\n"+getWideBorder());
 			else System.out.println();
 		}
 		System.out.println();
