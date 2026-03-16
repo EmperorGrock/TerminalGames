@@ -14,8 +14,15 @@ public class TicTacToe{
 	private int player;
 	private TwoDHelper board;
 
+	/**
+	 * Default constructor.
+	 */
 	public TicTacToe(){}
 
+	/**
+	 * Executes the Tic-Tac-Toe game with the given board size.
+	 * @param size the size of the board
+	 */
 	public void executeTicTacToe(int size){
 		player = 1;
 		board = new TwoDHelper(size, size);
@@ -23,32 +30,38 @@ public class TicTacToe{
 		while(!hasWon){
 			board.printWideMap();
 			if(player == 1)
-				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
+				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
 			else
-				Terminal.printlnWithFormat("It is player 2's turn!", 4, 4);
+				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
 			Terminal.textEdit(2,1);
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
 			Terminal.clearFormat();
 			if(!processCoordinates(x, y)){
-				Terminal.printlnWithFormat("That space is occupied. Try again.", 5, 3);
+				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
 			}
 			if(checkForWin(board)){
 				hasWon = true;
 				board.printWideMap();
 				if(player == 1)
-					Terminal.printlnWithFormat("Player 1 has won!", 1, 4);
+					Terminal.printlnWithFormat("Player 1 won!", 1, 4);
 				else
-					Terminal.printlnWithFormat("Player 2 has won!", 4, 4);
+					Terminal.printlnWithFormat("Player 2 won!", 4, 4);
 			}else if(checkForTie()){
-				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+				hasWon = !Input.getYesNo("It's a tie! Play again?");
 			}
 			if(player == 1) player++;
 			else player--;
 		}
 	}
 
+	/**
+	 * Processes the coordinates for a player's move.
+	 * @param first the x coordinate
+	 * @param second the y coordinate
+	 * @return true if the move was successful, false otherwise
+	 */
 	private boolean processCoordinates(int first, int second){
 		if(board.getLocation(first, second).equals(" ")){
 			if(player == 1){
@@ -62,6 +75,10 @@ public class TicTacToe{
 		return false;
 	}
 	
+	/**
+	 * Checks if the game is a tie.
+	 * @return true if it's a tie, false otherwise
+	 */
 	private boolean checkForTie(){
 		boolean allFull = true;
 		for(int i = 1; i <= board.getXMax(); i++)
@@ -76,6 +93,11 @@ public class TicTacToe{
 			
 	}
 
+	/**
+	 * Checks for wins in diagonals.
+	 * @param array the game board
+	 * @return true if there's a win, false otherwise
+	 */
 	private static boolean checkDiagonal(TwoDHelper array){
 		//Get the top corners
 		String topLeft = array.getLocation(1,1);
@@ -110,6 +132,11 @@ public class TicTacToe{
 		return false;
 	}
 
+	/**
+	 * Checks for wins in horizontal lines.
+	 * @param array the game board
+	 * @return true if there's a win, false otherwise
+	 */
 	private static boolean checkHorizontal(TwoDHelper array){
 		for(int y = 1; y <= array.getYMax(); y++){
 			String spaceOne = array.getLocation(1,y);
@@ -127,6 +154,11 @@ public class TicTacToe{
 		return false;
 	}
 
+	/**
+	 * Checks for wins in vertical lines.
+	 * @param array the game board
+	 * @return true if there's a win, false otherwise
+	 */
 	private static boolean checkVertical(TwoDHelper array){
 		for(int x = 1; x <= array.getXMax(); x++){
 			String spaceOne = array.getLocation(x,1);
@@ -144,12 +176,20 @@ public class TicTacToe{
 		return false;
 	}
 
+	/**
+	 * Checks if there's a win in the game.
+	 * @param array the game board
+	 * @return true if there's a win, false otherwise
+	 */
 	public static boolean checkForWin(TwoDHelper array){
 		if(checkDiagonal(array)||checkHorizontal(array)||checkVertical(array))
 			return true;
 		return false;
 	}
 
+	/**
+	 * Main method for testing the Tic-Tac-Toe game.
+	 */
 	void main(){
 		int tictac = Input.getInt("Which size tictactoe do you want? (3-5)", 3, 5);
 		TicTacToe test = new TicTacToe();
