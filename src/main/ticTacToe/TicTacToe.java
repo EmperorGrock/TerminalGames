@@ -10,19 +10,17 @@ import main.extramethods.TwoDHelper;
  * @author invisiblekoi
  */
 public class TicTacToe{
-	private static int player = 1;
+	private int player = 1;
+	private TwoDHelper board;
 
-	public static TwoDHelper board;
-
-	public static void executeNormalTicTacToe(){
-		board = new TwoDHelper(3,3);
+	public void executeTicTacToe(int size){
+		board = new TwoDHelper(size, size);
 		boolean hasWon = false;
-		System.out.println("To type coordinates, type two number coordinates in a row, as in: 12");
 		while(!hasWon){
 			board.printWideMap();
 			System.out.println("It is player " + player + "'s turn!");
-			int x = Input.getInt("X Coordinate", 1, 3);
-			int y = Input.getInt("Y Coordinate", 1, 3);
+			int x = Input.getInt("X Coordinate", 1, size);
+			int y = Input.getInt("Y Coordinate", 1, size);
 			try{
 				processCoordinates(x, y);
 			} catch(IllegalArgumentException e){
@@ -41,9 +39,7 @@ public class TicTacToe{
 		}
 	}
 
-	
-
-	public static void processCoordinates(int first, int second) throws IllegalArgumentException{
+	private void processCoordinates(int first, int second) throws IllegalArgumentException{
 		if(board.getLocation(first, second).equals(" ")){
 			if(player == 1){
 				board.editCoord("x", first, second);
@@ -53,7 +49,7 @@ public class TicTacToe{
 		}else throw new IllegalArgumentException();
 	}
 	
-	public static boolean checkForTie(){
+	private boolean checkForTie(){
 		boolean allFull = true;
 		for(int i = 1; i < board.getXMax() + 1; i++)
 			for(int j = 1; j < board.getYMax() + 1; j++)
@@ -68,7 +64,7 @@ public class TicTacToe{
 	}
 
 
-	public static boolean checkForWin(){
+	private boolean checkForWin(){
 		boolean result = false;
 
 		//Check for Horizontal
@@ -96,6 +92,6 @@ public class TicTacToe{
 	}
 
 	public static void main(String[] args){
-		executeNormalTicTacToe();
+		//executeNormalTicTacToe();
 	}
 }
