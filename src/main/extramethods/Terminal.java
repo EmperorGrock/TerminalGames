@@ -49,9 +49,10 @@ public class Terminal{
 	 * @throws IllegalArgumentException When input is outside the supported range, 1-4
 	 */
 	public static void textForm(int which){
-		if(which < 1 || which > 4)
+		if(which < 0 || which > 4)
 			throw new IllegalArgumentException("Only supports 1-4");
-		System.out.print("\033[" + which + "m");
+		if(which != 0)
+			System.out.print("\033[" + which + "m");
 	}
 
 	/**

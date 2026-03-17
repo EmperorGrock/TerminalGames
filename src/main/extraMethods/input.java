@@ -38,7 +38,7 @@ public class Input{
 	 * @return The integer that the user entered
 	 */
 	public static int getInt(String message, int min, int max){
-		Terminal.printWithFormat(message + ": ", 7, 4);
+		Terminal.printWithFormat(message + ": ", 2, 0);
 		int input;
 		while(true){
 			try{
@@ -69,7 +69,7 @@ public class Input{
 		int[] input = new int[dimensions];
 		do{
 			allowed = true;
-			Terminal.printWithFormat(message + "\nYou must separate each number using a comma: ", 7, 4);
+			Terminal.printWithFormat(message + "\nYou must separate each number using a comma: ", 2, 0);
 			String[] splString = System.console().readLine().split(",");
 			if (splString.length != dimensions){
 				Terminal.printlnWithFormat("Invalid Syntax.\n", 5, 3);
@@ -99,7 +99,7 @@ public class Input{
 	 * @return true if the user entered 'y', false if the user entered 'n'
 	 */
 	public static boolean getYesNo(String message){
-		Terminal.printWithFormat(message + " (y/n): ", 7, 4);
+		Terminal.printWithFormat(message + " (y/n): ", 2, 0);
 		String input = "";
 		while(true){
 			input = System.console().readLine().toLowerCase();
@@ -122,7 +122,7 @@ public class Input{
 	public static int advancedAsk(String message,String[] choices){
 		int input=0;
 		if (message.equals(null)){
-			Terminal.printlnWithFormat("Please choose from the following", 7, 4);
+			Terminal.printlnWithFormat("Please choose from the following", 2, 0);
 		} else {
 			Terminal.printlnWithFormat(message, 7, 4);
 		}

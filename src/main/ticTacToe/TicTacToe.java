@@ -35,8 +35,8 @@ public class TicTacToe{
 									? "Player 1's turn!"
 									: "Player 2's turn!";
 			int clr = (player == 1) ? 1 : 4;
-			Terminal.printlnWithFormat(turnStatement, clr, 4);
-			Terminal.textEdit(2, 4);
+			Terminal.printlnWithFormat(turnStatement, clr, 1);
+			Terminal.textColor(2);
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
 			Terminal.clearFormat();
@@ -50,7 +50,7 @@ public class TicTacToe{
 				String winStatement = (player == 1)
 									? "Player 1 won!"
 									: "Player 2 won!";
-				Terminal.printlnWithFormat(winStatement, clr, 4);
+				Terminal.printlnWithFormat(winStatement, clr, 1);
 			}else if(round == size * size){
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
 				board.clearMap();
