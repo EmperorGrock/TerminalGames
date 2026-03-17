@@ -10,7 +10,7 @@ public class UltimateTacToe {
 	private int player;
 
 	public void executeUltimateTacToe(){
-		System.out.println("Unfortunately, Ultimate Tic Tac Toe hasn't been programmed yet!");
+		Terminal.printlnWithFormat("Unfortunately, Ultimate Tic Tac Toe hasn't been programmed yet!", 5, 3);
 	}
 
 	public void executeTestUltimateTacToe(){

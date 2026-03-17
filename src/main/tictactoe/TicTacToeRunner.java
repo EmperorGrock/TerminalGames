@@ -3,7 +3,7 @@ package main.tictactoe;
 import main.extramethods.Input;
 
 public class TicTacToeRunner {
-	void main(){
+	public static void main(){
 		while(true){
 			TicTacToe ticTac = new TicTacToe();
 			Qubic cube = new Qubic();
