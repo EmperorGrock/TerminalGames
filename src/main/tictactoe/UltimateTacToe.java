@@ -6,6 +6,7 @@ import main.extramethods.Input;
 
 public class UltimateTacToe {
 	private TicTacToe[][] superMap;
+	private int[][] wonSuperMap;
 	private int player;
 
 	public void executeUltimateTacToe(){
@@ -15,20 +16,26 @@ public class UltimateTacToe {
 	public void executeTestUltimateTacToe(){
 		player = 1;
 		superMap = new TicTacToe[3][3];
+		wonSuperMap = new int[3][3];
 		cleanSuperMap();
 		boolean hasWon = false;
 		boolean freeMove = true;
+		int whichMiniBoard = 0;
 		Terminal.printlnWithFormat("NOTE: miniboards are numbered 1-9, left to right, top down. ", 5, 3);
 		while(!hasWon){
 			printToes();
-			if(player == 1)
-				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
-			else
-				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
-			Terminal.textEdit(2,1);
+			String turnStatement = (player == 1)
+									? "Player 1's turn!"
+									: "Player 2's turn!";
+			int clr = (player == 1) ? 1 : 4;
+			Terminal.printlnWithFormat(turnStatement, clr, 1);
+			if(freeMove)
+				while(wonSuperMap[(whichMiniBoard-1)/3][(whichMiniBoard-1)%3]!=0){
+					whichMiniBoard = Input.getInt("Which miniBoard are you playing on", 1, 9);
+				}
+			
 			int x = Input.getInt("X Coordinate", 1, 3);
 			int y = Input.getInt("Y Coordinate", 1, 3);
-			Terminal.clearFormat();
 			/*if(!processCoordinates(x, y)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
@@ -48,7 +55,16 @@ public class UltimateTacToe {
 		}
 	}
 
-	private void processCoordinates(){}
+	private boolean processCoordinates(int board, int x, int y){
+		TicTacToe miniBoard = superMap[(board-1)/3][(board-1)%3];
+		if(miniBoard != null && miniBoard.getBoard().getLocation(x,y).equals(" ")){
+			String playerMarker = (player == 1)
+								? Terminal.RED + "x" + Terminal.CLEAR
+								: Terminal.BLUE + "o" + Terminal.CLEAR;
+			miniBoard.getBoard().editCoord(playerMarker, x, y);
+		}
+		return false;
+	}
 
 	private void cleanSuperMap(){
 		for(int x = 0; x < 3; x++)
