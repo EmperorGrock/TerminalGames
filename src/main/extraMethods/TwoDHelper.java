@@ -114,7 +114,7 @@ public class TwoDHelper {
 	 */
 	public void clearMap(){
 		for(int i = 1; i <= map.length; i++)
-			for(int j = 1; j <= map.length; j++)
+			for(int j = 1; j <= map[0].length; j++)
 				editCoord(" ", i, j);
 	}
 

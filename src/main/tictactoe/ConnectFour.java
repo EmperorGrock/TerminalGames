@@ -51,6 +51,12 @@ public class ConnectFour{
 				player--;
 				round++;
 			}
+			if(round > 21){
+				board.printWideMap();
+				board.clearMap();
+				round = 1;
+				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+			}
 		}
 	}
 
