@@ -16,14 +16,14 @@ public class Input{
 	 * @return The integer that the user entered
 	 */
 	public static int getInt(String message){
-		System.out.print(message + ": ");
+		Terminal.printWithFormat(message + ": ", 7, 4);
 		int input;
 		while(true){
 			try{
 				input = Integer.parseInt(System.console().readLine());
 				break;
 			}catch(NumberFormatException e){
-				System.out.println("Invalid input. Please enter an integer.");
+				Terminal.printlnWithFormat("Invalid input. Please enter an integer.", 5, 3);
 				continue;
 			}
 		}
@@ -38,18 +38,18 @@ public class Input{
 	 * @return The integer that the user entered
 	 */
 	public static int getInt(String message, int min, int max){
-		System.out.print(message + ": ");
+		Terminal.printWithFormat(message + ": ", 7, 4);
 		int input;
 		while(true){
 			try{
 				input = Integer.parseInt(System.console().readLine());
 				if(input < min || input > max){
-					System.out.println("Input must be between " + min + " and " + max + ".");
+					Terminal.printlnWithFormat("Input must be between " + min + " and " + max + ".", 5, 3);
 				}else{
 					break;
 				}
 			}catch(NumberFormatException e){
-				System.out.println("Invalid input. Please enter an integer.");
+				Terminal.printlnWithFormat("Invalid input. Please enter an integer.", 5, 3);
 				continue;
 			}
 		}
@@ -69,10 +69,10 @@ public class Input{
 		int[] input = new int[dimensions];
 		do{
 			allowed = true;
-			System.out.print(message + "\nYou must separate each number using a comma: ");
+			Terminal.printWithFormat(message + "\nYou must separate each number using a comma: ", 7, 4);
 			String[] splString = System.console().readLine().split(",");
 			if (splString.length != dimensions){
-				System.out.println("Invalid Syntax.\n");
+				Terminal.printlnWithFormat("Invalid Syntax.\n", 5, 3);
 				allowed = false;
 				continue;
 			}
@@ -80,12 +80,12 @@ public class Input{
 				try{
 					input[i] = Integer.parseInt(splString[i]);
 					if(input[i] < min || input[i] > max){
-						System.out.println("Input must be between " + min + " and " + max + ".\n");
+						Terminal.printlnWithFormat("Input must be between " + min + " and " + max + ".\n", 5, 3);
 						allowed = false;
 						break;
 					}
 				}catch(NumberFormatException e){
-					System.out.println("Invalid input. Please enter integers separated by commas.");
+					Terminal.printlnWithFormat("Invalid input. Please enter integers separated by commas.", 5, 3);
 					allowed = false;
 				}
 			}
@@ -99,7 +99,7 @@ public class Input{
 	 * @return true if the user entered 'y', false if the user entered 'n'
 	 */
 	public static boolean getYesNo(String message){
-		System.out.print(message + " (y/n): ");
+		Terminal.printWithFormat(message + " (y/n): ", 7, 4);
 		String input = "";
 		while(true){
 			input = System.console().readLine().toLowerCase();
@@ -108,7 +108,7 @@ public class Input{
 			}else if(input.equals("n")){
 				return false;
 			}else{
-				System.out.println("Invalid input. Please enter 'y' or 'n'.");
+				Terminal.printlnWithFormat("Invalid input. Please enter 'y' or 'n'.", 5, 3);
 			}
 		}
 	}
@@ -122,9 +122,9 @@ public class Input{
 	public static int advancedAsk(String message,String[] choices){
 		int input=0;
 		if (message.equals(null)){
-			System.out.println("Please choose from the following");
+			Terminal.printlnWithFormat("Please choose from the following", 7, 4);
 		} else {
-			System.out.println(message);
+			Terminal.printlnWithFormat(message, 7, 4);
 		}
 		for (int i=0;i<choices.length;i++){
 			System.out.println((i+1)+": "+choices[i]);
@@ -134,7 +134,7 @@ public class Input{
 				input=Integer.parseInt(System.console().readLine());
 				if (input<1 || input>choices.length){
 					if (message.equals(null)){
-						System.out.println("Please enter an integer: ");
+						Terminal.printlnWithFormat("Please enter an integer: ", 5, 3);
 					} else {
 						System.out.println(message);
 					}
@@ -143,7 +143,7 @@ public class Input{
 				return input;
 			} catch (NumberFormatException e){
 				if (message.equals(null)){
-					System.out.println("Please enter a valid value");
+					Terminal.printlnWithFormat("Please enter a valid value", 5, 3);
 				} else {
 					System.out.println(message);
 				}
