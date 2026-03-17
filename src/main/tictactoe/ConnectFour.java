@@ -117,56 +117,41 @@ public class ConnectFour{
 	 * @return true if action was possible/successful
 	 */
 	private boolean processCoordinate(int column){
-		if(board.getLocation(column, 1).equals(" ")){
-			int row = 1;
-			while(row <= board.getYMax()){
-				if(board.getLocation(column, row).equals(" ") && row < board.getYMax()) 
-					row++;
-				else if(board.getLocation(column, row).equals(" ") && row == board.getYMax()){
-					if(player == 1){
-						board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, column, row);
-					}else if(player == 2){
-						board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, column, row);
-					}
-					break;
-				}
-				else{
-					if(player == 1){
-						board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, column, --row);
-					}else if(player == 2){
-						board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, column, --row);
-					}
-					break;
-				}
-			}
-		} else return false;
+		if(!board.getLocation(column, 1).equals(" ")) return false;
+		int row = 1;
+		while(row < board.getYMax() && board.getLocation(column, row + 1).equals(" "))
+			row++;
+		String piece = (player == 1)
+		? Terminal.RED + "x" +Terminal.CLEAR
+		: Terminal.BLUE + "o" + Terminal.CLEAR;
+		board.editCoord(piece, column, row);
 		return true;
 	}
+
+
 	/**
 	 * Checks if there is a win in the game.
 	 * @return true if a win is found
 	 */
-	private boolean checkWin(){
-		for(int x = 1; x < board.getXMax(); x++){
-			for(int y = 1; y < board.getYMax(); y++){
-				if(!board.getLocation(x, y).equals(" ")){
-					if(x <= board.getXMax() - 3){
-						if (y > 3){
-							if(checkToTopRight(x, y)) return true;
-						}
-						if (y <= board.getYMax() - 3){
-							if(checkToBottomRight(x, y)) return true;
-						}
-						if(checkToRight(x, y)) return true;
-					}
-					if (y <= board.getYMax() - 3){
-						if(checkToBottom(x, y)) return true;
-					}
-				}
+	private boolean checkWin() {
+    	int xMax = board.getXMax();
+		int yMax = board.getYMax();
+		for (int x = 1; x <= xMax; x++) {
+			for (int y = 1; y <= yMax; y++) {
+				if (board.getLocation(x, y).equals(" ")) continue;
+
+				if (x <= xMax - 3 && checkToRight(x, y)) return true;
+
+				if (y <= yMax - 3 && checkToBottom(x, y)) return true;
+
+				if (x <= xMax - 3 && y <= yMax - 3 && checkToBottomRight(x, y)) return true;
+
+				if (x <= xMax - 3 && y > 3 && checkToTopRight(x, y)) return true;
 			}
 		}
 		return false;
 	}
+
 
 	/**
 	 * Checks spaces at the top right of original location up to 3 spaces away. Sees if there is a win this way.
