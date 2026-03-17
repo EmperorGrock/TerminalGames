@@ -22,11 +22,12 @@ public class Qubic {
 		Terminal.printlnWithFormat("PAY ATTENTION: ..., X is horizontal, Y is vertical", 5,4);
 		while(!hasWon){
 			cube.printWideMap();
-			if(player == 1)
-				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
-			else
-				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
-			Terminal.textColor(2);
+			String turnStatement = (player == 1)
+									? "Player 1's turn!"
+									: "Player 2's turn!";
+			int clr = (player == 1) ? 1 : 4;
+			Terminal.printlnWithFormat(turnStatement, clr, 4);
+			Terminal.textEdit(2, 4);
 			int z = Input.getInt("Layer number", 1, 4);
 			int x = Input.getInt("X Coordinate", 1, 4);
 			int y = Input.getInt("Y Coordinate", 1, 4);
@@ -38,10 +39,10 @@ public class Qubic {
 			if(checkForWin()){
 				hasWon = true;
 				cube.printWideMap();
-				if(player == 1)
-					Terminal.printlnWithFormat("Player 1 has won!", 1, 4);
-				else
-					Terminal.printlnWithFormat("Player 2 has won!", 4, 4);
+				String winStatement = (player == 1)
+									? "Player 1 won!"
+									: "Player 2 won!";
+				Terminal.printlnWithFormat(winStatement, clr, 4);
 			}else if(checkForTie()){
 				Terminal.textEdit(5,3);
 				hasWon = !Input.getYesNo("It's a tie! Play again?");

@@ -31,11 +31,12 @@ public class TicTacToe{
 		while(!hasWon){
 			board.printWideMap();
 			Terminal.printlnWithFormat("Round "+ round, 3, 4);
-			if(player == 1)
-				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
-			else
-				Terminal.printlnWithFormat("Player 2's turn!", 4, 4);
-			Terminal.textColor(2);
+			String turnStatement = (player == 1)
+									? "Player 1's turn!"
+									: "Player 2's turn!";
+			int clr = (player == 1) ? 1 : 4;
+			Terminal.printlnWithFormat(turnStatement, clr, 4);
+			Terminal.textEdit(2, 4);
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
 			Terminal.clearFormat();
@@ -46,10 +47,10 @@ public class TicTacToe{
 			if(round > 3 && checkForWin(board)){
 				hasWon = true;
 				board.printWideMap();
-				if(player == 1)
-					Terminal.printlnWithFormat("Player 1 won!", 1, 4);
-				else
-					Terminal.printlnWithFormat("Player 2 won!", 4, 4);
+				String winStatement = (player == 1)
+									? "Player 1 won!"
+									: "Player 2 won!";
+				Terminal.printlnWithFormat(winStatement, clr, 4);
 			}else if(round == size * size){
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
 				board.clearMap();
@@ -69,13 +70,11 @@ public class TicTacToe{
 	 */
 	private boolean processCoordinates(int first, int second){
 		if(board.getLocation(first, second).equals(" ")){
-			if(player == 1){
-				board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, first, second);
-				return true;
-			}else if(player == 2){
-				board.editCoord(Terminal.BLUE + "o" + Terminal.CLEAR, first, second);
-				return true;
-			}
+			String playerMarker = (player == 1)
+								? Terminal.RED + "x" + Terminal.CLEAR
+								: Terminal.BLUE + "o" + Terminal.CLEAR;
+			board.editCoord(playerMarker, first, second);
+			return true;
 		}
 		return false;
 	}

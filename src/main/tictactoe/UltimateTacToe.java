@@ -29,7 +29,7 @@ public class UltimateTacToe {
 			int x = Input.getInt("X Coordinate", 1, 3);
 			int y = Input.getInt("Y Coordinate", 1, 3);
 			Terminal.clearFormat();
-			if(!processCoordinates(x, y)){
+			/*if(!processCoordinates(x, y)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
 			}
@@ -44,11 +44,11 @@ public class UltimateTacToe {
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
 			}
 			if(player == 1) player++;
-			else player--;
+			else player--;*/
 		}
 	}
 
-	private void processCoordinates()
+	private void processCoordinates(){}
 
 	private void cleanSuperMap(){
 		for(int x = 0; x < 3; x++)
