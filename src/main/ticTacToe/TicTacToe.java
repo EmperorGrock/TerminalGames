@@ -36,10 +36,8 @@ public class TicTacToe{
 									: "Player 2's turn!";
 			int clr = (player == 1) ? 1 : 4;
 			Terminal.printlnWithFormat(turnStatement, clr, 1);
-			Terminal.textColor(2);
 			int x = Input.getInt("X Coordinate", 1, size);
 			int y = Input.getInt("Y Coordinate", 1, size);
-			Terminal.clearFormat();
 			if(!processCoordinates(x, y)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;

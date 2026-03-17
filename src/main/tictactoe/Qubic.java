@@ -27,11 +27,9 @@ public class Qubic {
 									: "Player 2's turn!";
 			int clr = (player == 1) ? 1 : 4;
 			Terminal.printlnWithFormat(turnStatement, clr, 4);
-			Terminal.textColor(2);
 			int z = Input.getInt("Layer number", 1, 4);
 			int x = Input.getInt("X Coordinate", 1, 4);
 			int y = Input.getInt("Y Coordinate", 1, 4);
-			Terminal.clearFormat();
 			if(!processCoordinates(x, y, z)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 4);
 				continue;
