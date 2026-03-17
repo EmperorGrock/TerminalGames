@@ -1,7 +1,8 @@
 package main.extramethods;
 
 /**
- * A helper class for creating and managing a 2D array of strings, with methods for editing and printing the array in a formatted way.
+ * A helper class for creating and managing a 2D array of strings, with methods for editing and printing the array in a formatted way. 
+ * Requires a size in the SINGLE DIGITS
  * Built for the TerminalGames app, used currently in the tic-tac-toe game, but can be used for any game or application that requires a 2D grid of strings.
  * @todo - Add error handling for out-of-bounds coordinates in editCoord and getLocation methods
  * @todo - Add method for checking if a specific coordinate is empty or not, for use in games like tic-tac-toe

@@ -26,7 +26,7 @@ public class ConnectFour{
 		boolean hasWon = false;
 		while(!hasWon){
 			board.printWideMap();
-			Terminal.printlnWithFormat("Round "+ round, 2, 4);
+			Terminal.printlnWithFormat("Round "+ round, 3, 4);
 			if(player == 1)
 				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
 			else

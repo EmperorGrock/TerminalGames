@@ -27,8 +27,10 @@ public class TicTacToe{
 		player = 1;
 		board = new TwoDHelper(size, size);
 		boolean hasWon = false;
+		int round = 1;
 		while(!hasWon){
 			board.printWideMap();
+			Terminal.printlnWithFormat("Round "+ round, 3, 4);
 			if(player == 1)
 				Terminal.printlnWithFormat("Player 1's turn!", 1, 4);
 			else
@@ -41,16 +43,19 @@ public class TicTacToe{
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
 			}
-			if(checkForWin(board)){
+			if(round > 3 && checkForWin(board)){
 				hasWon = true;
 				board.printWideMap();
 				if(player == 1)
 					Terminal.printlnWithFormat("Player 1 won!", 1, 4);
 				else
 					Terminal.printlnWithFormat("Player 2 won!", 4, 4);
-			}else if(checkForTie()){
+			}else if(round == size * size){
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
+				board.clearMap();
+				round = 0;
 			}
+			round++;
 			if(player == 1) player++;
 			else player--;
 		}
@@ -73,24 +78,6 @@ public class TicTacToe{
 			}
 		}
 		return false;
-	}
-	
-	/**
-	 * Checks if the game is a tie.
-	 * @return true if it's a tie, false otherwise
-	 */
-	private boolean checkForTie(){
-		boolean allFull = true;
-		for(int i = 1; i <= board.getXMax(); i++)
-			for(int j = 1; j <= board.getYMax(); j++)
-				if(board.getLocation(i, j).equals(" "))
-					allFull = false;
-		if(allFull){
-			board.clearMap();
-			return true;
-		}
-		return false;
-			
 	}
 
 	/**
