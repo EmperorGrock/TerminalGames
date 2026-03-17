@@ -31,7 +31,9 @@ public class ConnectFour{
 				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
 			else
 				Terminal.printlnWithFormat("It is player 2's turn!", 4, 4);
+			Terminal.textColor(2);
 			int Coord = Input.getInt("Enter Coordinate", 1, board.getXMax());
+			Terminal.clearFormat();
 			if(!processCoordinate(Coord)){
 				Terminal.printlnWithFormat("That column is full! Try again.", 5, 3);
 				continue;
@@ -76,7 +78,9 @@ public class ConnectFour{
 				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
 			else
 				Terminal.printlnWithFormat("It is player 2's turn!", 4, 4);
+			Terminal.textColor(2);
 			int Coord = Input.getInt("Enter Coordinate", 1, board.getXMax());
+			Terminal.clearFormat();
 			if(!processCoordinate(Coord)){
 				Terminal.printlnWithFormat("That column is full! Try again.", 5, 3);
 				continue;
