@@ -65,25 +65,28 @@ public class Input{
 	 * @return The array of integers that the user entered
 	 */
 	public static int[] getCoords(String message, int min, int max, int dimensions){
-		boolean allowed = false;
+		boolean allowed = true;
 		int[] input = new int[dimensions];
 		do{
-			System.out.print(message + ": ");
+			allowed = true;
+			System.out.print(message + "\nYou must separate each number using a comma: ");
 			String[] splString = System.console().readLine().split(",");
 			if (splString.length != dimensions){
-				System.out.println("Invalid Syntax.");
+				System.out.println("Invalid Syntax.\n");
+				allowed = false;
 				continue;
 			}
 			for(int i = 0; i < dimensions; i++){
 				try{
 					input[i] = Integer.parseInt(splString[i]);
 					if(input[i] < min || input[i] > max){
-						System.out.println("Input must be between " + min + " and " + max + ".");
-					} else {
-						allowed = true;
+						System.out.println("Input must be between " + min + " and " + max + ".\n");
+						allowed = false;
+						break;
 					}
 				}catch(NumberFormatException e){
 					System.out.println("Invalid input. Please enter integers separated by commas.");
+					allowed = false;
 				}
 			}
 		} while(!allowed);

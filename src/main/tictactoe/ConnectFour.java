@@ -15,11 +15,14 @@ public class ConnectFour{
 	public ConnectFour(){}
 
 	/**
-	 * Executes Connect Four game with map size of 7 rows * 6 columns
+	 * Executes Connect Four game with map size of 7 rows * 6 columns.
 	 */
 	public void connectFour(){
+		int[] size = Input.getCoords("Input the size of the board you would like.", 4, 9, 2);
+		int xSize = size[0];
+		int ySize = size[1];
 		player = 1;
-		board = new TwoDHelper(7,6);
+		board = new TwoDHelper(xSize, ySize);
 		int round = 1;
 		boolean hasWon = false;
 		while(!hasWon){
@@ -29,7 +32,7 @@ public class ConnectFour{
 				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
 			else
 				Terminal.printlnWithFormat("It is player 2's turn!", 4, 4);
-			int Coord = Input.getInt("Enter Coordinate", 1, 7);
+			int Coord = Input.getInt("Enter Coordinate", 1, board.getXMax());
 			if(!processCoordinate(Coord)){
 				Terminal.printlnWithFormat("That column is full! Try again.", 5, 3);
 				continue;
@@ -51,7 +54,7 @@ public class ConnectFour{
 				player--;
 				round++;
 			}
-			if(round > 21){
+			if(round > xSize*ySize/2){
 				board.printWideMap();
 				board.clearMap();
 				round = 1;
@@ -68,10 +71,10 @@ public class ConnectFour{
 	private boolean processCoordinate(int column){
 		if(board.getLocation(column, 1).equals(" ")){
 			int row = 1;
-			while(row <= 6){
-				if(board.getLocation(column, row).equals(" ") && row < 6) 
+			while(row <= board.getYMax()){
+				if(board.getLocation(column, row).equals(" ") && row < board.getYMax()) 
 					row++;
-				else if(board.getLocation(column, row).equals(" ") && row == 6){
+				else if(board.getLocation(column, row).equals(" ") && row == board.getYMax()){
 					if(player == 1){
 						board.editCoord(Terminal.RED + "x" + Terminal.CLEAR, column, row);
 					}else if(player == 2){
@@ -96,19 +99,19 @@ public class ConnectFour{
 	 * @return true if a win is found
 	 */
 	private boolean checkWin(){
-		for(int x = 1; x < 8; x++){
-			for(int y = 1; y < 7; y++){
+		for(int x = 1; x < board.getXMax(); x++){
+			for(int y = 1; y < board.getYMax(); y++){
 				if(!board.getLocation(x, y).equals(" ")){
-					if(x < 5){
+					if(x <= board.getXMax() - 3){
 						if (y > 3){
 							if(checkToTopRight(x, y)) return true;
 						}
-						if (y < 4){
+						if (y <= board.getYMax() - 3){
 							if(checkToBottomRight(x, y)) return true;
 						}
 						if(checkToRight(x, y)) return true;
 					}
-					if (y < 4){
+					if (y <= board.getYMax() - 3){
 						if(checkToBottom(x, y)) return true;
 					}
 				}
