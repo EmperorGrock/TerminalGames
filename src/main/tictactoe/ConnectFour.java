@@ -18,9 +18,53 @@ public class ConnectFour{
 	 * Executes Connect Four game with map size of 7 rows * 6 columns.
 	 */
 	public void connectFour(){
-		int[] size = Input.getCoords("Input the size of the board you would like.", 4, 9, 2);
-		int xSize = size[0];
-		int ySize = size[1];
+		int xSize = 7;
+		int ySize = 6;
+		player = 1;
+		board = new TwoDHelper(xSize, ySize);
+		int round = 1;
+		boolean hasWon = false;
+		while(!hasWon){
+			board.printWideMap();
+			Terminal.printlnWithFormat("Round "+ round, 2, 4);
+			if(player == 1)
+				Terminal.printlnWithFormat("It is player 1's turn!", 1, 4);
+			else
+				Terminal.printlnWithFormat("It is player 2's turn!", 4, 4);
+			int Coord = Input.getInt("Enter Coordinate", 1, board.getXMax());
+			if(!processCoordinate(Coord)){
+				Terminal.printlnWithFormat("That column is full! Try again.", 5, 3);
+				continue;
+			}
+			if(round > 3)
+			{
+				if(checkWin())
+				{	
+					board.printWideMap();
+					hasWon = true;
+					if(player == 1)
+						Terminal.printlnWithFormat("Player 1 won!", 1, 4);
+					else
+						Terminal.printlnWithFormat("Player 2 won!", 4, 4);
+				}
+			}
+			if(player == 1) player++;
+			else {
+				player--;
+				round++;
+			}
+			if(round > xSize*ySize/2){
+				board.printWideMap();
+				board.clearMap();
+				round = 1;
+				hasWon = !Input.getYesNo("It's a tie! Would you like to play again?");
+			}
+		}
+	}
+
+	public void connectFour(int x, int y){
+		int xSize = x;
+		int ySize = y;
 		player = 1;
 		board = new TwoDHelper(xSize, ySize);
 		int round = 1;
