@@ -14,10 +14,10 @@ public class TicTacToeRunner {
 			if(choice == 1) break;
 			switch(choice){
 				case(2):
-					ticTac.executeTicTacToe(3);
+					connect.connectFour();
 					break;
 				case(3):
-					connect.connectFour();
+					ticTac.executeTicTacToe(3);
 					break;
 				case(4):
 					ticTac.executeTicTacToe(4);
