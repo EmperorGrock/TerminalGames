@@ -6,6 +6,7 @@ import main.extramethods.Input;
 /**
  * A class representing the Ultimate Tic-Tac-Toe game.
  * @author EmperorGrock
+ * @author invisiblekoi
  */
 public class UltimateToe {
 	/** The 3x3 grid of TicTacToe boards. */
