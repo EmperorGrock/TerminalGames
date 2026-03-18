@@ -32,7 +32,7 @@ public class Terminal{
 		System.out.print("\033[H");
 		//Clear scroll back (Most consoles)
 		System.out.print("\033[3J");
-		//IDK
+		//Clear buffered data or smths
 		System.out.flush();
 	}
 

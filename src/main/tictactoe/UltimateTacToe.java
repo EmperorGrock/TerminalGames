@@ -54,7 +54,8 @@ public class UltimateTacToe {
 				player--;
 				round++;
 			}
-			Terminal.clearTerminal();
+			if(round%2 == 0)
+				Terminal.clearTerminal();
 		}
 	}
 
