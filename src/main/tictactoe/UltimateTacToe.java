@@ -10,10 +10,6 @@ public class UltimateTacToe {
 	private int player;
 
 	public void executeUltimateTacToe(){
-		Terminal.printlnWithFormat("Unfortunately, Ultimate Tic Tac Toe hasn't been programmed yet!", 5, 3);
-	}
-
-	public void executeTestUltimateTacToe(){
 		player = 1;
 		superMap = new TicTacToe[3][3];
 		wonSuperMap = new int[3][3];
@@ -130,28 +126,20 @@ public class UltimateTacToe {
 			for(int smallY = 0; smallY < 3; smallY++){
 				for(int x = 0; x < 3; x++){
 					System.out.print("  ");
-
-					//CAN MAKE THIS MORE EFFICIENT, USE TRIPLE TERNARY
-					if(superMap[y][x] == null){
-						String playerLine = (wonSuperMap[y][x] == 1)
-											? (Terminal.RED + "  xxxxxxxx " + Terminal.CLEAR)
-											: (Terminal.BLUE + "  oooooooo " + Terminal.CLEAR);
-						System.out.print(playerLine);
-					} else
-						System.out.print(superMap[y][x].getBoard().formatWideLine(smallY));
+					String playerLine = (wonSuperMap[y][x] == 0) ? superMap[y][x].getBoard().formatWideLine(smallY)
+									: (wonSuperMap[y][x] == 1) ? Terminal.RED + "  xxxxxxxx " + Terminal.CLEAR
+									: Terminal.BLUE + "  oooooooo " + Terminal.CLEAR;
+					System.out.print(playerLine);
 					if(x<2)
 						System.out.print("   | ");
 				}
 				System.out.println();
 				if(smallY<2){
 					for(int x = 0; x < 3; x++){
-						if(superMap[y][x] == null){
-							String playerLine = (wonSuperMap[y][x] == 1)
-											? (Terminal.RED + "    xxxxxxxx " + Terminal.CLEAR)
-											: (Terminal.BLUE + "    oooooooo " + Terminal.CLEAR);
-							System.out.print(playerLine);
-						} else
-							System.out.print(superMap[y][x].getBoard().getWideBorder());
+						String borderLine = (wonSuperMap[y][x] == 0) ? superMap[y][x].getBoard().getWideBorder()
+									: (wonSuperMap[y][x] == 1) ? Terminal.RED + "    xxxxxxxx " + Terminal.CLEAR
+									: Terminal.BLUE + "    oooooooo " + Terminal.CLEAR;
+						System.out.print(borderLine);
 						if(x<2)
 							System.out.print("   | ");
 					}
@@ -172,6 +160,6 @@ public class UltimateTacToe {
 
 	public static void main(String[] args){
 		UltimateTacToe toe = new UltimateTacToe();
-		toe.executeTestUltimateTacToe();
+		toe.executeUltimateTacToe();
 	}
 }
