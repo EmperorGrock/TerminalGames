@@ -3,11 +3,21 @@ package main.tictactoe;
 import main.extramethods.Terminal;
 import main.extramethods.Input;
 
+/**
+ * A class representing the Ultimate Tic-Tac-Toe game.
+ * @author EmperorGrock
+ */
 public class UltimateToe {
+	/** The 3x3 grid of TicTacToe boards. */
 	private TicTacToe[][] superMap;
+	/** The 3x3 grid tracking which boards are won and by whom. */
 	private int[][] wonSuperMap;
+	/** The current player (1 or 2). */
 	private int player;
 
+	/**
+	 * Executes the Ultimate Tic-Tac-Toe game.
+	 */
 	public void executeUltimateTacToe(){
 		player = 1;
 		int round = 1;
@@ -70,6 +80,10 @@ public class UltimateToe {
 		return false;
 	}
 
+	/**
+	 * Checks if the game is tied (all boards are won).
+	 * @return True if tied, false otherwise.
+	 */
 	private boolean checkForTie(){
 		for(TicTacToe[] toes : superMap)
 			for(TicTacToe toe : toes)
@@ -91,6 +105,10 @@ public class UltimateToe {
 			}
 	}
 
+	/**
+	 * Checks for a win on the big board.
+	 * @return True if there is a big win, false otherwise.
+	 */
 	private boolean checkForBigWin(){
 		checkSmallWins();
 		//Diagonal 1
@@ -118,7 +136,9 @@ public class UltimateToe {
 		return false;
 	}
 
-
+	/**
+	 * Reset the entire map
+	 */
 	private void cleanSuperMap(){
 		for(int x = 0; x < 3; x++)
 			for(int y = 0; y < 3; y++){
@@ -128,6 +148,9 @@ public class UltimateToe {
 			}
 	}
 
+	/**
+	 * Complicated, annoying method to print out the formatter ultimate board.
+	 */
 	private void printToes(){
 		System.out.println("                |                 |");
 		for(int y = 0; y < 3; y++){
