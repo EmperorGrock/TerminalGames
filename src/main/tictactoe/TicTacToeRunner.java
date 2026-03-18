@@ -8,29 +8,32 @@ public class TicTacToeRunner {
 
 	public static void run(){
 		while(true){
-			TicTacToe ticTac = new TicTacToe();
-			Qubic cube = new Qubic();
-			ConnectFour connect = new ConnectFour();
-			UltimateTacToe ult = new UltimateTacToe();
+			TicTacToe ticTac;
 			int choice = Input.advancedAsk("Which TicTacToe game would you like to play?", games);
 			if(choice == 1) break;
 			switch(choice){
 				case(2):
+					ConnectFour connect = new ConnectFour();
 					connect.connectFour();
 					break;
 				case(3):
+					ticTac = new TicTacToe();
 					ticTac.executeTicTacToe(3);
 					break;
 				case(4):
+					ticTac = new TicTacToe();
 					ticTac.executeTicTacToe(4);
 					break;
 				case(5):
+					ticTac = new TicTacToe();
 					ticTac.executeTicTacToe(5);
 					break;
 				case(6):
+					Qubic cube = new Qubic();
 					cube.executeQubic();
 					break;
 				case(7):
+					UltimateTacToe ult = new UltimateTacToe();
 					ult.executeUltimateTacToe();
 					break;
 			}

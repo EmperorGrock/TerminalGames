@@ -21,7 +21,7 @@ public class UltimateTacToe {
 		boolean hasWon = false;
 		boolean freeMove = true;
 		int whichMiniBoard = 0;
-		Terminal.printlnWithFormat("NOTE: miniboards are numbered 1-9, left to right, top down. ", 5, 3);
+		Terminal.printlnWithFormat("NOTE: miniBoards are numbered 1-9, left to right, top down. ", 5, 3);
 		while(!hasWon){
 			printToes();
 			String turnStatement = (player == 1)
@@ -30,28 +30,27 @@ public class UltimateTacToe {
 			int clr = (player == 1) ? 1 : 4;
 			Terminal.printlnWithFormat(turnStatement, clr, 1);
 			if(freeMove)
-				while(wonSuperMap[(whichMiniBoard-1)/3][(whichMiniBoard-1)%3]!=0){
-					whichMiniBoard = Input.getInt("Which miniBoard are you playing on", 1, 9);
-				}
-			
+				whichMiniBoard = Input.getInt("FREE MOVE!! Which miniBoard are you playing on", 1, 9);
 			int x = Input.getInt("X Coordinate", 1, 3);
 			int y = Input.getInt("Y Coordinate", 1, 3);
-			/*if(!processCoordinates(x, y)){
+			if(!processCoordinates(whichMiniBoard, x, y)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
 			}
-			if(checkForWin(board)){
+			freeMove = superMap[y-1][x-1] == null;
+			whichMiniBoard = ((y-1)*3) + x;
+			if(checkForBigWin()){
 				hasWon = true;
 				printToes();
-				if(player == 1)
-					Terminal.printlnWithFormat("Player 1 won!", 1, 4);
-				else
-					Terminal.printlnWithFormat("Player 2 won!", 4, 4);
+				String winStatement = (player == 1)
+									? "Player 1 won!"
+									: "Player 2 won!";
+				Terminal.printlnWithFormat(winStatement, clr, 1);
 			}else if(checkForTie()){
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
 			}
 			if(player == 1) player++;
-			else player--;*/
+			else player--;
 		}
 	}
 
@@ -62,9 +61,59 @@ public class UltimateTacToe {
 								? Terminal.RED + "x" + Terminal.CLEAR
 								: Terminal.BLUE + "o" + Terminal.CLEAR;
 			miniBoard.getBoard().editCoord(playerMarker, x, y);
+			return true;
 		}
 		return false;
 	}
+
+	private boolean checkForTie(){
+		for(TicTacToe[] toes : superMap)
+			for(TicTacToe toe : toes)
+				if(toe != null)
+					return false;
+		return true;
+	}
+
+	private void checkSmallWins(){
+		for(int y = 0; y < 3; y++)
+			for(int x = 0; x < 3; x++){
+				if(superMap[y][x] != null){
+					boolean won = TicTacToe.checkForWin(superMap[y][x].getBoard());
+					if(won){
+						superMap[y][x] = null;
+						wonSuperMap[y][x] = player;
+					}
+			}
+			}
+	}
+
+	private boolean checkForBigWin(){
+		checkSmallWins();
+		//Diagonal 1
+		if((superMap[0][0]==null) && (wonSuperMap[0][0] == wonSuperMap[1][1]) && (wonSuperMap[0][0] == wonSuperMap[2][2])){
+			return true;
+		}
+
+		//Diagonal 2
+		if((superMap[0][2]==null) && (wonSuperMap[0][2] == wonSuperMap[1][1]) && (wonSuperMap[0][2] == wonSuperMap[2][0])){
+			return true;
+		}
+
+		//Vertical
+		for(int i = 0; i < 3; i++){
+			if((superMap[0][i] == null) && (wonSuperMap[0][i] == wonSuperMap[1][i]) && (wonSuperMap[2][i] == wonSuperMap[0][i]))
+				return true;
+		}
+
+		//Horizontal
+		for(int i = 0; i < 3; i++){
+			if((superMap[i][0] == null) && (wonSuperMap[i][0] == wonSuperMap[i][1]) && (wonSuperMap[i][2] == wonSuperMap[i][0]))
+				return true;
+		}
+
+		return false;
+	}
+
 
 	private void cleanSuperMap(){
 		for(int x = 0; x < 3; x++)
@@ -81,14 +130,28 @@ public class UltimateTacToe {
 			for(int smallY = 0; smallY < 3; smallY++){
 				for(int x = 0; x < 3; x++){
 					System.out.print("  ");
-					System.out.print(superMap[y][x].getBoard().formatWideLine(smallY));
+
+					//CAN MAKE THIS MORE EFFICIENT, USE TRIPLE TERNARY
+					if(superMap[y][x] == null){
+						String playerLine = (wonSuperMap[y][x] == 1)
+											? (Terminal.RED + "  xxxxxxxx " + Terminal.CLEAR)
+											: (Terminal.BLUE + "  oooooooo " + Terminal.CLEAR);
+						System.out.print(playerLine);
+					} else
+						System.out.print(superMap[y][x].getBoard().formatWideLine(smallY));
 					if(x<2)
 						System.out.print("   | ");
 				}
 				System.out.println();
 				if(smallY<2){
 					for(int x = 0; x < 3; x++){
-						System.out.print(superMap[y][x].getBoard().getWideBorder());
+						if(superMap[y][x] == null){
+							String playerLine = (wonSuperMap[y][x] == 1)
+											? (Terminal.RED + "    xxxxxxxx " + Terminal.CLEAR)
+											: (Terminal.BLUE + "    oooooooo " + Terminal.CLEAR);
+							System.out.print(playerLine);
+						} else
+							System.out.print(superMap[y][x].getBoard().getWideBorder());
 						if(x<2)
 							System.out.print("   | ");
 					}
