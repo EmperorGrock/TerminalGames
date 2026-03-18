@@ -36,7 +36,6 @@ public class UltimateTacToe {
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
 			}
-			freeMove = superMap[y-1][x-1] == null;
 			whichMiniBoard = ((y-1)*3) + x;
 			if(checkForBigWin()){
 				hasWon = true;
@@ -50,6 +49,7 @@ public class UltimateTacToe {
 				cleanSuperMap();
 				round = 1;
 			}
+			freeMove = superMap[y-1][x-1] == null;
 			if(player == 1) player++;
 			else {
 				player--;
