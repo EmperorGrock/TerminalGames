@@ -152,38 +152,38 @@ public class UltimateToe {
 	 * Complicated, annoying method to print out the formatter ultimate board.
 	 */
 	private void printToes(){
-		System.out.println("                |                 |");
+		System.out.println("                 |                 |");
 		for(int y = 0; y < 3; y++){
 			for(int smallY = 0; smallY < 3; smallY++){
 				for(int x = 0; x < 3; x++){
-					System.out.print("  ");
+					System.out.print("   ");
 					String playerLine =    (wonSuperMap[y][x] == 0) ? superMap[y][x].getBoard().formatWideLine(smallY)
-										:  (wonSuperMap[y][x] == 1) ? Terminal.RED + "  xxxxxxxx " + Terminal.CLEAR
-										: Terminal.BLUE + "  oooooooo " + Terminal.CLEAR;
+										:  (wonSuperMap[y][x] == 1) ? Terminal.RED + "xxxxxxxxxxx" + Terminal.CLEAR
+										: Terminal.BLUE + "ooooooooooo" + Terminal.CLEAR;
 					System.out.print(playerLine);
 					if(x<2)
-						System.out.print("   | ");
+						System.out.print("   |");
 				}
 				System.out.println();
 				if(smallY<2){
 					for(int x = 0; x < 3; x++){
-						String borderLine = (wonSuperMap[y][x] == 0) ? superMap[y][x].getBoard().getWideBorder()
-									: (wonSuperMap[y][x] == 1) ? Terminal.RED + "    xxxxxxxx " + Terminal.CLEAR
-									: Terminal.BLUE + "    oooooooo " + Terminal.CLEAR;
+						String borderLine = (wonSuperMap[y][x] == 0) ? " " + superMap[y][x].getBoard().getWideBorder()
+									: (wonSuperMap[y][x] == 1) ? Terminal.RED + "   xxxxxxxxxxx" + Terminal.CLEAR
+									: Terminal.BLUE + "   ooooooooooo" + Terminal.CLEAR;
 						System.out.print(borderLine);
 						if(x<2)
-							System.out.print("   | ");
+							System.out.print("   |");
 					}
 				}
 				
 				if(smallY==2)
-					System.out.println("                |                 |");
+					System.out.println("                 |                 |");
 				else
 					System.out.println();
 			}
 			if(y<2){
-				System.out.println("----------------|-----------------|---------------");
-				System.out.println("                |                 |");
+				System.out.println("-----------------|-----------------|-----------------");
+				System.out.println("                 |                 |");
 			}
 		}
 		System.out.println();
