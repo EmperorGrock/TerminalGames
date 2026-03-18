@@ -1,7 +1,6 @@
 package main.tictactoe;
 
 import main.extramethods.Terminal;
-import main.extramethods.TwoDHelper;
 import main.extramethods.Input;
 
 public class UltimateTacToe {
