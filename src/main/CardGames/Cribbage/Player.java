@@ -157,7 +157,7 @@ public class Player {
 		}
 	}
 
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Player p = new Player("y", true);
 		//Deck d = new Deck();
 		//p.drawHand(d);
@@ -165,5 +165,5 @@ public class Player {
 		Card.printCards(p.hand);
 		p.selectCard().printCard();
 		Card.printCards(p.hand);
-	}
+	}*/
 }

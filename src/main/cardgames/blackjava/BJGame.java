@@ -108,7 +108,7 @@ public class BJGame {
 	 * The main method to start the game, which creates a new 
 	 * BJGame object and calls its runGame method to start the game loop.
 	 */
-	public static void main(){
+	public static void main(String[] args){
 		BJGame blackjava = new BJGame();
 		blackjava.runGame();
 	}

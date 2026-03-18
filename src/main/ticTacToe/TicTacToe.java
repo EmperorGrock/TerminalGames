@@ -182,7 +182,7 @@ public class TicTacToe{
 	/**
 	 * Main method for testing the Tic-Tac-Toe game.
 	 */
-	void main(){
+	public static void main(String[] args){
 		int tictac = Input.getInt("Which size tictactoe do you want? (3-5)", 3, 5);
 		TicTacToe test = new TicTacToe();
 		test.executeTicTacToe(tictac);

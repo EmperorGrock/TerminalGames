@@ -107,7 +107,7 @@ public class UltimateTacToe {
 		System.out.println();
 	}
 
-	void main(){
+	public static void main(String[] args){
 		UltimateTacToe toe = new UltimateTacToe();
 		toe.executeTestUltimateTacToe();
 	}

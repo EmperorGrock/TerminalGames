@@ -134,10 +134,10 @@ public class Card {
 		System.out.println();
 	}
 
-	void main(String[] args){
+	/*public static void main(String[] args){
 		var n = new ArrayList<Card>();
 		n.add(new Card(0, 0));
 		n.add(new Card(12, 3));
 		printCards(n);
-	}
+	}*/
 }

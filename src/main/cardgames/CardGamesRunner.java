@@ -3,19 +3,30 @@ package main.cardgames;
 import main.extramethods.Input;
 import main.cardgames.blackjava.BJGame;
 import main.cardgames.textbasedholdem.THGame;
+import main.extramethods.Terminal;
 
 public class CardGamesRunner{
-	private String[] games = {"Quit", "Blackjava", "Text Based Hold Em", "Cribbage"};
-	
-	void main(){
+	public final static String[] games = {"Quit", "Blackjava", "Text Based Hold Em", "Cribbage"};
+
+	public static void run(){
+		BJGame blackJava;
 		while(true){
 			int gameNum = Input.advancedAsk("Which game do you want to play? ", games);
-			if(gameNum == 0)
-				break;
-			if(gameNum == 1)
-				BJGame.main();
-			if(gameNum == 2)
-				THGame.main();
+			if(gameNum == 1) break;
+			switch(gameNum){
+				case(2):
+					blackJava = new BJGame();
+					blackJava.runGame();
+				case(3):
+					Terminal.printlnWithFormat("Coming soon!", 5, 3);
+				case(4):
+					Terminal.printlnWithFormat("Cribbage is still in testing.", 5, 3);
+			}
 		}
+	}
+	
+	
+	public static void main(String[] args){
+		run();
 	}
 }

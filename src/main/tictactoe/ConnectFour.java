@@ -225,7 +225,8 @@ public class ConnectFour{
 		return connection;
 	}
 
-	void main(String[] args){
-		connectFour();
+	public static void main(String[] args){
+		ConnectFour test = new ConnectFour();
+		test.connectFour();
 	}
 }

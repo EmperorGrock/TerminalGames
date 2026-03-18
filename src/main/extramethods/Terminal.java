@@ -118,12 +118,4 @@ public class Terminal{
 	public static void cursorVertical(int lines){
 		
 	}*/
-
-	/*void main(){
-		System.out.print("yayp");
-		//cursorHorizontal(3);
-		setTextColor(0);
-		textForm(7);
-		System.out.print("wow");
-	}*/
 }

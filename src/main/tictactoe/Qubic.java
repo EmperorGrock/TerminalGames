@@ -157,7 +157,7 @@ public class Qubic {
 	/**
 	 * Main method for testing the Qubic game.
 	 */
-	void main(){
+	public static void main(String[] args){
 		Qubic test = new Qubic();
 		test.executeQubic();
 	}
