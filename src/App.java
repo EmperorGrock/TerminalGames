@@ -7,6 +7,7 @@ public class App {
 	private static String[] games = {"Quit", "Card Games", "TicTacToe", "Chess", "Monopoly"};
 
 	public static void run(){
+		Terminal.clearTerminal();
 		while(true){
 			int input = Input.advancedAsk("Which games would you like?", games);
 			if(input == 1) break;

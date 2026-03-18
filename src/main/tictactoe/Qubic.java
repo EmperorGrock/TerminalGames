@@ -19,7 +19,8 @@ public class Qubic {
 		player = 1;
 		cube = new ThreeDHelper(4,4,4);
 		boolean hasWon = false;
-		Terminal.printlnWithFormat("PAY ATTENTION: ..., X is horizontal, Y is vertical", 5,4);
+		Terminal.clearTerminal();
+		Terminal.printlnWithFormat("The first is the top layer, right is the bottom. ", 5,4);
 		while(!hasWon){
 			cube.printWideMap();
 			String turnStatement = (player == 1)
@@ -48,6 +49,7 @@ public class Qubic {
 			}
 			if(player == 1) player++;
 			else player--;
+			Terminal.clearTerminal();
 		}
 	}
 

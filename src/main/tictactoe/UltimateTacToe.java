@@ -17,6 +17,7 @@ public class UltimateTacToe {
 		boolean hasWon = false;
 		boolean freeMove = true;
 		int whichMiniBoard = 0;
+		Terminal.clearTerminal();
 		Terminal.printlnWithFormat("NOTE: miniBoards are numbered 1-9, left to right, top down. ", 5, 3);
 		while(!hasWon){
 			printToes();
@@ -47,6 +48,7 @@ public class UltimateTacToe {
 			}
 			if(player == 1) player++;
 			else player--;
+			Terminal.clearTerminal();
 		}
 	}
 

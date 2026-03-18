@@ -29,6 +29,7 @@ public class TicTacToe{
 		boolean hasWon = false;
 		int round = 1;
 		while(!hasWon){
+			Terminal.clearTerminal();
 			board.printWideMap();
 			Terminal.printlnWithFormat("Round "+ round, 3, 4);
 			String turnStatement = (player == 1)

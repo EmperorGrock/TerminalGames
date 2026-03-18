@@ -25,6 +25,7 @@ public class ConnectFour{
 		int round = 1;
 		boolean hasWon = false;
 		while(!hasWon){
+			Terminal.clearTerminal();
 			board.printWideMap();
 			Terminal.printlnWithFormat("Round "+ round, 3, 4);
 			if(player == 1)
