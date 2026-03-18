@@ -16,9 +16,9 @@ public class UltimateToe {
 		cleanSuperMap();
 		boolean hasWon = false;
 		boolean freeMove = true;
-		int whichMiniBoard = 0;
+		int whichTacling = 0;
 		Terminal.clearTerminal();
-		Terminal.printlnWithFormat("NOTE: miniBoards are numbered 1-9, left to right, top down. ", 5, 3);
+		Terminal.printlnWithFormat("NOTE: Taclings are numbered 1-9, left to right, top down. ", 5, 3);
 		while(!hasWon){
 			printToes();
 			Terminal.printlnWithFormat("Round " + round, 3, 4);
@@ -28,14 +28,14 @@ public class UltimateToe {
 			int clr = (player == 1) ? 1 : 4;
 			Terminal.printlnWithFormat(turnStatement, clr, 1);
 			if(freeMove)
-				whichMiniBoard = Input.getInt("FREE MOVE!! Which miniBoard are you playing on", 1, 9);
+				whichTacling = Input.getInt("FREE MOVE!! Which Tacling are you playing on", 1, 9);
 			int x = Input.getInt("X Coordinate", 1, 3);
 			int y = Input.getInt("Y Coordinate", 1, 3);
-			if(!processCoordinates(whichMiniBoard, x, y)){
+			if(!processCoordinates(whichTacling, x, y)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
 				continue;
 			}
-			whichMiniBoard = ((y-1)*3) + x;
+			whichTacling = ((y-1)*3) + x;
 			if(checkForBigWin()){
 				hasWon = true;
 				printToes();
@@ -59,12 +59,12 @@ public class UltimateToe {
 	}
 
 	private boolean processCoordinates(int board, int x, int y){
-		TicTacToe miniBoard = superMap[(board-1)/3][(board-1)%3];
-		if(miniBoard != null && miniBoard.getBoard().getLocation(x,y).equals(" ")){
+		TicTacToe tacling = superMap[(board-1)/3][(board-1)%3];
+		if(tacling != null && tacling.getBoard().getLocation(x,y).equals(" ")){
 			String playerMarker = (player == 1)
 								? Terminal.RED + "x" + Terminal.CLEAR
 								: Terminal.BLUE + "o" + Terminal.CLEAR;
-			miniBoard.getBoard().editCoord(playerMarker, x, y);
+			tacling.getBoard().editCoord(playerMarker, x, y);
 			return true;
 		}
 		return false;
