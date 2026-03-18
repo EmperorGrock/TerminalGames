@@ -33,7 +33,7 @@ public class TicTacToeRunner {
 					cube.executeQubic();
 					break;
 				case(7):
-					UltimateTacToe ult = new UltimateTacToe();
+					UltimateToe ult = new UltimateToe();
 					ult.executeUltimateTacToe();
 					break;
 			}

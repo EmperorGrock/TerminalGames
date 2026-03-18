@@ -3,7 +3,7 @@ package main.tictactoe;
 import main.extramethods.Terminal;
 import main.extramethods.Input;
 
-public class UltimateTacToe {
+public class UltimateToe {
 	private TicTacToe[][] superMap;
 	private int[][] wonSuperMap;
 	private int player;
@@ -53,9 +53,8 @@ public class UltimateTacToe {
 			else {
 				player--;
 				round++;
-			}
-			if(round%2 == 0)
 				Terminal.clearTerminal();
+			}
 		}
 	}
 
@@ -135,9 +134,9 @@ public class UltimateTacToe {
 			for(int smallY = 0; smallY < 3; smallY++){
 				for(int x = 0; x < 3; x++){
 					System.out.print("  ");
-					String playerLine = (wonSuperMap[y][x] == 0) ? superMap[y][x].getBoard().formatWideLine(smallY)
-									: (wonSuperMap[y][x] == 1) ? Terminal.RED + "  xxxxxxxx " + Terminal.CLEAR
-									: Terminal.BLUE + "  oooooooo " + Terminal.CLEAR;
+					String playerLine =    (wonSuperMap[y][x] == 0) ? superMap[y][x].getBoard().formatWideLine(smallY)
+										:  (wonSuperMap[y][x] == 1) ? Terminal.RED + "  xxxxxxxx " + Terminal.CLEAR
+										: Terminal.BLUE + "  oooooooo " + Terminal.CLEAR;
 					System.out.print(playerLine);
 					if(x<2)
 						System.out.print("   | ");
@@ -168,7 +167,7 @@ public class UltimateTacToe {
 	}
 
 	public static void main(String[] args){
-		UltimateTacToe toe = new UltimateTacToe();
+		UltimateToe toe = new UltimateToe();
 		toe.executeUltimateTacToe();
 	}
 }
