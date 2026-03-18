@@ -11,6 +11,7 @@ public class UltimateTacToe {
 
 	public void executeUltimateTacToe(){
 		player = 1;
+		int round = 1;
 		superMap = new TicTacToe[3][3];
 		wonSuperMap = new int[3][3];
 		cleanSuperMap();
@@ -21,6 +22,7 @@ public class UltimateTacToe {
 		Terminal.printlnWithFormat("NOTE: miniBoards are numbered 1-9, left to right, top down. ", 5, 3);
 		while(!hasWon){
 			printToes();
+			Terminal.printlnWithFormat("Round " + round, 3, 4);
 			String turnStatement = (player == 1)
 									? "Player 1's turn!"
 									: "Player 2's turn!";
@@ -45,9 +47,14 @@ public class UltimateTacToe {
 				Terminal.printlnWithFormat(winStatement, clr, 1);
 			}else if(checkForTie()){
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
+				cleanSuperMap();
+				round = 1;
 			}
 			if(player == 1) player++;
-			else player--;
+			else {
+				player--;
+				round++;
+			}
 			Terminal.clearTerminal();
 		}
 	}
