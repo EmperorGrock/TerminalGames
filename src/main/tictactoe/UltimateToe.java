@@ -59,6 +59,7 @@ public class UltimateToe {
 			int y = Input.getInt("Y Coordinate", 1, 3);
 			if(!processCoordinates(whichTacling, x, y)){
 				Terminal.printlnWithFormat("Occupied! Try again.", 5, 3);
+				Terminal.sleep(1.5);
 				continue;
 			}
 			//algorithm that converts coordinates to single number
@@ -71,6 +72,8 @@ public class UltimateToe {
 									? "Player 1 won!"
 									: "Player 2 won!";
 				Terminal.printlnWithFormat(winStatement, clr, 1);
+				System.console().readLine();
+				//hasWon = !Input.getYesNo("Play again?");
 			}else if(checkForTie()){
 				printToes();
 				hasWon = !Input.getYesNo("It's a tie! Play again?");
