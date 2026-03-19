@@ -1,7 +1,7 @@
 import main.cardgames.CardGamesRunner;
 import main.extramethods.Input;
 import main.extramethods.Terminal;
-import main.tictactoe.TicTacToeRunner;
+import main.tictactoe.ToeRunner;
 
 public class App {
 	private static String[] games = {"Quit", "Card Games", "TicTacToe", "Chess", "Monopoly"};
@@ -16,7 +16,7 @@ public class App {
 					Terminal.printlnWithFormat("Card Games are coming soon! ", 5, 3);
 					break;
 				case(3):
-					TicTacToeRunner.run();
+					ToeRunner.run();
 					break;
 				case(4):
 					Terminal.printlnWithFormat("Chess is coming soon! ", 5, 3);
