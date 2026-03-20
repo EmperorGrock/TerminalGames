@@ -88,8 +88,8 @@ public class UltimateToe {
 			else {
 				player--;
 				round++;
-				Terminal.clearTerminal();
 			}
+			Terminal.clearTerminal();
 		}
 	}
 
