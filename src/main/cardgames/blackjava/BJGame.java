@@ -32,18 +32,18 @@ public class BJGame {
 	 * Handles the dealer's turn by revealing the dealer's hand, and then drawing cards until the dealer's score is at least 17.
 	 */
 	public void dealerTurn(){
-		Terminal.printlnWithFormat("Dealer's Turn: ", 1, 1);
+		Terminal.printlnWithFormat("Dealer's Turn: ", 3, 1);
 		dealerHand.printStatus();
 		while(dealerHand.getScore() < 17){
 			Terminal.sleep(1.5);
-			System.out.println("Dealer Hits. ");
+			Terminal.printlnWithFormat("Dealer Hits. ", 3, 0);
 			dealerHand.drawCard();
 			dealerHand.printStatus();
 		}
 		if(dealerHand.getScore() > 21){
-				System.out.println("Dealer Busts!");
+			Terminal.printlnWithFormat("Dealer Busts!", 3, 0);
 		}else{
-			System.out.println("Dealer Stands. ");
+			Terminal.printlnWithFormat("Dealer Stands. ", 3, 0);
 		}
 
 	}
@@ -55,7 +55,7 @@ public class BJGame {
 		int numPlayers = Input.getInt("Enter the number of players (1-5)", 1, 5);
 		this.gameDeck = new Deck();
 		for(int i = 0; i < numPlayers; i++){
-			players.add(new BJPlayer(gameDeck));
+			players.add(new BJPlayer(gameDeck, i+1));
 		}
 		this.dealerHand = new Hand(gameDeck, true);
 	}
@@ -69,7 +69,7 @@ public class BJGame {
 			p.restartHand();
 		}
 		for(int i = 0; i < players.size(); i++){
-			System.out.println("Player " + (i+1) + "'s turn: ");
+			Terminal.printlnWithFormat("Player " + (i+1) + "'s turn: ", 3, 3);
 			players.get(i).placeBets();
 			players.get(i).askSplit();
 			players.get(i).runTurn();
@@ -79,7 +79,7 @@ public class BJGame {
 			players.get(i).endTurn(dealerHand.getScore());
 			if(players.get(i).isDead()){
 				players.remove(i);
-				System.out.println("Player " + (i+1) + " is out of cash and is removed from the game. ");
+				Terminal.printlnWithFormat("Player " + (i+1) + " is BROKE, been deleted. ", 5, 3);
 				i--;
 			}
 		}
@@ -94,14 +94,16 @@ public class BJGame {
 		while(true){
 			round();
 			if(players.size() == 0){
-				System.out.println("All players are out of cash. Game over.");
+				Terminal.printlnWithFormat("EVERYONE BROKE. Game OVER.", 1, 1);
 				break;
 			}
-			if(!Input.getYesNo("Would you like to play another round?")){
-				System.out.println("Thanks for playing!");
+			if(!Input.getYesNo("Another round?")){
+				System.out.println("OK");
 				break;
 			}
+			Terminal.clearTerminal();
 		}
+		Terminal.clearTerminal();
 	}
 
 	/**

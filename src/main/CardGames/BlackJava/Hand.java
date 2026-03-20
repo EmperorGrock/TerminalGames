@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import main.cardgames.cardpack.*;
 import main.extramethods.Input;
+import main.extramethods.Terminal;
 
 /**
  * Represents a hand of cards in the blackjack game.
@@ -48,6 +49,7 @@ public class Hand {
 	 */
 	public Hand(Hand other){
 		this.hand.add(other.get(1));
+		this.deck = other.deck;
 		other.remove(1);
 	}
 
@@ -78,7 +80,7 @@ public class Hand {
 	 * @param cash The amount of cash the player has, which is the maximum bet allowed.
 	 */
 	public void placeBet(int cash){
-		System.out.println("You have " + cash + " dollars.");
+		Terminal.printlnWithFormat("You have " + cash + " dollars.", 6, 3);
 		int betAmt = Input.getInt("How much would you like to bet?", 1, cash);
 		this.bet = betAmt;
 	} 
@@ -212,7 +214,7 @@ public class Hand {
 			resetScore();
 			printStatus();
 		}
-		if(score > 21) System.out.println("BUSTED!");
+		if(score > 21) Terminal.printlnWithFormat("BUSTED!", 1, 1);
 		return score;
 	}
 }

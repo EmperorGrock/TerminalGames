@@ -14,13 +14,15 @@ public class BJPlayer {
 	private int cash = 1000;
 	private Hand hand;
 	private Hand otherHand;
+	private int playerNumber;
 
 	/**
 	 * Constructor for a blackjack player, which initializes their hand by drawing two cards from the provided deck.
 	 * @param d The deck to draw cards from for the player's hand
 	 */
-	public BJPlayer(Deck d){
+	public BJPlayer(Deck d, int number){
 		hand = new Hand(d);
+		playerNumber = number;
 	}
 
 	/**
@@ -40,18 +42,19 @@ public class BJPlayer {
 	 */
 	public void endTurn(int dealerAmt){
 		if(hand.beatDealer(dealerAmt)){
-			System.out.println("You win!");
+			Terminal.printlnWithFormat("Player " + playerNumber + " wins!", 2, 1);
 			editCash(hand.getBet());
 		}else{
-			System.out.println("You lose.");
+			Terminal.printlnWithFormat("Player " + playerNumber + " loses.", 1, 1);
 			editCash(0-hand.getBet());
 		}
 		if(otherHand != null){
 			if(otherHand.beatDealer(dealerAmt)){
-				System.out.println("Your second hand wins!");
+				Terminal.printlnWithFormat("Player " + playerNumber + "'s second hand wins!", 2, 1);
 				editCash(otherHand.getBet());
 			}else{
-				System.out.println("Your second hand loses.");
+				Terminal.printlnWithFormat("Player " + playerNumber + "'s second hand lose...", 1, 1);
+				System.out.println();
 				editCash(0-otherHand.getBet());
 			}
 		}
@@ -82,13 +85,21 @@ public class BJPlayer {
 		return false;
 	}
 
+	public int getPlayerNum(){
+		return playerNumber;
+	}
+
+	public void decrementPlayerNum(){
+		playerNumber--;
+	}
+
 	/**
 	 * Asks the player if they want to split their hand, if possible, and if they do, creates a new hand for the second part of the split.
 	 */
 	public void askSplit(){
 		if(hand.canSplit()){
 			hand.printStatus();
-			boolean response = Input.getYesNo("Would you like to split?");
+			boolean response = Input.getYesNo("Would player " + playerNumber + " like to split?");
 			if(response){
 				otherHand = new Hand(hand);
 				otherHand.setBet(hand.getBet()/2);
