@@ -17,17 +17,22 @@ public class Input{
 	 */
 	public static int getInt(String message){
 		Terminal.printWithFormat(message + ": ", 7, 4);
-		int input;
+		String input;
+		int newInt;
 		while(true){
 			try{
-				input = Integer.parseInt(System.console().readLine());
+				input = System.console().readLine();
+				if(input.equals("an integer")){
+					Terminal.printlnWithFormat("Really? Stop being cheeky.", 5, 3);
+				}
+				newInt = Integer.parseInt(input);
 				break;
 			}catch(NumberFormatException e){
 				Terminal.printlnWithFormat("Invalid input. Please enter an integer.", 5, 3);
 				continue;
 			}
 		}
-		return input;
+		return newInt;
 	}
 
 	/**
@@ -39,11 +44,16 @@ public class Input{
 	 */
 	public static int getInt(String message, int min, int max){
 		Terminal.printWithFormat(message + ": ", 2, 0);
-		int input;
+		String input;
+		int newInt;
 		while(true){
 			try{
-				input = Integer.parseInt(System.console().readLine());
-				if(input < min || input > max){
+				input = System.console().readLine();
+				if(input.equals("between " + min + " and " + max)){
+					Terminal.printlnWithFormat("Really? Stop being cheeky.", 5, 3);
+				}
+				newInt = Integer.parseInt(input);
+				if(newInt < min || newInt > max){
 					Terminal.printlnWithFormat("Input must be between " + min + " and " + max + ".", 5, 3);
 				}else{
 					break;
@@ -53,7 +63,7 @@ public class Input{
 				continue;
 			}
 		}
-		return input;
+		return newInt;
 	}
 
 	/**
