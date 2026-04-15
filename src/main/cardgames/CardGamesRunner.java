@@ -1,9 +1,9 @@
 package main.cardgames;
 
-import main.extramethods.Input;
+import helpers.Input;
 import main.cardgames.blackjava.BJGame;
 import main.cardgames.textbasedholdem.THGame;
-import main.extramethods.Terminal;
+import helpers.Terminal;
 
 public class CardGamesRunner{
 	public final static String[] games = {"Quit", "Blackjava", "Text Based Hold Em", "Cribbage"};

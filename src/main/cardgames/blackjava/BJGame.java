@@ -1,8 +1,8 @@
 package main.cardgames.blackjava;
 
 import main.cardgames.cardpack.*;
-import main.extramethods.Input;
-import main.extramethods.Terminal;
+import helpers.Input;
+import helpers.Terminal;
 
 import java.util.ArrayList;
 

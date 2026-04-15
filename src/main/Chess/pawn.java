@@ -3,6 +3,8 @@ package main.chess;
 import java.util.*;
 
 import main.extramethods.*;
+import helpers.Input;
+
 public class Pawn extends Piece{
 	//creates a pawn at given location. Make sure it is not illegal
 	private boolean enPassentPossible;

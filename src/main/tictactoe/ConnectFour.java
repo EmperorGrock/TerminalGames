@@ -1,7 +1,7 @@
 package main.tictactoe;
 import main.extramethods.TwoDHelper;
-import main.extramethods.Input;
-import main.extramethods.Terminal;
+import helpers.Input;
+import helpers.Terminal;
 
 /**
  * A simple implementation of the classic Connect Four game, using the TwoDHelper class to manage the game board and the Input class to handle user input.

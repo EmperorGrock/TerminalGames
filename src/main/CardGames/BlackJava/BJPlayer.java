@@ -1,8 +1,8 @@
 package main.cardgames.blackjava;
 
 import main.cardgames.cardpack.*;
-import main.extramethods.Input;
-import main.extramethods.Terminal;
+import helpers.Input;
+import helpers.Terminal;
 
 /**
  * A class representing a player in the blackjack game, containing their hand(s) of cards, their cash, and methods for placing bets, 

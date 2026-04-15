@@ -1,6 +1,6 @@
 package main.tictactoe;
 
-import main.extramethods.Input;
+import helpers.Input;
 
 public class ToeRunner {
 	public static final String[] games = {"Quit TicTacToe", "Connect Four", "3x3 (Normal)", "4x4 (2D, larger)", "5x5 (2D, HUGE)", "Qubic: 4x4x4 (3D, Huge, complicated)", 

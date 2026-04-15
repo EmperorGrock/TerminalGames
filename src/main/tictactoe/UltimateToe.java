@@ -1,7 +1,6 @@
 package main.tictactoe;
 
-import main.extramethods.Terminal;
-import main.extramethods.Input;
+import helpers.*;
 
 /**
  * A class representing the Ultimate Tic-Tac-Toe game.

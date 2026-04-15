@@ -1,8 +1,8 @@
 package main.tictactoe;
 
-import main.extramethods.Input;
+import helpers.Input;
 import main.extramethods.TwoDHelper;
-import main.extramethods.Terminal;
+import helpers.Terminal;
 
 /**
  * A simple implementation of the classic Tic-Tac-Toe game, using the TwoDHelper class to manage the game board and the Input class to handle user input.

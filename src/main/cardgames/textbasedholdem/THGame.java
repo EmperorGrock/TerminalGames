@@ -1,7 +1,7 @@
 package main.cardgames.textbasedholdem;
 
 import main.cardgames.cardpack.*;
-import main.extramethods.Input;
+import helpers.Input;
 
 import java.util.ArrayList;
 

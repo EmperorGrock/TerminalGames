@@ -1,7 +1,7 @@
 package main.tictactoe;
 
-import main.extramethods.Input;
-import main.extramethods.Terminal;
+import helpers.Input;
+import helpers.Terminal;
 import main.extramethods.ThreeDHelper;
 
 /**

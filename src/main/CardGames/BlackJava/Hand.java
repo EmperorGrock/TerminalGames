@@ -3,8 +3,8 @@ package main.cardgames.blackjava;
 import java.util.ArrayList;
 
 import main.cardgames.cardpack.*;
-import main.extramethods.Input;
-import main.extramethods.Terminal;
+import helpers.Input;
+import helpers.Terminal;
 
 /**
  * Represents a hand of cards in the blackjack game.
