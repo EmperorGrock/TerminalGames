@@ -141,13 +141,15 @@ public class Hand {
 	 * Determines if this hand beats the dealer's hand, which is true if the score of this hand is greater than the dealer's score, 
 	 * and this hand is not busted (score over 21).
 	 * @param dealerScore The score of the dealer's hand to compare against
-	 * @return true if this hand beats the dealer's hand, false otherwise
+	 * @return -1 if busted, 1 if beat dealer, 0 if ties dealer, 2 if otherwise
 	 */
-	public boolean beatDealer(int dealerScore){
-		if(score > 21) return false;
+	public int beatDealer(int dealerScore){
+		if(score > 21) return -1;
 		if(score > dealerScore)
-			return true;
-		return false;
+			return 1;
+		if(score == dealerScore)
+			return 0;
+		return 2;
 	}
 
 	/**

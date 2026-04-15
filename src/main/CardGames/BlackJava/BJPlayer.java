@@ -35,19 +35,23 @@ public class BJPlayer {
 			otherHand.restartHand();
 	}
 
+	private static void checkHand(Hand hand, int dealerAmt){
+		if(hand.beatDealer(dealerAmt) == 1){
+			Terminal.printlnWithFormat("Player " + playerNumber + " wins!", 2, 1);
+			editCash(hand.getBet());
+		}else if(hand.beatDealer){
+			Terminal.printlnWithFormat("Player " + playerNumber + " loses.", 1, 1);
+			editCash(0-hand.getBet());
+		}
+	}
+
 	/**
 	 * NOTE: MAY BE BUGGY, NEED TO TEST/FIX
 	 * Ends the player's turn by comparing their hand(s) to the dealer's hand and updating their cash accordingly.
 	 * @param dealerAmt The score of the dealer's hand
 	 */
 	public void endTurn(int dealerAmt){
-		if(hand.beatDealer(dealerAmt)){
-			Terminal.printlnWithFormat("Player " + playerNumber + " wins!", 2, 1);
-			editCash(hand.getBet());
-		}else{
-			Terminal.printlnWithFormat("Player " + playerNumber + " loses.", 1, 1);
-			editCash(0-hand.getBet());
-		}
+		
 		if(otherHand != null){
 			if(otherHand.beatDealer(dealerAmt)){
 				Terminal.printlnWithFormat("Player " + playerNumber + "'s second hand wins!", 2, 1);
