@@ -1,5 +1,6 @@
 import main.cardgames.CardGamesRunner;
-import helpers.*;
+import helpers.Terminal;
+import helpers.Input;
 import main.tictactoe.ToeRunner;
 
 public class App {
